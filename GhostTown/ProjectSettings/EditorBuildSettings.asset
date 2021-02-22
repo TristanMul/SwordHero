@@ -6,9 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Old/OmarTestScene.unity
-    guid: bec4533c35ddcd1458b5a07d6ce44613
-  - enabled: 1
-    path: Assets/Scenes/OmarTestScen.unity
-    guid: e4f28dd886d416147866f9caa6042f2c
+    path: Assets/Scenes/Shaam.unity
+    guid: aeb2d899517404dae950425a772cbab0
   m_configObjects: {}

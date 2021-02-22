@@ -209,11 +209,6 @@ public class PlayerMovement : MonoBehaviour
         GameObject enemy = null;
         GameObject[] allEnemies = GameObject.FindGameObjectsWithTag("Enemy");
 
-        if (enemy != null)
-        {
-            StartCoroutine(DoRotationAtTargetDirection(enemy.transform));
-        }
-
         foreach (GameObject currentEnemy in allEnemies)
         {
             var targetRotation = currentEnemy.transform.position - transform.position;
@@ -224,6 +219,11 @@ public class PlayerMovement : MonoBehaviour
                 enemy = currentEnemy;
             }
 
+        }
+
+        if (enemy != null)
+        {
+            StartCoroutine(DoRotationAtTargetDirection(enemy.transform));
         }
     }
 

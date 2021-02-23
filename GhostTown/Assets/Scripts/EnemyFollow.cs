@@ -56,6 +56,7 @@ public class EnemyFollow : MonoBehaviour
             yield return null;
         }
         if (destroy) {
+            target.GetComponent<VacuumPoof>().PlayPoofEffect();
             Destroy(this.gameObject);
         }
     }
@@ -78,7 +79,6 @@ public class EnemyFollow : MonoBehaviour
             Debug.Log("collider disabled");
             yield return new WaitForSeconds(0.1f);
             StartCoroutine(LerpObject(enemy.localScale, killScale, enemy.position, target.transform.position, 1.5f, true));
-            //Spawn Poof Effects Here
         }
 
         if (other.tag == "Player")

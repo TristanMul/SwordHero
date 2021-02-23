@@ -496,6 +496,8 @@ MonoBehaviour:
   enemy: {fileID: 3484469851476082488}
   speed: 4
   range: 150
+  ghostPoof: {fileID: 5185314081197806945, guid: 230f97cc0532a2e47a7f3c410ed3d769,
+    type: 3}
 --- !u!1 &3484469851476304666
 GameObject:
   m_ObjectHideFlags: 0

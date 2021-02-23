@@ -8,6 +8,8 @@ public class EnemyFollow : MonoBehaviour
     GameManager gameManager;
     [HideInInspector]
     public GameObject target;
+    [HideInInspector]
+    public GameObject cylinder;
     public Transform enemy;
     public int speed;
     public float range;
@@ -16,6 +18,7 @@ public class EnemyFollow : MonoBehaviour
     void Awake()
     {
          target = GameObject.FindGameObjectWithTag("Player");
+         cylinder = GameObject.FindGameObjectWithTag("Cylinder");
     }
 
     // Start is called before the first frame update
@@ -43,7 +46,7 @@ public class EnemyFollow : MonoBehaviour
         }
     }
 
-    public IEnumerator LerpObject(Vector3 a, Vector3 b, Vector3 x, Vector3 y, float time, bool destroy)
+    public IEnumerator LerpObject(Vector3 scaleA, Vector3 scaleB, Vector3 posA, Vector3 posB, float time, bool destroy)
     {
         float i = 0.0f;
         float rate = (1.0f / time) * speed;
@@ -51,8 +54,8 @@ public class EnemyFollow : MonoBehaviour
         while (i < 1.0f)
         {
             i += Time.deltaTime * rate;
-            transform.localScale = Vector3.Lerp(a, b, i);
-            transform.position = Vector3.Lerp(x, y, i);
+            transform.localScale = Vector3.Lerp(scaleA, scaleB, i);
+            transform.position = Vector3.Lerp(posA, posB, i);
             transform.GetComponent<Collider>().enabled = false;
             yield return null;
         }
@@ -78,7 +81,7 @@ public class EnemyFollow : MonoBehaviour
             }
             Debug.Log("collider disabled");
             yield return new WaitForSeconds(0.1f);
-            StartCoroutine(LerpObject(enemy.localScale, killScale, enemy.position, target.transform.position, 1.5f, true));
+            StartCoroutine(LerpObject(enemy.localScale, killScale, enemy.position, cylinder.transform.position, 1f, true));
             //Spawn Poof Effects Here
         }
 

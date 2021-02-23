@@ -209,11 +209,6 @@ public class PlayerMovement : MonoBehaviour
         GameObject enemy = null;
         GameObject[] allEnemies = GameObject.FindGameObjectsWithTag("Enemy");
 
-        if (enemy != null)
-        {
-            StartCoroutine(DoRotationAtTargetDirection(enemy.transform));
-        }
-
         foreach (GameObject currentEnemy in allEnemies)
         {
             var targetRotation = currentEnemy.transform.position - transform.position;
@@ -224,6 +219,11 @@ public class PlayerMovement : MonoBehaviour
                 enemy = currentEnemy;
             }
 
+        }
+
+        if (enemy != null)
+        {
+            StartCoroutine(DoRotationAtTargetDirection(enemy.transform));
         }
     }
 
@@ -260,7 +260,7 @@ public class PlayerMovement : MonoBehaviour
         while (j < 1.0f)
         {
             j += Time.deltaTime * rate;
-            regularVortex.transform.localScale = Vector3.Lerp(new Vector3(vortex.transform.localScale.x * 2f, vortex.transform.localScale.y * 1.2f, 
+            regularVortex.transform.localScale = Vector3.Lerp(new Vector3(vortex.transform.localScale.x * 2f, vortex.transform.localScale.y, 
                 vortex.transform.localScale.z / 1.5f), regularSize, j);
             vortex.transform.localScale = Vector3.Lerp(vortex.transform.localScale, new Vector3(0.3f, 0.7f, 1), j);
             yield return null;

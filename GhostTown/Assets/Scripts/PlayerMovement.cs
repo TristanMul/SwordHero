@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public FixedJoystick FixedJoystick;
+    //public FixedJoystick FixedJoystick;
+    public DynamicJoystick FixedJoystick;
     public GameManager gameManager;
     public Animator animator;
     public float moveSpeed = 5f;

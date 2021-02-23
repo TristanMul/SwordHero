@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - SuperVortex
+  - Cylinder
   layers:
   - Default
   - TransparentFX

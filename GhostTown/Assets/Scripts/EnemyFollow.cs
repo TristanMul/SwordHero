@@ -57,7 +57,8 @@ public class EnemyFollow : MonoBehaviour
             yield return null;
         }
         if (destroy) {
-            target.GetComponent<VacuumPoof>().PlayPoofEffect();
+            // Play the poof effect on the vacuum of the player and destroy this object.
+            target.GetComponent<VacuumPoof>().PlayPoofEffect(GetComponent<TypeOfGhost>().color);
             Destroy(this.gameObject);
         }
     }

@@ -380,6 +380,7 @@ GameObject:
   - component: {fileID: 1050448828055272513}
   - component: {fileID: 1050448828055272526}
   - component: {fileID: 1050448828055272512}
+  - component: {fileID: 5059299024626530166}
   m_Layer: 9
   m_Name: Ghost
   m_TagString: Enemy
@@ -496,8 +497,19 @@ MonoBehaviour:
   enemy: {fileID: 3484469851476082488}
   speed: 4
   range: 150
-  ghostPoof: {fileID: 5185314081197806945, guid: 230f97cc0532a2e47a7f3c410ed3d769,
-    type: 3}
+--- !u!114 &5059299024626530166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3484469851476304664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e48694c44524ab42a7d02428c94b96b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ghostType: 0
 --- !u!1 &3484469851476304666
 GameObject:
   m_ObjectHideFlags: 0

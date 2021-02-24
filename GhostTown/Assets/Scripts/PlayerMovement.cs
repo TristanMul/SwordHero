@@ -39,6 +39,11 @@ public class PlayerMovement : MonoBehaviour
         //character.MovePosition(character.position + movement * moveSpeed * Time.fixedDeltaTime);
         transform.Translate(movement * moveSpeed * Time.deltaTime, Space.World);
 
+        // Play footstep smoke effect if player is moving.
+        if(movement.x > 0 || movement.z > 0){
+            transform.GetComponent<FootstepSmoke>().PlayFootstepSmokeEffect();
+        }
+        
         animator.SetFloat("MovementX", Mathf.Abs(movement.x * 10), 0.1f, Time.deltaTime);
         animator.SetFloat("MovementZ", Mathf.Abs(movement.z * 10), 0.1f, Time.deltaTime);
 

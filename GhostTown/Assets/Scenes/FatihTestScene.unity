@@ -87654,6 +87654,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5497680096429202004, guid: cee5ba780332c474e9242d61df82ea36,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.7058824
+      objectReference: {fileID: 0}
+    - target: {fileID: 5497680096429202004, guid: cee5ba780332c474e9242d61df82ea36,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.98039216
+      objectReference: {fileID: 0}
     - target: {fileID: 8440512839069693627, guid: cee5ba780332c474e9242d61df82ea36,
         type: 3}
       propertyPath: poof

@@ -11,6 +11,7 @@ public class TypeOfGhost : MonoBehaviour
     public enum GhostType{
         Normal,
         Fast,
+        Big,
     }
 
     public Color color;
@@ -27,6 +28,8 @@ public class TypeOfGhost : MonoBehaviour
                 return new Color(0f, 0.97f, 1.0f);
             case GhostType.Fast:
                 return Color.red;
+            case GhostType.Big:
+                return Color.magenta;
             default:
                 return Color.white;
         }

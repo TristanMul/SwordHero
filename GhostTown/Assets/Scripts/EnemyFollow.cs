@@ -13,24 +13,31 @@ public class EnemyFollow : MonoBehaviour
     public Transform enemy;
     public int speed;
     public float range;
+    private Material currentMat;
     Vector3 killScale = new Vector3(0.1f, 0.1f, 0.1f);
 
     void Awake()
     {
-         target = GameObject.FindGameObjectWithTag("Player");
-         cylinder = GameObject.FindGameObjectWithTag("Cylinder");
+        target = GameObject.FindGameObjectWithTag("Player");
+        cylinder = GameObject.FindGameObjectWithTag("Cylinder");
+        //StartCoroutine(LerpAlpha(1));
     }
 
     // Start is called before the first frame update
     void Start()
     {
         enemy = this.GetComponent<Transform>();
-        StartCoroutine(LerpObject(killScale, enemy.localScale, enemy.position, enemy.position, 1.5f, false));
+        currentMat = gameObject.GetComponentInChildren<Renderer>().material;
+        var ghostRenderer = GetComponentInChildren<Renderer>().material.color;
+        StartCoroutine(LerpAlpha(2f));
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        //ChangeAlpha(0.5f);
+        
+        Debug.Log(GetComponentInChildren<Renderer>().material.color.a);
         if (target.transform != null)
         {
             if ((Mathf.Abs(target.transform.position.z - enemy.position.z) < range) &&
@@ -79,7 +86,6 @@ public class EnemyFollow : MonoBehaviour
             {
                 c.enabled = false;
             }
-            Debug.Log("collider disabled");
             yield return new WaitForSeconds(0.1f);
             StartCoroutine(LerpObject(enemy.localScale, killScale, enemy.position, cylinder.transform.position, 1f, true));
             //Spawn Poof Effects Here
@@ -87,8 +93,23 @@ public class EnemyFollow : MonoBehaviour
 
         if (other.tag == "Player")
         {
-            Debug.Log("kill me");
             StartCoroutine(target.GetComponent<PlayerMovement>().OnDeath());
+        }
+    }
+
+    public IEnumerator LerpAlpha(float time)
+    {
+        Color oldColor = currentMat.color;
+        float i = 0.0f;
+        float rate = (1.0f / time) * speed;
+
+        while (i < 1.0f)
+        {
+            i += Time.deltaTime * rate;
+            
+            Color newColor = new Color(oldColor.r, oldColor.g, oldColor.b, i);
+            currentMat.SetColor("_Color", newColor);
+            yield return null;
         }
     }
 }

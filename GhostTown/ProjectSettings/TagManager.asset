@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Enemy
   - SuperVortex
+  - Animal
+  - Water
+  - Platform
   layers:
   - Default
   - TransparentFX

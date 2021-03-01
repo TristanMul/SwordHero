@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Windows;
 
 public class EnemyFollow : MonoBehaviour
 {
@@ -64,6 +63,8 @@ public class EnemyFollow : MonoBehaviour
             yield return null;
         }
         if (destroy) {
+            // Play the poof effect on the vacuum of the player and destroy this object.
+            target.GetComponent<VacuumPoof>().PlayPoofEffect(GetComponent<TypeOfGhost>().color);
             Destroy(this.gameObject);
         }
     }

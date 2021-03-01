@@ -34,10 +34,7 @@ public class EnemyFollow : MonoBehaviour
 
     // Update is called once per frame
     void FixedUpdate()
-    {
-        //ChangeAlpha(0.5f);
-        
-        Debug.Log(GetComponentInChildren<Renderer>().material.color.a);
+    {   
         if (target.transform != null)
         {
             if ((Mathf.Abs(target.transform.position.z - enemy.position.z) < range) &&

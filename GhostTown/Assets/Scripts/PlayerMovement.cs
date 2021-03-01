@@ -7,11 +7,12 @@ public class PlayerMovement : MonoBehaviour
     //public FixedJoystick FixedJoystick;
     public DynamicJoystick FixedJoystick;
     public GameManager gameManager;
-    public Animator animator;
-    public float moveSpeed = 5f;
-    public Rigidbody character;
     public GameObject vortex;
     public GameObject regularVortex;
+    public Animator animator;
+    public Rigidbody character;
+    //public GameObject finish;
+    public float moveSpeed = 5f;
     public int lookSpeed;
     public bool shrinkPos;
     Vector3 movement;
@@ -20,15 +21,10 @@ public class PlayerMovement : MonoBehaviour
 
     void Awake()
     {
+        gameManager.playerAlive = true;
         regularSize = new Vector3(0.5f, 0.5f, 0.5f);
         enemy = gameManager._enemy;
     }
-
-    //private void Update()
-    //{
-    //    this.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
-    //    this.gameObject.GetComponent<Rigidbody>().centerOfMass = Vector3.zero;
-    //}
 
     void FixedUpdate()
     {
@@ -274,6 +270,7 @@ public class PlayerMovement : MonoBehaviour
         regularVortex.SetActive(false);
         movement = new Vector3(0, 0, 0);
         gameObject.GetComponentInChildren<Animator>().enabled = false;
+        gameManager.playerAlive = false;
         yield return null;
     }
 }

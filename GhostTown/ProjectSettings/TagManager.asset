@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - SuperVortex
+  - Cylinder
   - Animal
   - Water
   - Platform
@@ -21,9 +22,9 @@ TagManager:
   - PostProcessing
   - Enemy
   - EnemyBoundry
-  - 
-  - 
-  - 
+  - VortexPreview
+  - Ground
+  - Water
   - 
   - 
   - 
@@ -45,4 +46,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: VortexPreview
+    uniqueID: 857696923
     locked: 0

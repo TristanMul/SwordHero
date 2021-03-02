@@ -10,8 +10,6 @@ public class AwakeGhosts : MonoBehaviour
     {
         if (obj.tag == "Player")
         {
-            Debug.Log("Awaken");
-            //ghosts.GetComponentInChildren<GameObject>().SetActive(true);
             ghosts.SetActive(true);
         }
     }

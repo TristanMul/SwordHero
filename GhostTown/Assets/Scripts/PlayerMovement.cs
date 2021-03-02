@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public FixedJoystick FixedJoystick;
+    //public FixedJoystick FixedJoystick;
+    public DynamicJoystick FixedJoystick;
     public GameManager gameManager;
-    public Animator animator;
-    public float moveSpeed = 5f;
-    public Rigidbody character;
     public GameObject vortex;
     public GameObject regularVortex;
+    public Animator animator;
+    public Rigidbody character;
+    //public GameObject finish;
+    public float moveSpeed = 5f;
     public int lookSpeed;
     public bool shrinkPos;
     Vector3 movement;
@@ -19,22 +21,18 @@ public class PlayerMovement : MonoBehaviour
 
     void Awake()
     {
-        regularSize = new Vector3(0.5f, 0.5f, 0.5f);
+        gameManager.playerAlive = true;
+        regularSize = new Vector3(0.2f, 0.5f, 1f);
         enemy = gameManager._enemy;
     }
-
-    //private void Update()
-    //{
-    //    this.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
-    //    this.gameObject.GetComponent<Rigidbody>().centerOfMass = Vector3.zero;
-    //}
 
     void FixedUpdate()
     {
         movement.x = FixedJoystick.Horizontal;
         movement.z = FixedJoystick.Vertical;
 
-        FaceClosestEnemy();
+        //FaceClosestEnemy();
+        transform.rotation = Quaternion.LookRotation(movement);
 
         //character.MovePosition(character.position + movement * moveSpeed * Time.fixedDeltaTime);
         transform.Translate(movement * moveSpeed * Time.deltaTime, Space.World);
@@ -51,7 +49,6 @@ public class PlayerMovement : MonoBehaviour
 
         if (movement.x != 0 && movement.z != 0)
         {
-            
             vortex.transform.localScale += new Vector3(0.1f, 0.8f, 0f) * (gameManager.vortexBuildup / 100);
             shrinkPos = true;
         }
@@ -265,7 +262,7 @@ public class PlayerMovement : MonoBehaviour
         while (j < 1.0f)
         {
             j += Time.deltaTime * rate;
-            regularVortex.transform.localScale = Vector3.Lerp(new Vector3(vortex.transform.localScale.x * 2f, vortex.transform.localScale.y * 1.2f, 
+            regularVortex.transform.localScale = Vector3.Lerp(new Vector3(vortex.transform.localScale.x * 2f, vortex.transform.localScale.y, 
                 vortex.transform.localScale.z / 1.5f), regularSize, j);
             vortex.transform.localScale = Vector3.Lerp(vortex.transform.localScale, new Vector3(0.3f, 0.7f, 1), j);
             yield return null;
@@ -278,6 +275,7 @@ public class PlayerMovement : MonoBehaviour
         regularVortex.SetActive(false);
         movement = new Vector3(0, 0, 0);
         gameObject.GetComponentInChildren<Animator>().enabled = false;
+        gameManager.playerAlive = false;
         yield return null;
     }
 }

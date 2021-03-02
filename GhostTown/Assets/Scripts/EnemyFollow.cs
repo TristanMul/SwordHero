@@ -1,48 +1,62 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyFollow : MonoBehaviour
 {
     GameManager gameManager;
     [HideInInspector]
     public GameObject target;
+    [HideInInspector]
+    public GameObject cylinder;
+    [HideInInspector]
+    public NavMeshAgent agent;
     public Transform enemy;
     public int speed;
     public float range;
+    private Material currentMat;
     Vector3 killScale = new Vector3(0.1f, 0.1f, 0.1f);
 
     void Awake()
     {
-         target = GameObject.FindGameObjectWithTag("Player");
+        target = GameObject.FindGameObjectWithTag("Player");
+        cylinder = GameObject.FindGameObjectWithTag("Cylinder");
+        agent = GetComponent<NavMeshAgent>();
+        //StartCoroutine(LerpAlpha(1));
     }
 
     // Start is called before the first frame update
     void Start()
     {
         enemy = this.GetComponent<Transform>();
-        StartCoroutine(LerpObject(killScale, enemy.localScale, enemy.position, enemy.position, 1.5f, false));
+        currentMat = gameObject.GetComponentInChildren<Renderer>().material;
+        var ghostRenderer = GetComponentInChildren<Renderer>().material.color;
+        StartCoroutine(LerpAlpha(2f));
     }
 
     // Update is called once per frame
     void FixedUpdate()
-    {
+    {   
         if (target.transform != null)
         {
             if ((Mathf.Abs(target.transform.position.z - enemy.position.z) < range) &&
                 Mathf.Abs(target.transform.position.x - enemy.position.x) < range)
             {
                 enemy.transform.LookAt(target.transform);
-                enemy.position = Vector3.MoveTowards(enemy.position, target.transform.position, speed * Time.deltaTime);
+                //enemy.position = Vector3.MoveTowards(enemy.position, target.transform.position, speed * Time.deltaTime);
+                //agent.SetDestination(target.transform.position);
+                agent.destination = target.transform.position;
             }
         }
         else
         {
-            speed = 0;
+            //speed = 0;
         }
     }
 
-    public IEnumerator LerpObject(Vector3 a, Vector3 b, Vector3 x, Vector3 y, float time, bool destroy)
+    public IEnumerator LerpObject(Vector3 scaleA, Vector3 scaleB, Vector3 posA, Vector3 posB, float time, bool destroy)
     {
         float i = 0.0f;
         float rate = (1.0f / time) * speed;
@@ -50,8 +64,8 @@ public class EnemyFollow : MonoBehaviour
         while (i < 1.0f)
         {
             i += Time.deltaTime * rate;
-            transform.localScale = Vector3.Lerp(a, b, i);
-            transform.position = Vector3.Lerp(x, y, i);
+            transform.localScale = Vector3.Lerp(scaleA, scaleB, i);
+            transform.position = Vector3.Lerp(posA, cylinder.transform.position, i);
             transform.GetComponent<Collider>().enabled = false;
             yield return null;
         }
@@ -77,15 +91,30 @@ public class EnemyFollow : MonoBehaviour
             {
                 c.enabled = false;
             }
-            Debug.Log("collider disabled");
             yield return new WaitForSeconds(0.1f);
-            StartCoroutine(LerpObject(enemy.localScale, killScale, enemy.position, target.transform.position, 1.5f, true));
+            StartCoroutine(LerpObject(enemy.localScale, killScale, enemy.position, cylinder.transform.position, 1f, true));
+            //Spawn Poof Effects Here
         }
 
         if (other.tag == "Player")
         {
-            Debug.Log("kill me");
             StartCoroutine(target.GetComponent<PlayerMovement>().OnDeath());
+        }
+    }
+
+    public IEnumerator LerpAlpha(float time)
+    {
+        Color oldColor = currentMat.color;
+        float i = 0.0f;
+        float rate = (1.0f / time) * speed;
+
+        while (i < 1.0f)
+        {
+            i += Time.deltaTime * rate;
+            
+            Color newColor = new Color(oldColor.r, oldColor.g, oldColor.b, i);
+            currentMat.SetColor("_Color", newColor);
+            yield return null;
         }
     }
 }

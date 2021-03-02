@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
     public float vortexBuildup;
     public bool isTouchingFinish;
     public bool gameReset;
-    bool gameOver;
+    bool gameOver = false;
     GameObject[] enemies;
     Scene currScene;
 

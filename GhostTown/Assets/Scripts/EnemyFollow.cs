@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyFollow : MonoBehaviour
 {
@@ -9,6 +11,8 @@ public class EnemyFollow : MonoBehaviour
     public GameObject target;
     [HideInInspector]
     public GameObject cylinder;
+    [HideInInspector]
+    public NavMeshAgent agent;
     public Transform enemy;
     public int speed;
     public float range;
@@ -19,6 +23,7 @@ public class EnemyFollow : MonoBehaviour
     {
         target = GameObject.FindGameObjectWithTag("Player");
         cylinder = GameObject.FindGameObjectWithTag("Cylinder");
+        agent = GetComponent<NavMeshAgent>();
         //StartCoroutine(LerpAlpha(1));
     }
 
@@ -40,12 +45,14 @@ public class EnemyFollow : MonoBehaviour
                 Mathf.Abs(target.transform.position.x - enemy.position.x) < range)
             {
                 enemy.transform.LookAt(target.transform);
-                enemy.position = Vector3.MoveTowards(enemy.position, target.transform.position, speed * Time.deltaTime);
+                //enemy.position = Vector3.MoveTowards(enemy.position, target.transform.position, speed * Time.deltaTime);
+                //agent.SetDestination(target.transform.position);
+                agent.destination = target.transform.position;
             }
         }
         else
         {
-            speed = 0;
+            //speed = 0;
         }
     }
 
@@ -58,7 +65,7 @@ public class EnemyFollow : MonoBehaviour
         {
             i += Time.deltaTime * rate;
             transform.localScale = Vector3.Lerp(scaleA, scaleB, i);
-            transform.position = Vector3.Lerp(posA, posB, i);
+            transform.position = Vector3.Lerp(posA, cylinder.transform.position, i);
             transform.GetComponent<Collider>().enabled = false;
             yield return null;
         }

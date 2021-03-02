@@ -381,6 +381,7 @@ GameObject:
   - component: {fileID: 1050448828055272526}
   - component: {fileID: 1050448828055272512}
   - component: {fileID: 5059299024626530166}
+  - component: {fileID: -318427502138124548}
   m_Layer: 9
   m_Name: Ghost
   m_TagString: Enemy
@@ -447,7 +448,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3484469851476304664}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 10
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -494,6 +495,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  cylinder: {fileID: 0}
+  agent: {fileID: 0}
   enemy: {fileID: 3484469851476082488}
   speed: 4
   range: 150
@@ -510,6 +513,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ghostType: 0
+  color: {r: 0, g: 0, b: 0, a: 0}
+--- !u!195 &-318427502138124548
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3484469851476304664}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3
+  m_Acceleration: 8
+  avoidancePriority: 25
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 0
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 1
+  m_WalkableMask: 1
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &3484469851476304666
 GameObject:
   m_ObjectHideFlags: 0

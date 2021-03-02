@@ -374,7 +374,7 @@ Transform:
   - {fileID: 4640449597445438288}
   - {fileID: 4640449598492097090}
   m_Father: {fileID: 4640449597633764397}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &4640449597443710588
 BoxCollider:
@@ -602,11 +602,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4640449597607099328}
-  m_LocalRotation: {x: -0.000054896453, y: -0.14533564, z: 0.0002439923, w: 0.9893824}
-  m_LocalPosition: {x: 0.010025196, y: -0.23601177, z: 0.14476511}
-  m_LocalScale: {x: 0.11111115, y: 0.15555555, z: 0.1111111}
+  m_LocalRotation: {x: 0.70720387, y: 0.70685166, z: -0.010556609, w: 0.010589571}
+  m_LocalPosition: {x: -0.20374449, y: 0.013332548, z: 0.14607143}
+  m_LocalScale: {x: 0.111111104, y: 0.15555546, z: 0.111111045}
   m_Children: []
-  m_Father: {fileID: 4640449599079486160}
+  m_Father: {fileID: 4640449597633764397}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0.952, y: -57, z: 0.085}
 --- !u!33 &4640449597607099325
@@ -685,6 +685,7 @@ Transform:
   m_LocalPosition: {x: -5.9604643e-10, y: 0.27992854, z: -0.003742392}
   m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 1}
   m_Children:
+  - {fileID: 4640449597607099331}
   - {fileID: 4640449597443710591}
   m_Father: {fileID: 4640449598998184331}
   m_RootOrder: 0
@@ -1715,7 +1716,7 @@ Transform:
   m_Children:
   - {fileID: 4640449598096578738}
   m_Father: {fileID: 4640449599079486160}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &4640449598371509347
 CapsuleCollider:
@@ -2589,11 +2590,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FixedJoystick: {fileID: 0}
   gameManager: {fileID: 0}
-  animator: {fileID: 4640449598998184329}
-  moveSpeed: 10
-  character: {fileID: 4640449598940180059}
   vortex: {fileID: 4640449598127943819}
   regularVortex: {fileID: 4640449598801994628}
+  animator: {fileID: 4640449598998184329}
+  character: {fileID: 4640449598940180059}
+  moveSpeed: 10
   lookSpeed: 4
   shrinkPos: 0
 --- !u!136 &4640449598940180057
@@ -2915,7 +2916,6 @@ Transform:
   m_LocalPosition: {x: -0.097930945, y: -0.03224214, z: -0.03381932}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4640449597607099331}
   - {fileID: 4640449598371509346}
   m_Father: {fileID: 4640449597889554505}
   m_RootOrder: 2

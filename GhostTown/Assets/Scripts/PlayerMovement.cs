@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
     void Awake()
     {
         gameManager.playerAlive = true;
-        regularSize = new Vector3(0.5f, 0.5f, 0.5f);
+        regularSize = new Vector3(0.2f, 0.5f, 1f);
         enemy = gameManager._enemy;
     }
 
@@ -31,7 +31,8 @@ public class PlayerMovement : MonoBehaviour
         movement.x = FixedJoystick.Horizontal;
         movement.z = FixedJoystick.Vertical;
 
-        FaceClosestEnemy();
+        //FaceClosestEnemy();
+        transform.rotation = Quaternion.LookRotation(movement);
 
         //character.MovePosition(character.position + movement * moveSpeed * Time.fixedDeltaTime);
         transform.Translate(movement * moveSpeed * Time.deltaTime, Space.World);
@@ -48,7 +49,6 @@ public class PlayerMovement : MonoBehaviour
 
         if (movement.x != 0 && movement.z != 0)
         {
-            
             vortex.transform.localScale += new Vector3(0.1f, 0.8f, 0f) * (gameManager.vortexBuildup / 100);
             shrinkPos = true;
         }

@@ -2533,6 +2533,7 @@ GameObject:
   - component: {fileID: 4640449598940180058}
   - component: {fileID: 8440512839069693627}
   - component: {fileID: 8181650126110218692}
+  - component: {fileID: -4953152206099742108}
   m_Layer: 6
   m_Name: NewPlayer
   m_TagString: Player
@@ -2650,6 +2651,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   footstepSmoke: {fileID: 5497680096429202004}
+--- !u!114 &-4953152206099742108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4640449598940180062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e08f836a1af676040b69eac1009e5984, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vortex: {fileID: 4640449598801994628}
+  vortexPreview: {fileID: 4640449598127943819}
 --- !u!1 &4640449598969597732
 GameObject:
   m_ObjectHideFlags: 0

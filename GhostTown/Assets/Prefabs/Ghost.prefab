@@ -381,6 +381,7 @@ GameObject:
   - component: {fileID: 1050448828055272526}
   - component: {fileID: 1050448828055272512}
   - component: {fileID: 5059299024626530166}
+  - component: {fileID: -2529520155858353694}
   - component: {fileID: -318427502138124548}
   m_Layer: 9
   m_Name: Ghost
@@ -489,7 +490,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3484469851476304664}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f126b532ed7079048aa2f4f4c30bcee3, type: 3}
   m_Name: 
@@ -514,6 +515,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ghostType: 0
   color: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &-2529520155858353694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3484469851476304664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21a9b333791d8904fb93bad7627a365e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materialAwake: {fileID: 2100000, guid: c2454550c1650ad44a80829fb55cdedf, type: 2}
+  isAwake: 0
 --- !u!195 &-318427502138124548
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -561,7 +576,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3484469851476304666}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 10.6, y: 0, z: 36.3}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3484469851476082488}
@@ -586,7 +601,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c2454550c1650ad44a80829fb55cdedf, type: 2}
+  - {fileID: 2100000, guid: a42ba90aaaa087540b857e77a152859b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

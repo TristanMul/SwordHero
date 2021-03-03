@@ -381,6 +381,7 @@ GameObject:
   - component: {fileID: 1050448828055272526}
   - component: {fileID: 1050448828055272512}
   - component: {fileID: -3008789742241622042}
+  - component: {fileID: 8700778556251328371}
   m_Layer: 9
   m_Name: FastGhost
   m_TagString: Enemy
@@ -488,12 +489,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3484469851476304664}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f126b532ed7079048aa2f4f4c30bcee3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  cylinder: {fileID: 0}
+  agent: {fileID: 0}
   enemy: {fileID: 3484469851476082488}
   speed: 10
   range: 150
@@ -510,6 +513,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ghostType: 1
+  color: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &8700778556251328371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3484469851476304664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21a9b333791d8904fb93bad7627a365e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materialAwake: {fileID: 2100000, guid: a5ebaa5181eedbd4da7d4bdc4b7e8b19, type: 2}
+  isAwake: 0
 --- !u!1 &3484469851476304666
 GameObject:
   m_ObjectHideFlags: 0
@@ -560,7 +578,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a5ebaa5181eedbd4da7d4bdc4b7e8b19, type: 2}
+  - {fileID: 2100000, guid: a42ba90aaaa087540b857e77a152859b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

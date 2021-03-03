@@ -20,8 +20,10 @@ public class AgroRange : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //get distance between player and enemy awake trigger
         distance = Vector3.Distance(player.transform.position, gameObject.transform.position);
 
+        //player in range of enemy group
         if (distance < spotRange)
         {
             plane.enabled = true;

@@ -72,12 +72,13 @@ public class GameManager : MonoBehaviour
 
         if (!playerAlive)
         {
+            StartCoroutine(GameOver());
             if (Input.GetMouseButtonUp(0))
             {
                 SceneManager.LoadScene(currScene.name);
             }
             //StartCoroutine(ReloadSameScene());
-            StartCoroutine(GameOver());
+            
         }
 
         if (gameReset)

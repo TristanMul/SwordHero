@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class AwakeGhosts : MonoBehaviour
 {
-    public GameObject ghosts;
+    public GameObject trigger;
 
     private void OnTriggerEnter(Collider obj)
     {
         if (obj.tag == "Player")
         {
             // ghosts.SetActive(true);
-            foreach (GameObject ghost in ghosts.transform)
+            foreach (GameObject enemy in trigger.transform)
             {
-                if(ghost.GetComponent<GhostAwaken>()){
-                    ghost.GetComponent<GhostAwaken>().WakeUpGhost();
+                if(enemy.GetComponent<GhostAwaken>()){
+                    enemy.GetComponent<GhostAwaken>().WakeUpGhost();
                 }
             }
         }

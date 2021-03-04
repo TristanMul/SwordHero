@@ -7,14 +7,14 @@ public class PlayerMovement : MonoBehaviour
     //public FixedJoystick FixedJoystick;
     public DynamicJoystick FixedJoystick;
     public GameManager gameManager;
-    public GameObject vortex;
-    public GameObject regularVortex;
+    //public GameObject vortex;
+    //public GameObject regularVortex;
     public Animator animator;
     public Rigidbody character;
     //public GameObject finish;
     public float moveSpeed = 5f;
     public int lookSpeed;
-    public bool shrinkPos;
+    //public bool shrinkPos;
     Vector3 movement;
     GameObject enemy;
     Vector3 regularSize; 
@@ -28,11 +28,13 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        animator.SetFloat("AngleController", Mathf.Atan2(movement.z, movement.x) * Mathf.Rad2Deg);
+
         movement.x = FixedJoystick.Horizontal;
         movement.z = FixedJoystick.Vertical;
 
-        //FaceClosestEnemy();
-        transform.rotation = Quaternion.LookRotation(movement);
+        FaceClosestEnemy();
+        //transform.rotation = Quaternion.LookRotation(movement);
 
         //character.MovePosition(character.position + movement * moveSpeed * Time.fixedDeltaTime);
         transform.Translate(movement * moveSpeed * Time.deltaTime, Space.World);
@@ -45,22 +47,23 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("MovementX", Mathf.Abs(movement.x * 10), 0.1f, Time.deltaTime);
         animator.SetFloat("MovementZ", Mathf.Abs(movement.z * 10), 0.1f, Time.deltaTime);
 
-        StrafeWalk();
+        //StrafeWalk();
 
-        if (movement.x != 0 && movement.z != 0)
-        {
-            vortex.transform.localScale += new Vector3(0.1f, 0.8f, 0f) * (gameManager.vortexBuildup / 100);
-            shrinkPos = true;
-        }
+        //if (movement.x != 0 && movement.z != 0)
+        //{
+        //    vortex.transform.localScale += new Vector3(0.1f, 0.8f, 0f) * (gameManager.vortexBuildup / 100);
+        //    shrinkPos = true;
+        //}
 
-        if ((movement.x == 0 && movement.z == 0) && shrinkPos)
-        {
-            StartCoroutine(VortexExpand());
-            shrinkPos = false;
-        }
+        //if ((movement.x == 0 && movement.z == 0) && shrinkPos)
+        //{
+        //    animator.Play("Animations.idle",1,1f);
+        //    //StartCoroutine(VortexExpand());
+        //    shrinkPos = false;
+        //}
     }
 
-    void StrafeWalk()
+    /*void StrafeWalk()
     {
         float controllerDeg = Mathf.Atan2(movement.z, movement.x) * Mathf.Rad2Deg;
         float playerAngle = transform.eulerAngles.y;
@@ -204,6 +207,7 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("walkBackward", false);
         }
     }
+    */
 
     void FaceClosestEnemy()
     {
@@ -242,7 +246,7 @@ public class PlayerMovement : MonoBehaviour
         } while (Quaternion.Angle(transform.rotation, targetRotation) < 0.01f && gameObject != null);
     }
 
-    IEnumerator VortexExpand()
+    /* IEnumerator VortexExpand()
     {
 
         float i = 0.0f;
@@ -268,11 +272,12 @@ public class PlayerMovement : MonoBehaviour
             yield return null;
         }
     }
+    */
 
     public IEnumerator OnDeath()
     {
-        vortex.SetActive(false);
-        regularVortex.SetActive(false);
+        //vortex.SetActive(false);
+        //regularVortex.SetActive(false);
         movement = new Vector3(0, 0, 0);
         gameObject.GetComponentInChildren<Animator>().enabled = false;
         gameManager.playerAlive = false;

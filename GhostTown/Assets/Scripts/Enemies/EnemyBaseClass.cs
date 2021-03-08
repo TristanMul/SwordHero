@@ -7,6 +7,7 @@ public class EnemyBaseClass : MonoBehaviour
     // Shared variables all enemies have.
     public float speed;
     public float health;
+    public float attackRange;
     
     // All states enemies can have.
     public EnemyState enemyState;

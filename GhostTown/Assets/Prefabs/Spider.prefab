@@ -1068,6 +1068,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 7
   health: 0
+  attackRange: 2.5
   enemyState: 0
 --- !u!114 &7944890798685568740
 MonoBehaviour:
@@ -1076,7 +1077,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1996433040889320387}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d284cf84af6e6c948aab374174f53eb5, type: 3}
   m_Name: 
@@ -1122,7 +1123,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 1996433040889320387}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 1.2
+  m_Radius: 1
   m_Speed: 0
   m_Acceleration: 15
   avoidancePriority: 50

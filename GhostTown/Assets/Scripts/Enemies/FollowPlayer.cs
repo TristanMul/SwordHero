@@ -19,6 +19,7 @@ public class FollowPlayer : MonoBehaviour
     }
 
     private void FixedUpdate() {
+        CheckAttackRange();
         MoveToPlayer();
     }
 
@@ -27,6 +28,15 @@ public class FollowPlayer : MonoBehaviour
         if(player && controllerClass.enemyState == EnemyBaseClass.EnemyState.Move){
             transform.LookAt(player.transform);
             navMeshAgent.SetDestination(player.transform.position);
+        }
+    }
+
+    // Check if the player is in the range of this enemy's attack.
+    private void CheckAttackRange(){
+        // The player is in the range of this enemies attack.
+        if(Vector3.Distance(transform.position, player.transform.position) <= controllerClass.attackRange){
+            controllerClass.enemyState = EnemyBaseClass.EnemyState.Attack;
+            GetComponent<FollowPlayer>().enabled = false;
         }
     }
 

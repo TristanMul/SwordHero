@@ -43,7 +43,7 @@ RenderSettings:
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 11
+  serializedVersion: 12
   m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
@@ -54,7 +54,7 @@ LightmapSettings:
     m_EnableBakedLightmaps: 1
     m_EnableRealtimeLightmaps: 0
   m_LightmapEditorSettings:
-    serializedVersion: 10
+    serializedVersion: 12
     m_Resolution: 2
     m_BakeResolution: 40
     m_AtlasSize: 1024
@@ -62,6 +62,7 @@ LightmapSettings:
     m_AOMaxDistance: 1
     m_CompAOExponent: 1
     m_CompAOExponentDirect: 0
+    m_ExtractAmbientOcclusion: 0
     m_Padding: 2
     m_LightmapParameters: {fileID: 0}
     m_LightmapsBakeMode: 1
@@ -76,10 +77,16 @@ LightmapSettings:
     m_PVRDirectSampleCount: 32
     m_PVRSampleCount: 500
     m_PVRBounces: 2
+    m_PVREnvironmentSampleCount: 500
+    m_PVREnvironmentReferencePointCount: 2048
+    m_PVRFilteringMode: 2
+    m_PVRDenoiserTypeDirect: 0
+    m_PVRDenoiserTypeIndirect: 0
+    m_PVRDenoiserTypeAO: 0
     m_PVRFilterTypeDirect: 0
     m_PVRFilterTypeIndirect: 0
     m_PVRFilterTypeAO: 0
-    m_PVRFilteringMode: 1
+    m_PVREnvironmentMIS: 0
     m_PVRCulling: 1
     m_PVRFilteringGaussRadiusDirect: 1
     m_PVRFilteringGaussRadiusIndirect: 5
@@ -87,9 +94,11 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaDirect: 0.5
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
-    m_ShowResolutionOverlay: 1
+    m_ExportTrainingData: 0
+    m_TrainingDataDestination: TrainingData
+    m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_LightingSettings: {fileID: 1904556509}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -109,6 +118,8 @@ NavMeshSettings:
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
+    maxJobWorkers: 0
+    preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
@@ -145,11 +156,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sharedProfile: {fileID: 11400000, guid: 7a27b9c07dc34574b8eceea1cf557288, type: 2}
-  isGlobal: 1
-  blendDistance: 0
-  weight: 1
-  priority: 0
 --- !u!114 &168930641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,54 +168,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volumeTrigger: {fileID: 168930645}
-  volumeLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  stopNaNPropagation: 1
-  finalBlitToCameraTarget: 0
-  antialiasingMode: 1
-  temporalAntialiasing:
-    jitterSpread: 0.75
-    sharpness: 0.25
-    stationaryBlending: 0.95
-    motionBlending: 0.85
-  subpixelMorphologicalAntialiasing:
-    quality: 2
-  fastApproximateAntialiasing:
-    fastMode: 0
-    keepAlpha: 0
-  fog:
-    enabled: 1
-    excludeSkybox: 1
-  debugLayer:
-    lightMeter:
-      width: 512
-      height: 256
-      showCurves: 1
-    histogram:
-      width: 512
-      height: 256
-      channel: 3
-    waveform:
-      exposure: 0.12
-      height: 256
-    vectorscope:
-      size: 256
-      exposure: 0.12
-    overlaySettings:
-      linearDepth: 0
-      motionColorIntensity: 4
-      motionGridSize: 64
-      colorBlindnessType: 0
-      colorBlindnessStrength: 1
-  m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
-  m_ShowToolkit: 0
-  m_ShowCustomSorter: 0
-  breakBeforeColorGrading: 0
-  m_BeforeTransparentBundles: []
-  m_BeforeStackBundles: []
-  m_AfterStackBundles: []
 --- !u!81 &168930642
 AudioListener:
   m_ObjectHideFlags: 0
@@ -238,9 +196,10 @@ Camera:
   m_ClearFlags: 2
   m_BackGroundColor: {r: 0.18867922, g: 0.18867922, b: 0.18867922, a: 0}
   m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_GateFitMode: 2
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
@@ -307,12 +266,14 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 445459593}
   m_Enabled: 1
-  serializedVersion: 8
+  serializedVersion: 10
   m_Type: 1
+  m_Shape: 0
   m_Color: {r: 1, g: 0.95625365, b: 0.60784316, a: 1}
   m_Intensity: 1.6
   m_Range: 10
   m_SpotAngle: 30
+  m_InnerSpotAngle: 21.802082
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
@@ -322,6 +283,24 @@ Light:
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.2
+    m_CullingMatrixOverride:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    m_UseCullingMatrixOverride: 0
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
@@ -329,12 +308,16 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+  m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
 --- !u!4 &445459595
@@ -406,12 +389,14 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1037734900}
   m_Enabled: 1
-  serializedVersion: 8
+  serializedVersion: 10
   m_Type: 1
+  m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 0.85
   m_Range: 10
   m_SpotAngle: 30
+  m_InnerSpotAngle: 21.802082
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
@@ -421,6 +406,24 @@ Light:
     m_Bias: 0.04
     m_NormalBias: 0
     m_NearPlane: 0.2
+    m_CullingMatrixOverride:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    m_UseCullingMatrixOverride: 0
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
@@ -428,12 +431,16 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+  m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
 --- !u!4 &1037734902
@@ -480,6 +487,67 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!850595691 &1904556509
+LightingSettings:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Settings.lighting
+  serializedVersion: 3
+  m_GIWorkflowMode: 1
+  m_EnableBakedLightmaps: 1
+  m_EnableRealtimeLightmaps: 0
+  m_RealtimeEnvironmentLighting: 1
+  m_BounceScale: 1
+  m_AlbedoBoost: 1
+  m_IndirectOutputScale: 1
+  m_UsingShadowmask: 1
+  m_BakeBackend: 1
+  m_LightmapMaxSize: 1024
+  m_BakeResolution: 40
+  m_Padding: 2
+  m_TextureCompression: 1
+  m_AO: 0
+  m_AOMaxDistance: 1
+  m_CompAOExponent: 1
+  m_CompAOExponentDirect: 0
+  m_ExtractAO: 0
+  m_MixedBakeMode: 2
+  m_LightmapsBakeMode: 1
+  m_FilterMode: 1
+  m_LightmapParameters: {fileID: 15204, guid: 0000000000000000f000000000000000, type: 0}
+  m_ExportTrainingData: 0
+  m_TrainingDataDestination: TrainingData
+  m_RealtimeResolution: 2
+  m_ForceWhiteAlbedo: 0
+  m_ForceUpdates: 0
+  m_FinalGather: 0
+  m_FinalGatherRayCount: 256
+  m_FinalGatherFiltering: 1
+  m_PVRCulling: 1
+  m_PVRSampling: 1
+  m_PVRDirectSampleCount: 32
+  m_PVRSampleCount: 500
+  m_PVREnvironmentSampleCount: 500
+  m_PVREnvironmentReferencePointCount: 2048
+  m_LightProbeSampleCountMultiplier: 4
+  m_PVRBounces: 2
+  m_PVRMinBounces: 2
+  m_PVREnvironmentMIS: 0
+  m_PVRFilteringMode: 2
+  m_PVRDenoiserTypeDirect: 0
+  m_PVRDenoiserTypeIndirect: 0
+  m_PVRDenoiserTypeAO: 0
+  m_PVRFilterTypeDirect: 0
+  m_PVRFilterTypeIndirect: 0
+  m_PVRFilterTypeAO: 0
+  m_PVRFilteringGaussRadiusDirect: 1
+  m_PVRFilteringGaussRadiusIndirect: 5
+  m_PVRFilteringGaussRadiusAO: 2
+  m_PVRFilteringAtrousPositionSigmaDirect: 0.5
+  m_PVRFilteringAtrousPositionSigmaIndirect: 2
+  m_PVRFilteringAtrousPositionSigmaAO: 1
 --- !u!1001 &148535628058611496
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -487,10 +555,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7854022258833889524, guid: 71d62bc4e407ff540bb798035590f4eb,
+    - target: {fileID: 7854022258833589460, guid: 71d62bc4e407ff540bb798035590f4eb,
         type: 3}
-      propertyPath: m_Name
-      value: Tan Aqua Male Archer 01
+      propertyPath: m_RootOrder
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 7854022258833589460, guid: 71d62bc4e407ff540bb798035590f4eb,
         type: 3}
@@ -509,6 +577,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7854022258833589460, guid: 71d62bc4e407ff540bb798035590f4eb,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.965926
+      objectReference: {fileID: 0}
+    - target: {fileID: 7854022258833589460, guid: 71d62bc4e407ff540bb798035590f4eb,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
@@ -521,16 +594,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7854022258833589460, guid: 71d62bc4e407ff540bb798035590f4eb,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.965926
-      objectReference: {fileID: 0}
-    - target: {fileID: 7854022258833589460, guid: 71d62bc4e407ff540bb798035590f4eb,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 7854022258833589460, guid: 71d62bc4e407ff540bb798035590f4eb,
         type: 3}
@@ -547,6 +610,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7854022258833889524, guid: 71d62bc4e407ff540bb798035590f4eb,
+        type: 3}
+      propertyPath: m_Name
+      value: Tan Aqua Male Archer 01
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71d62bc4e407ff540bb798035590f4eb, type: 3}
 --- !u!1001 &255701619580241044
@@ -560,6 +628,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Fair Fire Male Archer 03
+      objectReference: {fileID: 0}
+    - target: {fileID: 5833925906088045110, guid: fe646203ff0ae854ab98ae8f30818cc0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 5833925906088045110, guid: fe646203ff0ae854ab98ae8f30818cc0,
         type: 3}
@@ -578,6 +651,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5833925906088045110, guid: fe646203ff0ae854ab98ae8f30818cc0,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.965926
+      objectReference: {fileID: 0}
+    - target: {fileID: 5833925906088045110, guid: fe646203ff0ae854ab98ae8f30818cc0,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
@@ -590,16 +668,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5833925906088045110, guid: fe646203ff0ae854ab98ae8f30818cc0,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.965926
-      objectReference: {fileID: 0}
-    - target: {fileID: 5833925906088045110, guid: fe646203ff0ae854ab98ae8f30818cc0,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 5833925906088045110, guid: fe646203ff0ae854ab98ae8f30818cc0,
         type: 3}
@@ -632,6 +700,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6127894920585362957, guid: 6b0432714028e6e4da04ce96c83f2ee7,
         type: 3}
+      propertyPath: m_RootOrder
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 6127894920585362957, guid: 6b0432714028e6e4da04ce96c83f2ee7,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: -6
       objectReference: {fileID: 0}
@@ -647,6 +720,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6127894920585362957, guid: 6b0432714028e6e4da04ce96c83f2ee7,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.965926
+      objectReference: {fileID: 0}
+    - target: {fileID: 6127894920585362957, guid: 6b0432714028e6e4da04ce96c83f2ee7,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
@@ -659,16 +737,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6127894920585362957, guid: 6b0432714028e6e4da04ce96c83f2ee7,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.965926
-      objectReference: {fileID: 0}
-    - target: {fileID: 6127894920585362957, guid: 6b0432714028e6e4da04ce96c83f2ee7,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 6127894920585362957, guid: 6b0432714028e6e4da04ce96c83f2ee7,
         type: 3}
@@ -701,6 +769,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5915017522772783477, guid: ae1d8e920c6afef489c32159d4e087f7,
         type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5915017522772783477, guid: ae1d8e920c6afef489c32159d4e087f7,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -716,6 +789,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5915017522772783477, guid: ae1d8e920c6afef489c32159d4e087f7,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.965926
+      objectReference: {fileID: 0}
+    - target: {fileID: 5915017522772783477, guid: ae1d8e920c6afef489c32159d4e087f7,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
@@ -728,16 +806,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5915017522772783477, guid: ae1d8e920c6afef489c32159d4e087f7,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.965926
-      objectReference: {fileID: 0}
-    - target: {fileID: 5915017522772783477, guid: ae1d8e920c6afef489c32159d4e087f7,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5915017522772783477, guid: ae1d8e920c6afef489c32159d4e087f7,
         type: 3}
@@ -763,10 +831,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8682618391223087277, guid: 7fc9c2035baf9f74c8b325d73772e2e5,
+    - target: {fileID: 5281464431709680589, guid: 7fc9c2035baf9f74c8b325d73772e2e5,
         type: 3}
-      propertyPath: m_Name
-      value: Fair Dark Male Archer 01
+      propertyPath: m_RootOrder
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5281464431709680589, guid: 7fc9c2035baf9f74c8b325d73772e2e5,
         type: 3}
@@ -785,6 +853,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5281464431709680589, guid: 7fc9c2035baf9f74c8b325d73772e2e5,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.965926
+      objectReference: {fileID: 0}
+    - target: {fileID: 5281464431709680589, guid: 7fc9c2035baf9f74c8b325d73772e2e5,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
@@ -797,16 +870,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5281464431709680589, guid: 7fc9c2035baf9f74c8b325d73772e2e5,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.965926
-      objectReference: {fileID: 0}
-    - target: {fileID: 5281464431709680589, guid: 7fc9c2035baf9f74c8b325d73772e2e5,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5281464431709680589, guid: 7fc9c2035baf9f74c8b325d73772e2e5,
         type: 3}
@@ -823,6 +886,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8682618391223087277, guid: 7fc9c2035baf9f74c8b325d73772e2e5,
+        type: 3}
+      propertyPath: m_Name
+      value: Fair Dark Male Archer 01
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fc9c2035baf9f74c8b325d73772e2e5, type: 3}
 --- !u!1001 &1614939896257760852
@@ -832,10 +900,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4506691026982131329, guid: cd40491725524354dbae9bdc9642d922,
+    - target: {fileID: 4506691026981898913, guid: cd40491725524354dbae9bdc9642d922,
         type: 3}
-      propertyPath: m_Name
-      value: Tan Aqua Male Archer 02
+      propertyPath: m_RootOrder
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 4506691026981898913, guid: cd40491725524354dbae9bdc9642d922,
         type: 3}
@@ -854,6 +922,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4506691026981898913, guid: cd40491725524354dbae9bdc9642d922,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.965926
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506691026981898913, guid: cd40491725524354dbae9bdc9642d922,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
@@ -866,16 +939,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4506691026981898913, guid: cd40491725524354dbae9bdc9642d922,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.965926
-      objectReference: {fileID: 0}
-    - target: {fileID: 4506691026981898913, guid: cd40491725524354dbae9bdc9642d922,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 4506691026981898913, guid: cd40491725524354dbae9bdc9642d922,
         type: 3}
@@ -892,6 +955,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4506691026982131329, guid: cd40491725524354dbae9bdc9642d922,
+        type: 3}
+      propertyPath: m_Name
+      value: Tan Aqua Male Archer 02
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd40491725524354dbae9bdc9642d922, type: 3}
 --- !u!1001 &1999940116309431253
@@ -901,10 +969,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1851340976136644218, guid: 97b18404123b2964eaa94450ed502095,
+    - target: {fileID: 1851340976136157786, guid: 97b18404123b2964eaa94450ed502095,
         type: 3}
-      propertyPath: m_Name
-      value: Fair Aqua Male Archer 02
+      propertyPath: m_RootOrder
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1851340976136157786, guid: 97b18404123b2964eaa94450ed502095,
         type: 3}
@@ -923,6 +991,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1851340976136157786, guid: 97b18404123b2964eaa94450ed502095,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.965926
+      objectReference: {fileID: 0}
+    - target: {fileID: 1851340976136157786, guid: 97b18404123b2964eaa94450ed502095,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
@@ -935,16 +1008,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1851340976136157786, guid: 97b18404123b2964eaa94450ed502095,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.965926
-      objectReference: {fileID: 0}
-    - target: {fileID: 1851340976136157786, guid: 97b18404123b2964eaa94450ed502095,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1851340976136157786, guid: 97b18404123b2964eaa94450ed502095,
         type: 3}
@@ -961,6 +1024,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1851340976136644218, guid: 97b18404123b2964eaa94450ed502095,
+        type: 3}
+      propertyPath: m_Name
+      value: Fair Aqua Male Archer 02
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97b18404123b2964eaa94450ed502095, type: 3}
 --- !u!1001 &2173031775892584815
@@ -970,10 +1038,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 674862039251725193, guid: 5f2a635a455945241af52024a74a92f3,
+    - target: {fileID: 674862039251367849, guid: 5f2a635a455945241af52024a74a92f3,
         type: 3}
-      propertyPath: m_Name
-      value: Tan Aqua Male Archer 03
+      propertyPath: m_RootOrder
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 674862039251367849, guid: 5f2a635a455945241af52024a74a92f3,
         type: 3}
@@ -992,6 +1060,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 674862039251367849, guid: 5f2a635a455945241af52024a74a92f3,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.965926
+      objectReference: {fileID: 0}
+    - target: {fileID: 674862039251367849, guid: 5f2a635a455945241af52024a74a92f3,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
@@ -1004,16 +1077,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 674862039251367849, guid: 5f2a635a455945241af52024a74a92f3,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.965926
-      objectReference: {fileID: 0}
-    - target: {fileID: 674862039251367849, guid: 5f2a635a455945241af52024a74a92f3,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 674862039251367849, guid: 5f2a635a455945241af52024a74a92f3,
         type: 3}
@@ -1030,6 +1093,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 674862039251725193, guid: 5f2a635a455945241af52024a74a92f3,
+        type: 3}
+      propertyPath: m_Name
+      value: Tan Aqua Male Archer 03
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f2a635a455945241af52024a74a92f3, type: 3}
 --- !u!1001 &3572485920554715379
@@ -1043,6 +1111,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Fair Dark Male Archer 03
+      objectReference: {fileID: 0}
+    - target: {fileID: 1831541253846657665, guid: 39650fd66c3f0574e88c31b75e1f2b86,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1831541253846657665, guid: 39650fd66c3f0574e88c31b75e1f2b86,
         type: 3}
@@ -1061,6 +1134,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1831541253846657665, guid: 39650fd66c3f0574e88c31b75e1f2b86,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.965926
+      objectReference: {fileID: 0}
+    - target: {fileID: 1831541253846657665, guid: 39650fd66c3f0574e88c31b75e1f2b86,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
@@ -1073,16 +1151,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1831541253846657665, guid: 39650fd66c3f0574e88c31b75e1f2b86,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.965926
-      objectReference: {fileID: 0}
-    - target: {fileID: 1831541253846657665, guid: 39650fd66c3f0574e88c31b75e1f2b86,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1831541253846657665, guid: 39650fd66c3f0574e88c31b75e1f2b86,
         type: 3}
@@ -1115,6 +1183,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7236896139156444206, guid: 9d3f259d334240748b1635048950b7c9,
         type: 3}
+      propertyPath: m_RootOrder
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 7236896139156444206, guid: 9d3f259d334240748b1635048950b7c9,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: -6
       objectReference: {fileID: 0}
@@ -1130,6 +1203,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7236896139156444206, guid: 9d3f259d334240748b1635048950b7c9,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.965926
+      objectReference: {fileID: 0}
+    - target: {fileID: 7236896139156444206, guid: 9d3f259d334240748b1635048950b7c9,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
@@ -1142,16 +1220,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7236896139156444206, guid: 9d3f259d334240748b1635048950b7c9,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.965926
-      objectReference: {fileID: 0}
-    - target: {fileID: 7236896139156444206, guid: 9d3f259d334240748b1635048950b7c9,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 28
       objectReference: {fileID: 0}
     - target: {fileID: 7236896139156444206, guid: 9d3f259d334240748b1635048950b7c9,
         type: 3}
@@ -1184,6 +1252,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3671928679567583249, guid: a74248b5293e7ea44a1dd3abd350bfdf,
         type: 3}
+      propertyPath: m_RootOrder
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 3671928679567583249, guid: a74248b5293e7ea44a1dd3abd350bfdf,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: -2
       objectReference: {fileID: 0}
@@ -1199,6 +1272,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3671928679567583249, guid: a74248b5293e7ea44a1dd3abd350bfdf,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.965926
+      objectReference: {fileID: 0}
+    - target: {fileID: 3671928679567583249, guid: a74248b5293e7ea44a1dd3abd350bfdf,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
@@ -1211,16 +1289,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3671928679567583249, guid: a74248b5293e7ea44a1dd3abd350bfdf,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.965926
-      objectReference: {fileID: 0}
-    - target: {fileID: 3671928679567583249, guid: a74248b5293e7ea44a1dd3abd350bfdf,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 3671928679567583249, guid: a74248b5293e7ea44a1dd3abd350bfdf,
         type: 3}
@@ -1246,10 +1314,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8975445404223455609, guid: 2e6f3ae5c47bfab4cbefb135aa9825c3,
+    - target: {fileID: 5121563696098600409, guid: 2e6f3ae5c47bfab4cbefb135aa9825c3,
         type: 3}
-      propertyPath: m_Name
-      value: Tan Dark Male Archer 02
+      propertyPath: m_RootOrder
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 5121563696098600409, guid: 2e6f3ae5c47bfab4cbefb135aa9825c3,
         type: 3}
@@ -1268,6 +1336,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5121563696098600409, guid: 2e6f3ae5c47bfab4cbefb135aa9825c3,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.965926
+      objectReference: {fileID: 0}
+    - target: {fileID: 5121563696098600409, guid: 2e6f3ae5c47bfab4cbefb135aa9825c3,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
@@ -1280,16 +1353,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5121563696098600409, guid: 2e6f3ae5c47bfab4cbefb135aa9825c3,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.965926
-      objectReference: {fileID: 0}
-    - target: {fileID: 5121563696098600409, guid: 2e6f3ae5c47bfab4cbefb135aa9825c3,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 5121563696098600409, guid: 2e6f3ae5c47bfab4cbefb135aa9825c3,
         type: 3}
@@ -1306,6 +1369,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8975445404223455609, guid: 2e6f3ae5c47bfab4cbefb135aa9825c3,
+        type: 3}
+      propertyPath: m_Name
+      value: Tan Dark Male Archer 02
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e6f3ae5c47bfab4cbefb135aa9825c3, type: 3}
 --- !u!1001 &5026196106882076799
@@ -1315,10 +1383,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8380091292717244143, guid: 6b3f95166442ea243aafaca497db7e24,
+    - target: {fileID: 2981726000178527120, guid: 6b3f95166442ea243aafaca497db7e24,
         type: 3}
-      propertyPath: m_Name
-      value: Fair Nature Male Archer 02
+      propertyPath: m_RootOrder
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2981726000178527120, guid: 6b3f95166442ea243aafaca497db7e24,
         type: 3}
@@ -1337,6 +1405,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2981726000178527120, guid: 6b3f95166442ea243aafaca497db7e24,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.965926
+      objectReference: {fileID: 0}
+    - target: {fileID: 2981726000178527120, guid: 6b3f95166442ea243aafaca497db7e24,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
@@ -1349,16 +1422,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2981726000178527120, guid: 6b3f95166442ea243aafaca497db7e24,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.965926
-      objectReference: {fileID: 0}
-    - target: {fileID: 2981726000178527120, guid: 6b3f95166442ea243aafaca497db7e24,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2981726000178527120, guid: 6b3f95166442ea243aafaca497db7e24,
         type: 3}
@@ -1375,6 +1438,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8380091292717244143, guid: 6b3f95166442ea243aafaca497db7e24,
+        type: 3}
+      propertyPath: m_Name
+      value: Fair Nature Male Archer 02
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b3f95166442ea243aafaca497db7e24, type: 3}
 --- !u!1001 &5051565605333778167
@@ -1388,6 +1456,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Fair Dark Male Archer 02
+      objectReference: {fileID: 0}
+    - target: {fileID: 6939988258904063515, guid: 03160c2aeba46da40a7cad8eafe6cfa1,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 6939988258904063515, guid: 03160c2aeba46da40a7cad8eafe6cfa1,
         type: 3}
@@ -1406,6 +1479,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6939988258904063515, guid: 03160c2aeba46da40a7cad8eafe6cfa1,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.965926
+      objectReference: {fileID: 0}
+    - target: {fileID: 6939988258904063515, guid: 03160c2aeba46da40a7cad8eafe6cfa1,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
@@ -1418,16 +1496,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6939988258904063515, guid: 03160c2aeba46da40a7cad8eafe6cfa1,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.965926
-      objectReference: {fileID: 0}
-    - target: {fileID: 6939988258904063515, guid: 03160c2aeba46da40a7cad8eafe6cfa1,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 6939988258904063515, guid: 03160c2aeba46da40a7cad8eafe6cfa1,
         type: 3}
@@ -1453,10 +1521,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7398040660486477194, guid: 715e605815b393e4884622460a1727d4,
+    - target: {fileID: 4168750294738873106, guid: 715e605815b393e4884622460a1727d4,
         type: 3}
-      propertyPath: m_Name
-      value: Tan Fire Male Archer 03
+      propertyPath: m_RootOrder
+      value: 27
       objectReference: {fileID: 0}
     - target: {fileID: 4168750294738873106, guid: 715e605815b393e4884622460a1727d4,
         type: 3}
@@ -1475,6 +1543,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4168750294738873106, guid: 715e605815b393e4884622460a1727d4,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.965926
+      objectReference: {fileID: 0}
+    - target: {fileID: 4168750294738873106, guid: 715e605815b393e4884622460a1727d4,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
@@ -1487,16 +1560,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4168750294738873106, guid: 715e605815b393e4884622460a1727d4,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.965926
-      objectReference: {fileID: 0}
-    - target: {fileID: 4168750294738873106, guid: 715e605815b393e4884622460a1727d4,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 27
       objectReference: {fileID: 0}
     - target: {fileID: 4168750294738873106, guid: 715e605815b393e4884622460a1727d4,
         type: 3}
@@ -1513,6 +1576,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7398040660486477194, guid: 715e605815b393e4884622460a1727d4,
+        type: 3}
+      propertyPath: m_Name
+      value: Tan Fire Male Archer 03
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 715e605815b393e4884622460a1727d4, type: 3}
 --- !u!1001 &5167416292000603197
@@ -1526,6 +1594,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Fair Aqua Male Archer 03
+      objectReference: {fileID: 0}
+    - target: {fileID: 8798606953281986486, guid: b09769199875a6a49bda983058ef124c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8798606953281986486, guid: b09769199875a6a49bda983058ef124c,
         type: 3}
@@ -1544,6 +1617,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8798606953281986486, guid: b09769199875a6a49bda983058ef124c,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.965926
+      objectReference: {fileID: 0}
+    - target: {fileID: 8798606953281986486, guid: b09769199875a6a49bda983058ef124c,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
@@ -1556,16 +1634,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8798606953281986486, guid: b09769199875a6a49bda983058ef124c,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.965926
-      objectReference: {fileID: 0}
-    - target: {fileID: 8798606953281986486, guid: b09769199875a6a49bda983058ef124c,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8798606953281986486, guid: b09769199875a6a49bda983058ef124c,
         type: 3}
@@ -1598,6 +1666,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7938989492497075203, guid: 9b483e8c57181bd4c925085105310034,
         type: 3}
+      propertyPath: m_RootOrder
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 7938989492497075203, guid: 9b483e8c57181bd4c925085105310034,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: -6
       objectReference: {fileID: 0}
@@ -1613,6 +1686,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7938989492497075203, guid: 9b483e8c57181bd4c925085105310034,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.965926
+      objectReference: {fileID: 0}
+    - target: {fileID: 7938989492497075203, guid: 9b483e8c57181bd4c925085105310034,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
@@ -1625,16 +1703,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7938989492497075203, guid: 9b483e8c57181bd4c925085105310034,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.965926
-      objectReference: {fileID: 0}
-    - target: {fileID: 7938989492497075203, guid: 9b483e8c57181bd4c925085105310034,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 7938989492497075203, guid: 9b483e8c57181bd4c925085105310034,
         type: 3}
@@ -1667,6 +1735,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8160383740436033446, guid: ad4568afd2edeaa49826a726cf583bc7,
         type: 3}
+      propertyPath: m_RootOrder
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 8160383740436033446, guid: ad4568afd2edeaa49826a726cf583bc7,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: -6
       objectReference: {fileID: 0}
@@ -1682,6 +1755,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8160383740436033446, guid: ad4568afd2edeaa49826a726cf583bc7,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.965926
+      objectReference: {fileID: 0}
+    - target: {fileID: 8160383740436033446, guid: ad4568afd2edeaa49826a726cf583bc7,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
@@ -1694,16 +1772,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8160383740436033446, guid: ad4568afd2edeaa49826a726cf583bc7,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.965926
-      objectReference: {fileID: 0}
-    - target: {fileID: 8160383740436033446, guid: ad4568afd2edeaa49826a726cf583bc7,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 8160383740436033446, guid: ad4568afd2edeaa49826a726cf583bc7,
         type: 3}
@@ -1736,6 +1804,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3625906654604321123, guid: d970f74ab30addb4cabdab0c75bfb891,
         type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3625906654604321123, guid: d970f74ab30addb4cabdab0c75bfb891,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: -4
       objectReference: {fileID: 0}
@@ -1751,6 +1824,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3625906654604321123, guid: d970f74ab30addb4cabdab0c75bfb891,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.965926
+      objectReference: {fileID: 0}
+    - target: {fileID: 3625906654604321123, guid: d970f74ab30addb4cabdab0c75bfb891,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
@@ -1763,16 +1841,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3625906654604321123, guid: d970f74ab30addb4cabdab0c75bfb891,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.965926
-      objectReference: {fileID: 0}
-    - target: {fileID: 3625906654604321123, guid: d970f74ab30addb4cabdab0c75bfb891,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3625906654604321123, guid: d970f74ab30addb4cabdab0c75bfb891,
         type: 3}
@@ -1798,10 +1866,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7748743900482894965, guid: 82a7fdc3349443f42acda6db00d78c0e,
+    - target: {fileID: 717866255061660715, guid: 82a7fdc3349443f42acda6db00d78c0e,
         type: 3}
-      propertyPath: m_Name
-      value: Fair Nature Male Archer 01
+      propertyPath: m_RootOrder
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 717866255061660715, guid: 82a7fdc3349443f42acda6db00d78c0e,
         type: 3}
@@ -1820,6 +1888,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 717866255061660715, guid: 82a7fdc3349443f42acda6db00d78c0e,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.965926
+      objectReference: {fileID: 0}
+    - target: {fileID: 717866255061660715, guid: 82a7fdc3349443f42acda6db00d78c0e,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
@@ -1832,16 +1905,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 717866255061660715, guid: 82a7fdc3349443f42acda6db00d78c0e,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.965926
-      objectReference: {fileID: 0}
-    - target: {fileID: 717866255061660715, guid: 82a7fdc3349443f42acda6db00d78c0e,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 717866255061660715, guid: 82a7fdc3349443f42acda6db00d78c0e,
         type: 3}
@@ -1858,6 +1921,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7748743900482894965, guid: 82a7fdc3349443f42acda6db00d78c0e,
+        type: 3}
+      propertyPath: m_Name
+      value: Fair Nature Male Archer 01
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82a7fdc3349443f42acda6db00d78c0e, type: 3}
 --- !u!1001 &6243984233435629209
@@ -1867,10 +1935,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2992670535084253870, guid: b855e2757e8a9364e89d9a5d81155614,
+    - target: {fileID: 211616041134605659, guid: b855e2757e8a9364e89d9a5d81155614,
         type: 3}
-      propertyPath: m_Name
-      value: Fair Fire Male Archer 02
+      propertyPath: m_RootOrder
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 211616041134605659, guid: b855e2757e8a9364e89d9a5d81155614,
         type: 3}
@@ -1889,6 +1957,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 211616041134605659, guid: b855e2757e8a9364e89d9a5d81155614,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.965926
+      objectReference: {fileID: 0}
+    - target: {fileID: 211616041134605659, guid: b855e2757e8a9364e89d9a5d81155614,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
@@ -1901,16 +1974,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 211616041134605659, guid: b855e2757e8a9364e89d9a5d81155614,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.965926
-      objectReference: {fileID: 0}
-    - target: {fileID: 211616041134605659, guid: b855e2757e8a9364e89d9a5d81155614,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 211616041134605659, guid: b855e2757e8a9364e89d9a5d81155614,
         type: 3}
@@ -1927,6 +1990,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2992670535084253870, guid: b855e2757e8a9364e89d9a5d81155614,
+        type: 3}
+      propertyPath: m_Name
+      value: Fair Fire Male Archer 02
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b855e2757e8a9364e89d9a5d81155614, type: 3}
 --- !u!1001 &7960829092875563399
@@ -1940,6 +2008,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Tan Fire Male Archer 02
+      objectReference: {fileID: 0}
+    - target: {fileID: 8105589069242899679, guid: 37ed76b9caead254ab00aefdd9e506fb,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 8105589069242899679, guid: 37ed76b9caead254ab00aefdd9e506fb,
         type: 3}
@@ -1958,6 +2031,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8105589069242899679, guid: 37ed76b9caead254ab00aefdd9e506fb,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.965926
+      objectReference: {fileID: 0}
+    - target: {fileID: 8105589069242899679, guid: 37ed76b9caead254ab00aefdd9e506fb,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
@@ -1970,16 +2048,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8105589069242899679, guid: 37ed76b9caead254ab00aefdd9e506fb,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.965926
-      objectReference: {fileID: 0}
-    - target: {fileID: 8105589069242899679, guid: 37ed76b9caead254ab00aefdd9e506fb,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 8105589069242899679, guid: 37ed76b9caead254ab00aefdd9e506fb,
         type: 3}
@@ -2012,6 +2080,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7125243113532384028, guid: b7980788ed16be449882547e989bd014,
         type: 3}
+      propertyPath: m_RootOrder
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 7125243113532384028, guid: b7980788ed16be449882547e989bd014,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: -2
       objectReference: {fileID: 0}
@@ -2027,6 +2100,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7125243113532384028, guid: b7980788ed16be449882547e989bd014,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.965926
+      objectReference: {fileID: 0}
+    - target: {fileID: 7125243113532384028, guid: b7980788ed16be449882547e989bd014,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
@@ -2039,16 +2117,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7125243113532384028, guid: b7980788ed16be449882547e989bd014,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.965926
-      objectReference: {fileID: 0}
-    - target: {fileID: 7125243113532384028, guid: b7980788ed16be449882547e989bd014,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 7125243113532384028, guid: b7980788ed16be449882547e989bd014,
         type: 3}
@@ -2074,10 +2142,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7004458062960511370, guid: 7de2fe4dc1a057540b1b14d620e6a625,
+    - target: {fileID: 6444172104319927556, guid: 7de2fe4dc1a057540b1b14d620e6a625,
         type: 3}
-      propertyPath: m_Name
-      value: Tan Fire Male Archer 01
+      propertyPath: m_RootOrder
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6444172104319927556, guid: 7de2fe4dc1a057540b1b14d620e6a625,
         type: 3}
@@ -2096,6 +2164,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6444172104319927556, guid: 7de2fe4dc1a057540b1b14d620e6a625,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.965926
+      objectReference: {fileID: 0}
+    - target: {fileID: 6444172104319927556, guid: 7de2fe4dc1a057540b1b14d620e6a625,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
@@ -2111,16 +2184,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6444172104319927556, guid: 7de2fe4dc1a057540b1b14d620e6a625,
         type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.965926
-      objectReference: {fileID: 0}
-    - target: {fileID: 6444172104319927556, guid: 7de2fe4dc1a057540b1b14d620e6a625,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 6444172104319927556, guid: 7de2fe4dc1a057540b1b14d620e6a625,
-        type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
@@ -2133,6 +2196,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7004458062960511370, guid: 7de2fe4dc1a057540b1b14d620e6a625,
+        type: 3}
+      propertyPath: m_Name
+      value: Tan Fire Male Archer 01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7de2fe4dc1a057540b1b14d620e6a625, type: 3}

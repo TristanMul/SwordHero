@@ -15,37 +15,46 @@ public class PlayerMovement : MonoBehaviour
     //public bool shrinkPos;
     [HideInInspector]
     public GameObject _enemy;
+    [HideInInspector]
+    public bool attackAnim;
     Vector3 movement;
     GameObject enemy;
-    Vector3 regularSize; 
 
     void Awake()
     {
         gameManager.playerAlive = true;
-        regularSize = new Vector3(0.2f, 0.5f, 1f);
         enemy = gameManager._enemy;
     }
 
     void FixedUpdate()
     {
-        animator.SetFloat("AngleController", Mathf.Atan2(movement.z, movement.x) * Mathf.Rad2Deg);
-        animator.SetFloat("AnglePlayer", transform.eulerAngles.y);
-
         movement.x = FixedJoystick.Horizontal;
         movement.z = FixedJoystick.Vertical;
 
+        animator.SetFloat("AngleController", Mathf.Atan2(movement.z, movement.x) * Mathf.Rad2Deg);
+        animator.SetFloat("AnglePlayer", transform.eulerAngles.y);
+        animator.SetFloat("MovementX", Mathf.Abs(movement.x * 10), 0.1f, Time.deltaTime);
+        animator.SetFloat("MovementZ", Mathf.Abs(movement.z * 10), 0.1f, Time.deltaTime);
+        animator.SetFloat("MovementXZ", (Mathf.Abs(movement.x * 10) + Mathf.Abs(movement.z * 10)) / 2, 0.1f, Time.deltaTime);
+        animator.SetFloat("AttackSpeed", 1 / gameObject.GetComponentInChildren<ShootArrow>().fireRate);
+
+        transform.Translate(movement * moveSpeed * Time.deltaTime, Space.World);
         FaceClosestEnemy();
         //transform.rotation = Quaternion.LookRotation(movement);
-        
-        transform.Translate(movement * moveSpeed * Time.deltaTime, Space.World);
 
         // Play footstep smoke effect if player is moving.
         if(movement.x > 0 || movement.z > 0){
             transform.GetComponent<FootstepSmoke>().PlayFootstepSmokeEffect();
         }
-        
-        animator.SetFloat("MovementX", Mathf.Abs(movement.x * 10), 0.1f, Time.deltaTime);
-        animator.SetFloat("MovementZ", Mathf.Abs(movement.z * 10), 0.1f, Time.deltaTime);
+
+        if (attackAnim)
+        {
+            animator.SetBool("AttackRange", true);
+        }
+        else
+        {
+            animator.SetBool("AttackRange", false);
+        }
     }
 
     void FaceClosestEnemy()
@@ -63,7 +72,6 @@ public class PlayerMovement : MonoBehaviour
                 closestEnemy = distanceToEnemy;
                 enemy = currentEnemy;
             }
-
         }
 
         if (enemy != null)
@@ -94,4 +102,3 @@ public class PlayerMovement : MonoBehaviour
         yield return null;
     }
 }
-

@@ -984,12 +984,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 217159900}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -0.5901756, y: 16.527649, z: -16.611084}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1024714513}
-  m_RootOrder: 3
+  m_Father: {fileID: 452635603}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!199 &217159902
 ParticleSystemRenderer:
@@ -1073,7 +1073,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -9614,6 +9614,54 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 444949648}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &452635602
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 452635603}
+  - component: {fileID: 452635604}
+  m_Layer: 0
+  m_Name: Particles
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &452635603
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 452635602}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 13.457882, y: 0.5723523, z: -321.93246}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1357499913}
+  - {fileID: 217159901}
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &452635604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 452635602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed43b1b004abee74fbc6ac51377b453a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  testing: 1
+  chargingParticles: {fileID: 0}
+  isChargedParticles: {fileID: 217159903}
 --- !u!23 &455497273 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 2708188020592150839, guid: 437edbf4c8498460a94ea2f53d487e87,
@@ -18986,7 +19034,6 @@ GameObject:
   - component: {fileID: 1357499913}
   - component: {fileID: 1357499912}
   - component: {fileID: 1357499911}
-  - component: {fileID: 1357499914}
   m_Layer: 0
   m_Name: ChargingParticles
   m_TagString: Untagged
@@ -23774,24 +23821,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1357499910}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 1.88, z: 0}
+  m_LocalPosition: {x: -0.5901756, y: 18.407648, z: -16.611084}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1024714513}
-  m_RootOrder: 2
+  m_Father: {fileID: 452635603}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
---- !u!114 &1357499914
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1357499910}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed43b1b004abee74fbc6ac51377b453a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!23 &1364435573 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 7098439584221208496, guid: 57b45aa93e2f8453bbfcda8a46af18f5,

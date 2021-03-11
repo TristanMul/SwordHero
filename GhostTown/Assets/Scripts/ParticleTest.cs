@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class ParticleTest : MonoBehaviour
 {
-    bool particlesRunning;
-    private ParticleSystem particles;
+    public bool testing;
+    bool particlesRunning;//To activate the charging particles set ParticlesRunning to true, mind the capitol letter
+    public ParticleSystem chargingParticles;
+    public ParticleSystem isChargedParticles;
 
     public bool ParticlesRunning//set to activate/deactivate particles
     {
@@ -14,10 +16,10 @@ public class ParticleTest : MonoBehaviour
         {
             Debug.Log(value);
             if (value) { 
-                particles.Play();
+                chargingParticles.Play();
             }
             else {
-                particles.Stop();
+                chargingParticles.Stop();
             }
             particlesRunning = value;
         }
@@ -27,29 +29,20 @@ public class ParticleTest : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        particles = GetComponent<ParticleSystem>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            if (particlesRunning)
+            if (testing && Input.GetKeyDown(KeyCode.Mouse0))
             {
-                ParticlesRunning = false;
+                ParticlesRunning = !particlesRunning;
             }
-            else { ParticlesRunning = true; }
-        }
     }
 
-    void StartParticles()
+    public void PlayIsCharged()
     {
-
+        isChargedParticles.Play();
     }
 
-    void StopParticles()
-    {
-
-    }
 }

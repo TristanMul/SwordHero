@@ -43,8 +43,6 @@ public class ShootArrow : MonoBehaviour
     {
         distance = Vector3.Distance(player.transform.position, enemyPos.GetComponent<PlayerMovement>()._enemy.transform.position);
 
-        Debug.Log(Time.time);
-
         if(distance < range && (Time.time > fireRate + lastShot))
         {
             StartCoroutine(FireObject());

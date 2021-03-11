@@ -7,6 +7,10 @@ public class OnHitDelete : MonoBehaviour
     private void OnTriggerEnter(Collider obj)
     {
         Debug.Log("Destroy");
-        Destroy(obj.gameObject);
+        if (obj.tag == "Enemy")
+        {
+            Destroy(obj.gameObject);
+            Destroy(this.gameObject);
+        }
     }
 }

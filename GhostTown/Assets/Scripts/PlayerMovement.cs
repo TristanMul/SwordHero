@@ -19,11 +19,18 @@ public class PlayerMovement : MonoBehaviour
     public bool attackAnim;
     Vector3 movement;
     GameObject enemy;
-
+    [SerializeField] GameObject circle; 
+    [SerializeField] private float increaseSize;
+    private float sizeIncreased = 0;
+    Vector3 circleResetSize;
+    [SerializeField] private float triggerSize;
+    private bool changedColor = false;
     void Awake()
     {
         gameManager.playerAlive = true;
         enemy = gameManager._enemy;
+        sizeIncreased += circle.transform.localScale.x;
+        circleResetSize = circle.transform.localScale;
     }
 
     void FixedUpdate()
@@ -37,9 +44,14 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("MovementZ", Mathf.Abs(movement.z * 10), 0.1f, Time.deltaTime);
         animator.SetFloat("MovementXZ", (Mathf.Abs(movement.x * 10) + Mathf.Abs(movement.z * 10)) / 2, 0.1f, Time.deltaTime);
         animator.SetFloat("AttackSpeed", 1 / gameObject.GetComponentInChildren<ShootArrow>().fireRate);
-
+        if (Input.GetKey(KeyCode.Y))
+        {
+            ResetCircleSize();
+        }
         transform.Translate(movement * moveSpeed * Time.deltaTime, Space.World);
         FaceClosestEnemy();
+        ChangeCirclesize();
+        Debug.Log(changedColor);
         //transform.rotation = Quaternion.LookRotation(movement);
 
         // Play footstep smoke effect if player is moving.
@@ -80,7 +92,29 @@ public class PlayerMovement : MonoBehaviour
             _enemy = enemy;
         }
     }
+    private void ChangeCirclesize()
+    {
+        if (sizeIncreased <= triggerSize)
+        {
+        circle.transform.localScale += new Vector3(increaseSize, increaseSize, 0);
+            sizeIncreased += increaseSize;
 
+        }
+        else if (!changedColor)
+        {
+            Debug.Log("Special power ready");
+            circle.GetComponent<SpriteRenderer>().color = Color.yellow;
+                changedColor = true;
+        }
+
+    }
+    private void ResetCircleSize()
+    {
+        circle.GetComponent<SpriteRenderer>().color = Color.white;
+        circle.transform.localScale = circleResetSize;
+        sizeIncreased = circle.transform.localScale.x;
+        changedColor = false;
+    }
     IEnumerator DoRotationAtTargetDirection(Transform opponentPlayer)
     {
         Quaternion targetRotation = Quaternion.identity;

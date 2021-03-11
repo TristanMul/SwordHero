@@ -15,7 +15,7 @@ public class FollowPlayer : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         navMeshAgent = GetComponent<NavMeshAgent>();
-        navMeshAgent.speed = controllerClass.speed;
+        navMeshAgent.speed = controllerClass.Speed;
     }
 
     private void FixedUpdate() {
@@ -34,7 +34,7 @@ public class FollowPlayer : MonoBehaviour
     // Check if the player is in the range of this enemy's attack.
     private void CheckAttackRange(){
         // The player is in the range of this enemies attack.
-        if(Vector3.Distance(transform.position, player.transform.position) <= controllerClass.attackRange){
+        if(Vector3.Distance(transform.position, player.transform.position) <= controllerClass.AttackRange){
             controllerClass.enemyState = EnemyBaseClass.EnemyState.Attack;
             GetComponent<FollowPlayer>().enabled = false;
         }

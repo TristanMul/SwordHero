@@ -9,13 +9,15 @@ public class SpecialAbility : MonoBehaviour
     private float sizeIncreased = 0;
     Vector3 circleResetSize;
     [SerializeField] private float triggerSize;
-    private bool changedColor = false;
-    // Start is called before the first frame update
-
+    [HideInInspector] public bool powerCharged = false;
+    Color translucentYellow = new Color(0.9f,0.75f,0f,0.45f);
+    Color translucentWhite = new Color(1,1,1,0.45f);
     private void Awake()
     {
         sizeIncreased += transform.localScale.x;
         circleResetSize = transform.localScale;
+        //translucentYellow = new Color(249 / 255, 215 / 255, 0 / 255, 100 / 255);
+        //translucentWhite = new Color(1, 1, 1, 100 / 255);
     }
     private void FixedUpdate()
     {
@@ -23,25 +25,26 @@ public class SpecialAbility : MonoBehaviour
     }
     public void ChangeCirclesize()
     {
+        
         if (sizeIncreased <= triggerSize)
         {
             transform.localScale += new Vector3(increaseSize, increaseSize, 0);
             sizeIncreased += increaseSize;
 
         }
-        else if (!changedColor)
+        else if (!powerCharged)
         {
-            Debug.Log("Special power ready");
-            //circle.GetComponent<SpriteRenderer>().color = translucentYellow;
-            changedColor = true;
+            
+            GetComponent<SpriteRenderer>().color = translucentYellow;
+            powerCharged = true;
         }
 
     }
     public void ResetCircleSize()
     {
-        //circle.GetComponent<SpriteRenderer>().color = translucentWhite;
+        GetComponent<SpriteRenderer>().color = translucentWhite;
         transform.localScale = circleResetSize;
         sizeIncreased = transform.localScale.x;
-        changedColor = false;
+        powerCharged = false;
     }
 }

@@ -5,22 +5,42 @@ using UnityEngine;
 public class ArrowRing : MonoBehaviour
 {
     public GameObject arrow;
-    public GameObject arrowRing;
+    public int numObjects;
+    public float arrowSpeed;
+    float ang;
 
-    // Start is called before the first frame update
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            SpawnArrows();
+        }
+    }
+
     void Start()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    Vector3 ArrowCircle(Vector3 center, float radius)
     {
-        Debug.Log(arrowRing.GetComponent<Transform>().eulerAngles);
-        if (Input.GetKeyDown(KeyCode.Space))
+        ang = ang + (360 / numObjects);
+        Vector3 pos;
+        pos.x = center.x + radius * Mathf.Sin(ang * Mathf.Deg2Rad);
+        pos.y = center.y;
+        pos.z = center.z + radius * Mathf.Cos(ang * Mathf.Deg2Rad);
+        return pos;
+    }
+
+    void SpawnArrows()
+    {
+        Vector3 center = transform.position;
+        for (int i = 0; i < numObjects; i++)
         {
-            Instantiate(arrow, new Vector3(arrowRing.transform.position.x, arrowRing.transform.position.y, arrowRing.transform.position.z), 
-                Quaternion.Euler(arrowRing.transform.eulerAngles.x + 5, 0,0), this.gameObject.GetComponentInParent<Transform>());
+            Vector3 pos = ArrowCircle(center, 3.0f);
+            Quaternion rot = Quaternion.FromToRotation(Vector3.forward, center - pos);
+            GameObject _arrow = Instantiate(arrow, pos, rot);
+            _arrow.GetComponent<Rigidbody>().AddForce(_arrow.transform.forward * arrowSpeed, ForceMode.Impulse);
         }
     }
 }

@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     Vector3 circleResetSize;
     [SerializeField] private float triggerSize;
     private bool changedColor = false;
+    //private Color translucentYellow = new Color(249,166,2,)
     void Awake()
     {
         gameManager.playerAlive = true;
@@ -103,14 +104,14 @@ public class PlayerMovement : MonoBehaviour
         else if (!changedColor)
         {
             Debug.Log("Special power ready");
-            circle.GetComponent<SpriteRenderer>().color = Color.yellow;
+            //circle.GetComponent<SpriteRenderer>().color = translucentYellow;
                 changedColor = true;
         }
 
     }
     private void ResetCircleSize()
     {
-        circle.GetComponent<SpriteRenderer>().color = Color.white;
+        //circle.GetComponent<SpriteRenderer>().color = translucentWhite;
         circle.transform.localScale = circleResetSize;
         sizeIncreased = circle.transform.localScale.x;
         changedColor = false;

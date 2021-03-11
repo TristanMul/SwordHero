@@ -12382,13 +12382,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1197386873}
-  m_LocalRotation: {x: 0.295323, y: -0.24642539, z: 0.07913154, w: 0.9196722}
+  m_LocalRotation: {x: 0.35355338, y: -0.35355338, z: 0.1464466, w: 0.8535535}
   m_LocalPosition: {x: -7.9399834, y: 3, z: -165.60004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 35.605003, y: -30.000002, z: 0}
+  m_LocalEulerAnglesHint: {x: 45, y: -45, z: 0}
 --- !u!1 &1197740191
 GameObject:
   m_ObjectHideFlags: 0
@@ -23654,6 +23654,36 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 684168371421536167, guid: d8215af44b08f134eb60ad5e61045938,
+        type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2839600623478258544, guid: d8215af44b08f134eb60ad5e61045938,
+        type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2839600623478258544, guid: d8215af44b08f134eb60ad5e61045938,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: dbc08af7080176f499377a7397537306, type: 2}
+    - target: {fileID: 3619419543940686609, guid: d8215af44b08f134eb60ad5e61045938,
+        type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3619419544124854025, guid: d8215af44b08f134eb60ad5e61045938,
+        type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6107548636382717827, guid: d8215af44b08f134eb60ad5e61045938,
+        type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7816541043288673545, guid: d8215af44b08f134eb60ad5e61045938,
         type: 3}
       propertyPath: projectile

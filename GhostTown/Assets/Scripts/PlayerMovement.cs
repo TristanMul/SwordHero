@@ -19,9 +19,10 @@ public class PlayerMovement : MonoBehaviour
     public bool attackAnim;
     Vector3 movement;
     GameObject enemy;
-
+    SpecialAbility ability;
     void Awake()
     {
+        ability = transform.Find("Charging Circle").GetComponent<SpecialAbility>();
         gameManager.playerAlive = true;
         enemy = gameManager._enemy;
     }
@@ -37,16 +38,20 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("MovementZ", Mathf.Abs(movement.z * 10), 0.1f, Time.deltaTime);
         animator.SetFloat("MovementXZ", (Mathf.Abs(movement.x * 10) + Mathf.Abs(movement.z * 10)) / 2, 0.1f, Time.deltaTime);
         animator.SetFloat("AttackSpeed", 1 / gameObject.GetComponentInChildren<ShootArrow>().fireRate);
-
         transform.Translate(movement * moveSpeed * Time.deltaTime, Space.World);
         FaceClosestEnemy();
         //transform.rotation = Quaternion.LookRotation(movement);
-
+        Debug.Log(movement.x + " " + movement.y);
         // Play footstep smoke effect if player is moving.
         if(movement.x != 0 || movement.z != 0){
             transform.GetComponent<FootstepSmoke>().PlayFootstepSmokeEffect();
         }
-
+        //whenever activate ability whenever player is not moving.
+        if(movement.x == 0 && movement.z == 0 && ability.powerCharged)
+        {
+            Debug.Log("Is not moving");
+            ability.ResetCircleSize();
+        }
         if (attackAnim)
         {
             animator.SetBool("AttackRange", true);
@@ -56,7 +61,7 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("AttackRange", false);
         }
     }
-
+  
     void FaceClosestEnemy()
     {
         float closestEnemy = Mathf.Infinity;

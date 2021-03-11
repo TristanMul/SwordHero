@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ParticleTest : MonoBehaviour
+public class PlayerParticles: MonoBehaviour
 {
     public bool testing;
     bool particlesRunning;//To activate the charging particles set ParticlesRunning to true, mind the capitol letter
@@ -14,7 +14,6 @@ public class ParticleTest : MonoBehaviour
         get { return particlesRunning; }
         set
         {
-            Debug.Log(value);
             if (value) { 
                 chargingParticles.Play();
             }
@@ -34,10 +33,17 @@ public class ParticleTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-            if (testing && Input.GetKeyDown(KeyCode.Mouse0))
+        if (testing)
+        {
+            if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 ParticlesRunning = !particlesRunning;
             }
+            if (Input.GetKeyDown(KeyCode.Mouse1))
+            {
+                PlayIsCharged();
+            }
+        }       
     }
 
     public void PlayIsCharged()

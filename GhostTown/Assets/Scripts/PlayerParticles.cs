@@ -14,7 +14,7 @@ public class PlayerParticles: MonoBehaviour
         get { return particlesRunning; }
         set
         {
-            if (value) { 
+            if (value) {
                 chargingParticles.Play();
             }
             else {

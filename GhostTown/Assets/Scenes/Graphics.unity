@@ -22268,12 +22268,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 741795863896302106, guid: 3b4e5a3a76d5eb94c8e4db3084f1b4fb,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 72120ed8a5661448da126dd028663f1e,
-        type: 3}
     - target: {fileID: 3779518612785864464, guid: 3b4e5a3a76d5eb94c8e4db3084f1b4fb,
         type: 3}
       propertyPath: player
@@ -22338,16 +22332,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GroupOfSpiders1 Variant
-      objectReference: {fileID: 0}
-    - target: {fileID: 8619858577228078190, guid: 3b4e5a3a76d5eb94c8e4db3084f1b4fb,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8619858577228078190, guid: 3b4e5a3a76d5eb94c8e4db3084f1b4fb,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b4e5a3a76d5eb94c8e4db3084f1b4fb, type: 3}

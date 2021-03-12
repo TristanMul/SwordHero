@@ -10,8 +10,8 @@ public class SpecialAbility : MonoBehaviour
     Vector3 circleResetSize;
     [SerializeField] private float triggerSize;
     [HideInInspector] public bool powerCharged = false;
-    Color translucentYellow = new Color(0.9f,0.75f,0f,0.45f);
-    Color translucentWhite = new Color(1,1,1,0.45f);
+    public Color translucentYellow;
+    public Color translucentWhite;
     public PlayerParticles particles;
 
     private void Awake()

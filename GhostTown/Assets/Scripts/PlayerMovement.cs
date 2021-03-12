@@ -45,6 +45,7 @@ public class PlayerMovement : MonoBehaviour
         // Play footstep smoke effect if player is moving.
         if(movement.x != 0 || movement.z != 0){
             transform.GetComponent<FootstepSmoke>().PlayFootstepSmokeEffect();
+            ability.ChargePower();
         }
         //whenever activate ability whenever player is not moving.
         if(movement.x == 0 && movement.z == 0 && ability.powerCharged)

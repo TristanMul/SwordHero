@@ -21,9 +21,9 @@ public class SpecialAbility : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        ChangeCirclesize();
+        
     }
-    public void ChangeCirclesize()
+    public void ChargePower()
     {
         
         if (sizeIncreased <= triggerSize)

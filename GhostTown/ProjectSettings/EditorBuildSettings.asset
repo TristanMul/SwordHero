@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Shaam.unity
-    guid: aeb2d899517404dae950425a772cbab0
+    path: Assets/Scenes/Graphics.unity
+    guid: ccc52a2e6cef7422e85421ab7f2c8746
   m_configObjects: {}

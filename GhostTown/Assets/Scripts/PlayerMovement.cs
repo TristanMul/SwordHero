@@ -20,11 +20,14 @@ public class PlayerMovement : MonoBehaviour
     Vector3 movement;
     GameObject enemy;
     SpecialAbility ability;
+    float armAnimStrength;
+
     void Awake()
     {
         ability = transform.Find("Charging Circle").GetComponent<SpecialAbility>();
         gameManager.playerAlive = true;
         enemy = gameManager._enemy;
+        armAnimStrength = animator.GetLayerWeight(2);
     }
 
     void FixedUpdate()
@@ -41,7 +44,7 @@ public class PlayerMovement : MonoBehaviour
         transform.Translate(movement * moveSpeed * Time.deltaTime, Space.World);
         FaceClosestEnemy();
         //transform.rotation = Quaternion.LookRotation(movement);
-        Debug.Log(movement.x + " " + movement.y);
+
         // Play footstep smoke effect if player is moving.
         if(movement.x != 0 || movement.z != 0){
             transform.GetComponent<FootstepSmoke>().PlayFootstepSmokeEffect();
@@ -49,6 +52,7 @@ public class PlayerMovement : MonoBehaviour
         //whenever activate ability whenever player is not moving.
         if(movement.x == 0 && movement.z == 0 && ability.powerCharged)
         {
+            animator.SetBool("SuperAttack", true);
             Debug.Log("Is not moving");
             ability.ResetCircleSize();
         }

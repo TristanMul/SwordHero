@@ -28,7 +28,6 @@ public class PlayerMovement : MonoBehaviour
         ringOfArrows = GetComponentInChildren<ArrowRing>();
         ability = transform.Find("Charging Circle").GetComponent<SpecialAbility>();
         gameManager.playerAlive = true;
-        enemy = gameManager._enemy;
     }
 
     void FixedUpdate()
@@ -113,7 +112,7 @@ public class PlayerMovement : MonoBehaviour
             transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, Time.deltaTime * (moveSpeed * lookSpeed));
             yield return null;
 
-        } while (Quaternion.Angle(transform.rotation, targetRotation) < 0.01f && gameObject != null);
+        } while (Quaternion.Angle(transform.rotation, targetRotation) < 0.01f && gameObject != null && opponentPlayer);
     }
 
     public IEnumerator OnDeath()

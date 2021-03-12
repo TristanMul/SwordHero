@@ -10,7 +10,7 @@ public class TriggerEnemies : MonoBehaviour
             foreach (Transform enemy in transform)
             {
                 // Hide range indicator.
-                if(enemy.name == "AllAxis_Outline"){
+                if(enemy.name == "AllAxis_Outline" || enemy.name == "Ring Mesh"){
                     enemy.gameObject.SetActive(false);
                 }
 

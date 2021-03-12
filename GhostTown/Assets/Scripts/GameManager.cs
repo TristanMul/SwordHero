@@ -8,8 +8,6 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
     private string sceneName;
-    public float EnemySpeed;
-    public float BallSpeed;
     public float CameraSpeed;
     public float AnimationSpeed;
     public float PlayerSpeed;
@@ -20,7 +18,6 @@ public class GameManager : MonoBehaviour
     public GameObject _enemy;
     public GameObject pressToStart;
     public GameObject gameOverUI;
-    public GameObject finishedUI;
     public GameObject finishLine;
     public int _speed;
     public bool playerAlive;
@@ -38,7 +35,6 @@ public class GameManager : MonoBehaviour
         sceneName = currScene.name;
 
         gameOverUI.SetActive(false);
-        finishedUI.SetActive(false);
 
         if (instance == null)
         {
@@ -48,18 +44,10 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        enemies = GameObject.FindGameObjectsWithTag("Enemy");
-
-        //DontDestroyOnLoad(gameObject);
     }
 
     private void Update()
     {
-        Debug.Log(sceneName);
-        _player = GameObject.FindGameObjectWithTag("Player");
-        _enemy = GameObject.FindGameObjectWithTag("Enemy");
-
         if (gameOver)
         {
             if (Input.GetMouseButtonUp(0))
@@ -90,14 +78,6 @@ public class GameManager : MonoBehaviour
             StartCoroutine(StartScene());
         }
     }
-
-    //public IEnumerator ReloadSameScene()
-    //{
-    //    gameOverUI.SetActive(true);
-    //    yield return new WaitForSeconds(2);
-    //    gameOver = true;
-    //    Time.timeScale = 0;
-    //}
 
     public IEnumerator StartScene()
     {

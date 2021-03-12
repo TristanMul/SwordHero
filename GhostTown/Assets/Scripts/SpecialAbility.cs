@@ -32,17 +32,19 @@ public class SpecialAbility : MonoBehaviour
         {
             transform.localScale += new Vector3(increaseSize, increaseSize, 0);
             sizeIncreased += increaseSize;
-            if (!particles.ParticlesRunning)
+            if (!particles.ChargingParticlesActive)
             {
-                particles.ParticlesRunning = true;
+                particles.ChargingParticlesActive = true;
             }
         }
         else if (!powerCharged)
         {
             particles.PlayIsCharged();
+            particles.WhileChargedActive = true;
+            particles.ChargingParticlesActive = false;
+
             GetComponent<SpriteRenderer>().color = translucentYellow;
             powerCharged = true;
-            particles.ParticlesRunning = false;
         }
 
     }
@@ -52,5 +54,7 @@ public class SpecialAbility : MonoBehaviour
         transform.localScale = circleResetSize;
         sizeIncreased = transform.localScale.x;
         powerCharged = false;
+
+        particles.WhileChargedActive = false;
     }
 }

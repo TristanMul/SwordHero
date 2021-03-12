@@ -2,25 +2,46 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerParticles: MonoBehaviour
+public class PlayerParticles : MonoBehaviour
 {
     public bool testing;
-    bool particlesRunning;//To activate the charging particles set ParticlesRunning to true, mind the capitol letter
+    bool chargingParcticlesActive;//To activate the charging particles set ParticlesRunning to true, mind the capitol letter
+    bool whileChargedActive;
     public ParticleSystem chargingParticles;
     public ParticleSystem isChargedParticles;
+    public ParticleSystem whileChargedParticles;
 
-    public bool ParticlesRunning//set to activate/deactivate particles
+    public bool ChargingParticlesActive//set to activate/deactivate particles
     {
-        get { return particlesRunning; }
+        get { return chargingParcticlesActive; }
         set
         {
-            if (value) {
+            if (value)
+            {
                 chargingParticles.Play();
             }
-            else {
+            else
+            {
                 chargingParticles.Stop();
             }
-            particlesRunning = value;
+            chargingParcticlesActive = value;
+        }
+    }
+
+    public bool WhileChargedActive
+    {
+        get { return whileChargedActive; }
+        set
+        {
+            if (value)
+            {
+                whileChargedParticles.Play();
+            }
+            else
+            {
+                whileChargedParticles.Stop();
+            }
+            whileChargedActive = value;
         }
     }
 
@@ -37,13 +58,13 @@ public class PlayerParticles: MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
-                ParticlesRunning = !particlesRunning;
+                ChargingParticlesActive = !chargingParcticlesActive;
             }
             if (Input.GetKeyDown(KeyCode.Mouse1))
             {
                 PlayIsCharged();
             }
-        }       
+        }
     }
 
     public void PlayIsCharged()

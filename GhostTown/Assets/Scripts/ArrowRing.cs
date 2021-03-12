@@ -17,10 +17,6 @@ public class ArrowRing : MonoBehaviour
         }
     }
 
-    void Start()
-    {
-        
-    }
 
     Vector3 ArrowCircle(Vector3 center, float radius)
     {
@@ -32,12 +28,12 @@ public class ArrowRing : MonoBehaviour
         return pos;
     }
 
-    void SpawnArrows()
+    public void SpawnArrows()
     {
         Vector3 center = transform.position;
         for (int i = 0; i < numObjects; i++)
         {
-            Vector3 pos = ArrowCircle(center, 3.0f);
+            Vector3 pos = ArrowCircle(center, 0.5f);
             Quaternion rot = Quaternion.FromToRotation(Vector3.forward, center - pos);
             GameObject _arrow = Instantiate(arrow, pos, rot);
             _arrow.GetComponent<Rigidbody>().AddForce(_arrow.transform.forward * arrowSpeed, ForceMode.Impulse);

@@ -16,6 +16,11 @@ public class TriggerEnemies : MonoBehaviour
 
                 // All enemies start attacking the player.
                 if(enemy.GetComponent<EnemyBaseClass>()){
+                    // Turn off collider so trigger won't trigger multiple times.
+                    GetComponent<Collider>().enabled = false;
+
+                    // Enemies start following player.
+                    enemy.GetComponent<FollowPlayer>().enabled = true;
                     enemy.GetComponent<EnemyBaseClass>().enemyState = EnemyBaseClass.EnemyState.Move;
                 }
             }

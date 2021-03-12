@@ -13,39 +13,53 @@ public class SpecialAbility : MonoBehaviour
     public Color translucentYellow;
     public Color translucentWhite;
     public PlayerParticles particles;
+    PlayerMovement player;
+    ArrowRing arrowRing;
+
 
     private void Awake()
     {
+        player = GetComponentInParent<PlayerMovement>();
+        arrowRing = player.GetComponentInChildren<ArrowRing>();
         sizeIncreased += transform.localScale.x;
         circleResetSize = transform.localScale;
         //translucentYellow = new Color(249 / 255, 215 / 255, 0 / 255, 100 / 255);
         //translucentWhite = new Color(1, 1, 1, 100 / 255);
     }
+
     private void FixedUpdate()
     {
         
     }
     public void ChargePower()
     {
-        
-        if (sizeIncreased <= triggerSize)
+        if (player.movement.x != 0 && player.movement.z != 0)
         {
-            transform.localScale += new Vector3(increaseSize, increaseSize, 0);
-            sizeIncreased += increaseSize;
-            if (!particles.ChargingParticlesActive)
+            if (sizeIncreased <= triggerSize)
             {
-                particles.ChargingParticlesActive = true;
+                transform.localScale += new Vector3(increaseSize, increaseSize, 0);
+                sizeIncreased += increaseSize;
+                if (!particles.ChargingParticlesActive)
+                {
+                    particles.ChargingParticlesActive = true;
+                }
+            }
+            else if (!powerCharged)
+            {
+                particles.PlayIsCharged();
+                particles.WhileChargedActive = true;
+                particles.ChargingParticlesActive = false;
+
+                GetComponent<SpriteRenderer>().color = translucentYellow;
+                powerCharged = true;
             }
         }
-        else if (!powerCharged)
-        {
-            particles.PlayIsCharged();
-            particles.WhileChargedActive = true;
-            particles.ChargingParticlesActive = false;
 
-            GetComponent<SpriteRenderer>().color = translucentYellow;
-            powerCharged = true;
-        }
+        //if(player.movement.x == 0 && player.movement.z == 0 && powerCharged)
+        //{
+        //    StartCoroutine(PlayAnimation());
+        //    StopCoroutine(PlayAnimation());
+        //}
 
     }
     public void ResetCircleSize()
@@ -57,4 +71,15 @@ public class SpecialAbility : MonoBehaviour
 
         particles.WhileChargedActive = false;
     }
+
+    //IEnumerator PlayAnimation()
+    //{
+    //    player.animator.SetBool("SuperAttack", true);
+    //    player.animator.SetLayerWeight(1, 0);
+    //    arrowRing.SpawnArrows();
+    //    yield return new WaitForSeconds(player.animator.GetCurrentAnimatorStateInfo(0).length + player.animator.GetCurrentAnimatorStateInfo(0).normalizedTime);
+    //    player.animator.SetBool("SuperAttack", false);
+    //    player.animator.SetLayerWeight(1, 1);
+    //    ResetCircleSize();
+    //}
 }

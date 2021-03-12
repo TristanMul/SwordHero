@@ -17,23 +17,26 @@ public class PlayerMovement : MonoBehaviour
     public GameObject _enemy;
     [HideInInspector]
     public bool attackAnim;
-    Vector3 movement;
+    [HideInInspector]
+    public Vector3 movement;
     GameObject enemy;
     SpecialAbility ability;
-    float armAnimStrength;
+    ArrowRing ringOfArrows;
 
     void Awake()
     {
+        ringOfArrows = GetComponentInChildren<ArrowRing>();
         ability = transform.Find("Charging Circle").GetComponent<SpecialAbility>();
         gameManager.playerAlive = true;
         enemy = gameManager._enemy;
-        armAnimStrength = animator.GetLayerWeight(2);
     }
 
     void FixedUpdate()
     {
         movement.x = FixedJoystick.Horizontal;
         movement.z = FixedJoystick.Vertical;
+
+        Debug.Log(ability.powerCharged);
 
         animator.SetFloat("AngleController", Mathf.Atan2(movement.z, movement.x) * Mathf.Rad2Deg);
         animator.SetFloat("AnglePlayer", transform.eulerAngles.y);
@@ -50,13 +53,22 @@ public class PlayerMovement : MonoBehaviour
             transform.GetComponent<FootstepSmoke>().PlayFootstepSmokeEffect();
             ability.ChargePower();
         }
+        
         //whenever activate ability whenever player is not moving.
-        if(movement.x == 0 && movement.z == 0 && ability.powerCharged)
+        if (movement.x == 0 && movement.z == 0 && ability.powerCharged)
         {
+            animator.SetLayerWeight(1, 0);
             animator.SetBool("SuperAttack", true);
+            ringOfArrows.SpawnArrows();
             Debug.Log("Is not moving");
             ability.ResetCircleSize();
         }
+        else if (ability.powerCharged == false)
+        {
+            animator.SetLayerWeight(1, 1);
+            animator.SetBool("SuperAttack", false);
+        }
+
         if (attackAnim)
         {
             animator.SetBool("AttackRange", true);

@@ -57,6 +57,6 @@ public class DeathAnimation : MonoBehaviour
             yield return null;
         }
         Debug.Log("destroy");
-        //Destroy(gameObject);
+        Destroy(gameObject);
     }
 }

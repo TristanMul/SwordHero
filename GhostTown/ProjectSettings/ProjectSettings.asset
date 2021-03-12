@@ -656,7 +656,14 @@ PlayerSettings:
   XboxOneOverrideIdentityPublisher: 
   vrEditorSettings: {}
   cloudServicesEnabled:
+    Analytics: 0
+    Build: 0
+    Collab: 0
+    Game Performance: 0
+    Purchasing: 0
+    UDP: 0
     UNet: 1
+    Unity Ads: 0
   luminIcon:
     m_Name: 
     m_ModelFolderPath: 
@@ -670,11 +677,11 @@ PlayerSettings:
     m_VersionName: 
   apiCompatibilityLevel: 6
   activeInputHandler: 0
-  cloudProjectId: 9c551dbc-4fdc-4620-95c7-2e3d79810491
+  cloudProjectId: 6296dba4-dc6e-4484-876a-263d37738385
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
   projectName: GhostTown
-  organizationId: mrpinksprinkleddonut
+  organizationId: ape-x
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   virtualTexturingSupportEnabled: 0

@@ -2364,6 +2364,12 @@ PrefabInstance:
     - target: {fileID: 1517156151, guid: c87e859b022ed6343a2ced300e593259, type: 3}
       propertyPath: arrow
       value: 
+      objectReference: {fileID: 2484344411317256233, guid: e1a450495f898a4428b92e771a0e212f,
+        type: 3}
+    - target: {fileID: 2758618643512248020, guid: c87e859b022ed6343a2ced300e593259,
+        type: 3}
+      propertyPath: shotPower
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 2758618643512248020, guid: c87e859b022ed6343a2ced300e593259,
         type: 3}
@@ -5033,7 +5039,7 @@ MonoBehaviour:
   waterColor: {r: 0.18431373, g: 0.666, b: 0.9921569, a: 1}
   waterTex: {fileID: 2800000, guid: b3b93417e764a48438369dfd5de14b56, type: 3}
   waterTile: {x: 0.05, y: 0.05}
-  textureVisibility: 0.276
+  textureVisibility: 0.3
   distortionTex: {fileID: 2800000, guid: f6acd684980920849a180e1c541fb199, type: 3}
   distortionTile: {x: 0.06, y: 0.06}
   waterHeight: 14.5

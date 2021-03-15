@@ -13,7 +13,6 @@ public class OnHitDelete : MonoBehaviour
         {
             GameObject newDeathAnimation =  Instantiate(deathParticles, obj.transform.position, deathParticles.transform.rotation);
             newDeathAnimation.GetComponent<DeathAnimation>().Setup(5);
-            Destroy(obj.gameObject);
             Destroy(this.gameObject);
         }
     }

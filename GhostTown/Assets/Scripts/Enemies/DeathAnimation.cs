@@ -30,6 +30,7 @@ public class DeathAnimation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        canvas.transform.LookAt(Camera.main.transform);
         UpdateText();
     }
 

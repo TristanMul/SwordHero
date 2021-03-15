@@ -17,7 +17,6 @@ public class ArrowRing : MonoBehaviour
         }
     }
 
-
     Vector3 ArrowCircle(Vector3 center, float radius)
     {
         ang = ang + (360 / numObjects);

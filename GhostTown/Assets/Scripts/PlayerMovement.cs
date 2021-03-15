@@ -35,8 +35,6 @@ public class PlayerMovement : MonoBehaviour
         movement.x = FixedJoystick.Horizontal;
         movement.z = FixedJoystick.Vertical;
 
-        Debug.Log(ability.powerCharged);
-
         animator.SetFloat("AngleController", Mathf.Atan2(movement.z, movement.x) * Mathf.Rad2Deg);
         animator.SetFloat("AnglePlayer", transform.eulerAngles.y);
         animator.SetFloat("MovementX", Mathf.Abs(movement.x * 10), 0.1f, Time.deltaTime);

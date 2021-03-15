@@ -11,11 +11,15 @@ public class DeathAnimation : MonoBehaviour
     public float canvasMoveSpeed;
     private float textDisappearTime = .5f;
 
-    public void Setup(int amount)
+    /// <summary>
+    /// Sets up the coins to be displayed
+    /// </summary>
+    /// <param name="amountOfCoins">The amount of coins gained</param>
+    public void Setup(int amountOfCoins)
     {
         coinsText = canvas.GetComponentInChildren<TextMeshProUGUI>();
         StartCoroutine(MoveObject());
-        coinsText.text = "+" + amount;
+        coinsText.text = "+" + amountOfCoins;
     }
     private void Start()
     {

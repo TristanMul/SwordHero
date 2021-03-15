@@ -12,13 +12,15 @@ public class HealthBar : MonoBehaviour
     public void UpdateHealthBar(float currentHealth, float maxHealth){
         float healthPercentage = currentHealth / maxHealth;
 
+        // Don't show healthbar on full health.
         if(healthPercentage == 1f){
             GetComponent<Canvas>().enabled = false;
         }
+        // Show healthbar when not on full health.
         else{
             GetComponent<Canvas>().enabled = true;
-            fillImage.fillAmount = healthPercentage;
-            fillImage.color = gradient.Evaluate(healthPercentage);
+            fillImage.fillAmount = healthPercentage;                // Fill healthbar based on health percentage.
+            fillImage.color = gradient.Evaluate(healthPercentage);  // Color healthbar based on health percentage.
         }
         
     }

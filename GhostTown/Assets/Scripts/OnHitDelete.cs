@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class OnHitDelete : MonoBehaviour
 {
-    public GameObject deathParticles;
     private void OnTriggerEnter(Collider obj)
     {
 
         Debug.Log("Destroy");
         if (obj.tag == "Enemy")
         {
-            GameObject newDeathAnimation =  Instantiate(deathParticles, obj.transform.position, deathParticles.transform.rotation);
-            newDeathAnimation.GetComponent<DeathAnimation>().Setup(5);
+            if(obj.GetComponent<EnemyHealth>()){
+                obj.GetComponent<EnemyHealth>().TakeDamage(1f);
+            }
             Destroy(this.gameObject);
         }
     }

@@ -14,8 +14,9 @@ public class EnemyBaseClass : MonoBehaviour
     // Properties that other scripts can use to read variables of enemy.
     public float Speed {get{return speed;} protected set{speed = value;}}
     public float MaxHealth {get{return maxHealth;} protected set{maxHealth = value;}}
-    public float CurrenHealth {get{return currentHealth;} protected set{currentHealth = value;}}
+    public float CurrenHealth {get{return currentHealth;} set{currentHealth = value;}}
     public float AttackRange {get{return attackRange;} protected set{attackRange = value;}}
+    public HealthBar HealthBar {get{return healthBar;}}
     
     // All states enemies can have.
     public EnemyState enemyState;

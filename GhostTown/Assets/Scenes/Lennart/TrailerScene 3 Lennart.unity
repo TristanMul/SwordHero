@@ -9435,8 +9435,18 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 2758618643512248020, guid: c87e859b022ed6343a2ced300e593259,
         type: 3}
+      propertyPath: angleOfShots
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2758618643512248020, guid: c87e859b022ed6343a2ced300e593259,
+        type: 3}
       propertyPath: sideArrowOffset
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2758618643512248020, guid: c87e859b022ed6343a2ced300e593259,
+        type: 3}
+      propertyPath: numberOfProjectiles
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2758618643600193615, guid: c87e859b022ed6343a2ced300e593259,
         type: 3}

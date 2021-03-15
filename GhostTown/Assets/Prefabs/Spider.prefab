@@ -1014,6 +1014,7 @@ GameObject:
   - component: {fileID: 1996433040888827875}
   - component: {fileID: 2351192173142595656}
   - component: {fileID: 7944890798685568740}
+  - component: {fileID: -3523968100392989163}
   - component: {fileID: 8020433434713809550}
   - component: {fileID: 1996433040898711555}
   - component: {fileID: -5502409402576693326}
@@ -1085,6 +1086,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controllerClass: {fileID: 2351192173142595656}
+--- !u!114 &-3523968100392989163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1996433040889320387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0eb3e7eddca27764eb75b530b8c34d54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controllerClass: {fileID: 2351192173142595656}
+  ownMaterial: {fileID: 2100000, guid: 0ae315a2425615d4eab8b7d47f914353, type: 2}
+  whiteFlash: {fileID: 2100000, guid: 9dfded9c423fc5d4d966490f7522aadf, type: 2}
+  deathParticles: {fileID: 6369984750543833569, guid: 3b3d25ef49a4d784aba925bacd707983,
+    type: 3}
 --- !u!114 &8020433434713809550
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -13,6 +13,7 @@ public class ShootArrow : MonoBehaviour
     public PlayerMovement enemyPos;
     float lastShot;
     float distance;
+    public float sideArrowOffset = 5f;
 
     //private void Awake()
     //{
@@ -21,13 +22,17 @@ public class ShootArrow : MonoBehaviour
 
     IEnumerator FireObject()
     {
-        GameObject _projectile = Instantiate(projectile);
+        Shoot(-sideArrowOffset);
+        Shoot(0f);
+        Shoot(+sideArrowOffset);
+
+        /*GameObject _projectile = Instantiate(projectile);
         Physics.IgnoreCollision(_projectile.GetComponent<Collider>(), player.GetComponent<Collider>());
         _projectile.transform.position = player.GetComponent<PlayerMovement>().firingPoint.transform.position;
         Vector3 rot = _projectile.transform.eulerAngles;
         _projectile.transform.rotation = Quaternion.Euler(rot.x, player.GetComponent<PlayerMovement>().firingPoint.transform.eulerAngles.y, rot.z);
         _projectile.GetComponent<Rigidbody>().AddForce(player.GetComponent<PlayerMovement>().firingPoint.forward * shotPower, ForceMode.Impulse);
-        StartCoroutine(DestroyProjectile(_projectile, destroyAfter));
+        StartCoroutine(DestroyProjectile(_projectile, destroyAfter));*/
         yield return null;
     }
 
@@ -35,6 +40,17 @@ public class ShootArrow : MonoBehaviour
     {
         yield return new WaitForSeconds(timer);
         Destroy(obj);
+    }
+
+    private void Shoot(float direction)
+    {
+        GameObject _projectile = Instantiate(projectile);
+        Physics.IgnoreCollision(_projectile.GetComponent<Collider>(), player.GetComponent<Collider>());
+        _projectile.transform.position = player.GetComponent<PlayerMovement>().firingPoint.transform.position;
+        Vector3 rot = _projectile.transform.eulerAngles;
+        _projectile.transform.rotation = Quaternion.Euler(rot.x, player.GetComponent<PlayerMovement>().firingPoint.transform.eulerAngles.y + direction, rot.z);
+        _projectile.GetComponent<Rigidbody>().AddForce(_projectile.transform.forward * shotPower, ForceMode.Impulse);
+        StartCoroutine(DestroyProjectile(_projectile, destroyAfter));
     }
 
 

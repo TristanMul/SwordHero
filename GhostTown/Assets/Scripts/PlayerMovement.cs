@@ -126,4 +126,9 @@ public class PlayerMovement : MonoBehaviour
         gameManager.playerAlive = false;
         yield return null;
     }
+
+    public void Kill()
+    {
+        
+    }
 }

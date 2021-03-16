@@ -9,16 +9,28 @@ public class PlayerHealth : MonoBehaviour
     private HealthBar healthBar;
     private Animator animator;
     private bool invulnerable;
+    Renderer[] renderers;
 
     void Start()
     {
         // Get player healthbar.
         healthBar = transform.Find("HealthBar").GetComponent<HealthBar>();
         healthBar.UpdateHealthBar(currentHealth, maxHealth);
+        animator = GetComponentInChildren<Animator>();
 
-        animator = transform.Find("Archer").GetComponent<Animator>();
+        renderers = animator.GetComponentsInChildren<Renderer>();
+
+
 
         invulnerable = false;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            animator.SetBool("IsDead", true);
+        }
     }
 
     public void TakeDamage(float damage){
@@ -34,10 +46,15 @@ public class PlayerHealth : MonoBehaviour
             healthBar.UpdateHealthBar(currentHealth, maxHealth);
 
             // Check if player is dead.
-            if(currentHealth <= 0){
+            if (currentHealth <= 0)
+            {
                 // Player death logic here.
-                // animator.Play("Death");
+                GetComponent<PlayerMovement>().enabled = false;
+                
+                Debug.Log(animator);
+                animator.SetBool("IsDead", true);
             }
+
         }
     }
 
@@ -48,13 +65,20 @@ public class PlayerHealth : MonoBehaviour
         // Turn renederer off and on again for flashing effect.
         while (flashCount < flashDuration)
         {
-            transform.Find("Archer").gameObject.SetActive(false);
+            foreach(Renderer r in renderers)
+            {
+                r.enabled = false;
+            }
             yield return new WaitForSeconds(0.1f);
-            transform.Find("Archer").gameObject.SetActive(true);
+            foreach (Renderer r in renderers)
+            {
+                r.enabled = true;
+            }
             yield return new WaitForSeconds(0.1f);
 
             flashCount++;
         }
+
 
         // Player can take damage again.
         invulnerable = false;

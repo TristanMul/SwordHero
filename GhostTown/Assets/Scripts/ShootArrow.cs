@@ -17,13 +17,28 @@ public class ShootArrow : MonoBehaviour
 
     IEnumerator FireObject()
     {
-        GameObject _projectile = Instantiate(projectile);
+        int middleShot = numberOfProjectiles / 2;
+        for (int i = 0; i < numberOfProjectiles; i++) {
+            Shoot((i - middleShot) * angleOfShots);
+        }
+       /*GameObject _projectile = Instantiate(projectile);
         Physics.IgnoreCollision(_projectile.GetComponent<Collider>(), player.GetComponent<Collider>());
         _projectile.transform.position = player.GetComponent<PlayerMovement>().firingPoint.transform.position;
         Vector3 rot = _projectile.transform.eulerAngles;
         _projectile.transform.rotation = Quaternion.Euler(rot.x, player.GetComponent<PlayerMovement>().firingPoint.transform.eulerAngles.y, rot.z);
-        _projectile.GetComponent<Rigidbody>().AddForce(player.GetComponent<PlayerMovement>().firingPoint.forward * shotPower, ForceMode.Impulse);
+        _projectile.GetComponent<Rigidbody>().AddForce(player.GetComponent<PlayerMovement>().firingPoint.forward * shotPower, ForceMode.Impulse);*/
         yield return null;
+    }
+
+    private void Shoot(float direction)
+    {
+        GameObject _projectile = Instantiate(projectile);
+        Physics.IgnoreCollision(_projectile.GetComponent<Collider>(), player.GetComponent<Collider>());
+        _projectile.transform.position = player.GetComponent<PlayerMovement>().firingPoint.transform.position;
+        Vector3 rot = _projectile.transform.eulerAngles;
+        _projectile.transform.rotation = Quaternion.Euler(rot.x, player.GetComponent<PlayerMovement>().firingPoint.transform.eulerAngles.y + direction, rot.z);
+        _projectile.GetComponent<Rigidbody>().AddForce(_projectile.transform.forward * shotPower, ForceMode.Impulse);
+        //StartCoroutine(DestroyProjectile(_projectile, destroyAfter));
     }
 
     // Update is called once per frame

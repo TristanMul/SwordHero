@@ -26,7 +26,6 @@ public class FollowPlayer : MonoBehaviour
     // Face the player and move towards them.
     private void MoveToPlayer(){
         if(player && controllerClass.enemyState == EnemyBaseClass.EnemyState.Move){
-            transform.LookAt(player.transform);
             navMeshAgent.SetDestination(player.transform.position);
         }
     }

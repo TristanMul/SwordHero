@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     GameObject enemy;
     SpecialAbility ability;
     ArrowRing ringOfArrows;
+    public GameObject defaultTarget;
 
     void Awake()
     {
@@ -97,6 +98,11 @@ public class PlayerMovement : MonoBehaviour
         {
             StartCoroutine(DoRotationAtTargetDirection(enemy.transform));
             _enemy = enemy;
+        }
+        if(enemy == null)
+        {
+            StartCoroutine(DoRotationAtTargetDirection(defaultTarget.transform));
+            //Not a great solution, but needed if the code isn't going to be rewritten. needs a defaultTarget to be assigned
         }
     }
 

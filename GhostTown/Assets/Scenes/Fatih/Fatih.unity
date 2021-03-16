@@ -237,6 +237,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 15144178}
   m_Mesh: {fileID: 4300002, guid: e07743776a3c0e84dae6de6c0b8fbcae, type: 3}
+--- !u!1 &30244994 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2758618643766498917, guid: c87e859b022ed6343a2ced300e593259,
+    type: 3}
+  m_PrefabInstance: {fileID: 519305591}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &34977407
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1247,7 +1253,7 @@ MonoBehaviour:
   AnimationSpeed: 0
   PlayerSpeed: 0
   FontSize: 0
-  _player: {fileID: 0}
+  _player: {fileID: 30244994}
   _enemy: {fileID: 0}
   pressToStart: {fileID: 1872523188}
   gameOverUI: {fileID: 685813960}
@@ -9426,6 +9432,11 @@ PrefabInstance:
         type: 3}
       propertyPath: fireRate
       value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2758618643512248020, guid: c87e859b022ed6343a2ced300e593259,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2758618643512248020, guid: c87e859b022ed6343a2ced300e593259,
         type: 3}

@@ -94,7 +94,8 @@ MonoBehaviour:
   range: 30
   shotPower: 30
   fireRate: 1.2
-  destroyAfter: 2
+  numberOfProjectiles: 0
+  angleOfShots: 0
   enemyPos: {fileID: 2758618643766498921}
 --- !u!1 &2758618643600193613
 GameObject:
@@ -334,6 +335,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2758618643905010654}
   - component: {fileID: 2758618643905010655}
+  - component: {fileID: 6462962739902503334}
   m_Layer: 0
   m_Name: Arrow range
   m_TagString: Untagged
@@ -406,6 +408,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6462962739902503334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2758618643905010653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1379f0de5e36c40a087b9b03192c40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2758618642081600488
 PrefabInstance:
   m_ObjectHideFlags: 0

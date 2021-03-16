@@ -9,8 +9,10 @@ public class PlayerMovement : MonoBehaviour
     public Animator animator;
     public Rigidbody character;
     public Transform firingPoint;
+    //public GameObject finish;
     public float moveSpeed = 5f;
     public int lookSpeed;
+    //public bool shrinkPos;
     [HideInInspector]
     public GameObject _enemy;
     [HideInInspector]
@@ -53,12 +55,17 @@ public class PlayerMovement : MonoBehaviour
         //whenever activate ability whenever player is not moving.
         if (movement.x == 0 && movement.z == 0 && ability.powerCharged)
         {
-            StartCoroutine(SpecialAttack());
-            ability.powerCharged = false;
+            animator.SetLayerWeight(1, 0);
+            animator.SetBool("SuperAttack", true);
+            ringOfArrows.SpawnArrows();
+            Debug.Log("Is not moving");
+            ability.ResetCircleSize();
         }
-        //else if (ability.powerCharged == false)
-        //{
-        //}
+        else if (ability.powerCharged == false)
+        {
+            animator.SetLayerWeight(1, 1);
+            animator.SetBool("SuperAttack", false);
+        }
 
         if (attackAnim)
         {
@@ -95,7 +102,7 @@ public class PlayerMovement : MonoBehaviour
         if(enemy == null)
         {
             StartCoroutine(DoRotationAtTargetDirection(defaultTarget.transform));
-            //Not a great solution, but needed if the code isn't going to be rewritten. needs a defaultTarget to be assigned
+            //Not a great solution, but needed if the code isn't going to be rewritten. needs a defaultTarget to be assigned-
         }
     }
 
@@ -118,16 +125,5 @@ public class PlayerMovement : MonoBehaviour
         gameObject.GetComponentInChildren<Animator>().enabled = false;
         gameManager.playerAlive = false;
         yield return null;
-    }
-
-    IEnumerator SpecialAttack()
-    {
-        animator.SetLayerWeight(1, 0.0f);
-        ringOfArrows.SpawnArrows();
-        animator.SetBool("SuperAttack", true);
-        yield return new WaitForSeconds(0.4f);
-        animator.SetBool("SuperAttack", false);
-        ability.ResetCircleSize();
-        animator.SetLayerWeight(1, 1);
     }
 }

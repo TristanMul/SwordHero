@@ -96,8 +96,19 @@ public class PlayerMovement : MonoBehaviour
 
         if (enemy != null)
         {
-            StartCoroutine(DoRotationAtTargetDirection(enemy.transform));
-            _enemy = enemy;
+            // Only target enemies that move towards or attack player.
+            if(enemy.GetComponent<EnemyBaseClass>().enemyState == EnemyBaseClass.EnemyState.Move ||
+                enemy.GetComponent<EnemyBaseClass>().enemyState == EnemyBaseClass.EnemyState.Attack)
+            {
+                StartCoroutine(DoRotationAtTargetDirection(enemy.transform));
+                _enemy = enemy;
+            }
+            // Ther are no enemies moving towards or attacking player.
+            else
+            {
+                enemy = null;
+            }
+            
         }
         if(enemy == null)
         {

@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class EnemyAnimator : MonoBehaviour
 {
-    private Spider spider;
-    private Animator spiderAnimator;
+    [HideInInspector] public EnemyBaseClass enemy;
+    [HideInInspector] public Animator animator;
 
-    void Start()
+    public virtual void Start()
     {
-        spider = GetComponent<Spider>();
-        spiderAnimator = GetComponent<Animator>();
     }
 
     private void FixedUpdate()
@@ -21,25 +19,25 @@ public class EnemyAnimator : MonoBehaviour
     // Play animation according to spider's state
     private void AnimationHandler()
     {
-        switch (spider.enemyState)
+        switch (enemy.enemyState)
         {
             case EnemyBaseClass.EnemyState.Idle:
-                spiderAnimator.Play("Idle");
+                animator.Play("Idle");
                 break;
             case EnemyBaseClass.EnemyState.Move:
-                spiderAnimator.Play("Crawl Forward Fast In Place");
+                animator.Play("Crawl Forward Fast In Place");
                 break;
             case EnemyBaseClass.EnemyState.Attack:
-                spiderAnimator.Play("Bite Attack");
+                animator.Play("Bite Attack");
                 break;
             case EnemyBaseClass.EnemyState.Damaged:
-                spiderAnimator.Play("Take Damage");
+                animator.Play("Take Damage");
                 break;
             case EnemyBaseClass.EnemyState.Death:
-                spiderAnimator.Play("Die");
+                animator.Play("Die");
                 break;
             default:
-                spiderAnimator.Play("Idle");
+                animator.Play("Idle");
                 break;
         }
     }

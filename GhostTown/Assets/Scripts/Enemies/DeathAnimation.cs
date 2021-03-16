@@ -30,7 +30,10 @@ public class DeathAnimation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        canvas.transform.LookAt(Camera.main.transform);
+        Quaternion r1 = Quaternion.LookRotation(canvas.transform.position - Camera.main.transform.position, Vector3.up);
+        Vector3 euler2 = canvas.transform.eulerAngles;
+        canvas.transform.rotation = Quaternion.Euler(r1.eulerAngles.x, euler2.y, euler2.z);
+        
         UpdateText();
     }
 

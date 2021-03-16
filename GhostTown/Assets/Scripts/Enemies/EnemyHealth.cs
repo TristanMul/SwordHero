@@ -35,7 +35,7 @@ public class EnemyHealth : MonoBehaviour
     // Enemy flashes white when hit.
     IEnumerator WhiteFlash(){
         transform.Find("Spider").GetComponent<Renderer>().material = whiteFlash;
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.15f);
         transform.Find("Spider").GetComponent<Renderer>().material = ownMaterial;
 
     }

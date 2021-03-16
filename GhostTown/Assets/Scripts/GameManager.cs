@@ -83,7 +83,7 @@ public class GameManager : MonoBehaviour
     {
         pressToStart.SetActive(true);
         gameOverUI.SetActive(false);
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
         gameReset = true;
         yield return null;
     }
@@ -92,9 +92,9 @@ public class GameManager : MonoBehaviour
     {
         gameOverUI.SetActive(true);
         pressToStart.SetActive(false);
-        Time.timeScale = 0;
+        /*Time.timeScale = 0;
         yield return new WaitForSeconds(1);
-        Time.timeScale = 1;
+        Time.timeScale = 1;*/
         yield return null;
     }
 

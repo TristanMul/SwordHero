@@ -60,6 +60,13 @@ public class PlayerHealth : MonoBehaviour
         invulnerable = false;
     }
 
+    private void OnCollisionEnter(Collision other) {
+        // Player got hit by enemy.
+        if(other.gameObject.tag == "Enemy"){
+            TakeDamage(2f);
+        }
+    }
+
     private void OnCollisionStay(Collision other) {
         // Player got hit by enemy.
         if(other.gameObject.tag == "Enemy"){

@@ -96,8 +96,17 @@ public class PlayerMovement : MonoBehaviour
 
         if (enemy != null)
         {
-            StartCoroutine(DoRotationAtTargetDirection(enemy.transform));
-            _enemy = enemy;
+            if(enemy.GetComponent<EnemyBaseClass>().enemyState == EnemyBaseClass.EnemyState.Move ||
+                enemy.GetComponent<EnemyBaseClass>().enemyState == EnemyBaseClass.EnemyState.Attack)
+            {
+                StartCoroutine(DoRotationAtTargetDirection(enemy.transform));
+                _enemy = enemy;
+            }
+            else
+            {
+                enemy = null;
+            }
+            
         }
         if(enemy == null)
         {

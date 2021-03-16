@@ -22524,26 +22524,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Grass Light Optimized
       objectReference: {fileID: 0}
-    - target: {fileID: 8482273654491318361, guid: e2aa1a3a1d3234f468b98355af306915,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.07
-      objectReference: {fileID: 0}
-    - target: {fileID: 8482273654859271868, guid: e2aa1a3a1d3234f468b98355af306915,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.07
-      objectReference: {fileID: 0}
-    - target: {fileID: 8482273655654183728, guid: e2aa1a3a1d3234f468b98355af306915,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.07
-      objectReference: {fileID: 0}
-    - target: {fileID: 8482273655700589910, guid: e2aa1a3a1d3234f468b98355af306915,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.07
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e2aa1a3a1d3234f468b98355af306915, type: 3}
 --- !u!1 &8526516496865431562

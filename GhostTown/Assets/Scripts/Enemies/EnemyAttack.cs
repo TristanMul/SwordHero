@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(EnemyBaseClass))]
 public class EnemyAttack : MonoBehaviour
 {
     public EnemyBaseClass controllerClass;  // The controller class of this enemy object.

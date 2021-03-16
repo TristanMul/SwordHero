@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+[RequireComponent(typeof(EnemyBaseClass))]
 public class FollowPlayer : MonoBehaviour
 {
     public EnemyBaseClass controllerClass;  // The controller class of this enemy object.

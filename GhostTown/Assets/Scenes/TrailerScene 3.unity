@@ -9430,7 +9430,7 @@ PrefabInstance:
     - target: {fileID: 2758618643512248020, guid: c87e859b022ed6343a2ced300e593259,
         type: 3}
       propertyPath: shotPower
-      value: 100
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 2758618643512248020, guid: c87e859b022ed6343a2ced300e593259,
         type: 3}
@@ -9438,6 +9438,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2484344411317256233, guid: e1a450495f898a4428b92e771a0e212f,
         type: 3}
+    - target: {fileID: 2758618643512248020, guid: c87e859b022ed6343a2ced300e593259,
+        type: 3}
+      propertyPath: angleOfShots
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2758618643512248020, guid: c87e859b022ed6343a2ced300e593259,
+        type: 3}
+      propertyPath: numberOfProjectiles
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2758618643600193615, guid: c87e859b022ed6343a2ced300e593259,
         type: 3}
       propertyPath: m_Color.a

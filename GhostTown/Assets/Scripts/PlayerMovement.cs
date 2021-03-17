@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     GameObject enemy;
     SpecialAbility ability;
     ArrowRing ringOfArrows;
+    public GameObject defaultTarget;
 
     void Awake()
     {
@@ -54,16 +55,8 @@ public class PlayerMovement : MonoBehaviour
         //whenever activate ability whenever player is not moving.
         if (movement.x == 0 && movement.z == 0 && ability.powerCharged)
         {
-            animator.SetLayerWeight(1, 0);
-            animator.SetBool("SuperAttack", true);
-            ringOfArrows.SpawnArrows();
-            Debug.Log("Is not moving");
-            ability.ResetCircleSize();
-        }
-        else if (ability.powerCharged == false)
-        {
-            animator.SetLayerWeight(1, 1);
-            animator.SetBool("SuperAttack", false);
+            StartCoroutine(SpecialAttack());
+            ability.powerCharged = false;
         }
 
         if (attackAnim)
@@ -95,8 +88,24 @@ public class PlayerMovement : MonoBehaviour
 
         if (enemy != null)
         {
-            StartCoroutine(DoRotationAtTargetDirection(enemy.transform));
-            _enemy = enemy;
+            // Only target enemies that move towards or attack player.
+            if(enemy.GetComponent<EnemyBaseClass>().enemyState == EnemyBaseClass.EnemyState.Move ||
+                enemy.GetComponent<EnemyBaseClass>().enemyState == EnemyBaseClass.EnemyState.Attack)
+            {
+                StartCoroutine(DoRotationAtTargetDirection(enemy.transform));
+                _enemy = enemy;
+            }
+            // Ther are no enemies moving towards or attacking player.
+            else
+            {
+                enemy = null;
+            }
+            
+        }
+        if(enemy == null)
+        {
+            StartCoroutine(DoRotationAtTargetDirection(defaultTarget.transform));
+            //Not a great solution, but needed if the code isn't going to be rewritten. needs a defaultTarget to be assigned-
         }
     }
 
@@ -119,5 +128,16 @@ public class PlayerMovement : MonoBehaviour
         gameObject.GetComponentInChildren<Animator>().enabled = false;
         gameManager.playerAlive = false;
         yield return null;
+    }
+
+    IEnumerator SpecialAttack()
+    {
+        animator.SetLayerWeight(1, 0.0f);
+        ringOfArrows.SpawnArrows();
+        animator.SetBool("SuperAttack", true);
+        yield return new WaitForSeconds(0.3f);
+        animator.SetBool("SuperAttack", false);
+        ability.ResetCircleSize();
+        animator.SetLayerWeight(1, 1);
     }
 }

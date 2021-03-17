@@ -12,7 +12,6 @@ public class GameManager : MonoBehaviour
     public float AnimationSpeed;
     public float PlayerSpeed;
     public int FontSize;
-    [HideInInspector]
     public GameObject _player;
     [HideInInspector]
     public GameObject _enemy;

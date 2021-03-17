@@ -6,8 +6,6 @@ public class OnHitDelete : MonoBehaviour
 {
     private void OnTriggerEnter(Collider obj)
     {
-
-        Debug.Log("Destroy");
         if (obj.tag == "Enemy")
         {
             if(obj.GetComponent<EnemyHealth>()){

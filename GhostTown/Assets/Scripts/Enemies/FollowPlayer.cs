@@ -3,23 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+[RequireComponent(typeof(EnemyBaseClass))]
 public class FollowPlayer : MonoBehaviour
 {
     public EnemyBaseClass controllerClass;  // The controller class of this enemy object.
     private GameObject player;
     private NavMeshAgent navMeshAgent;
     
-
-    
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        // Get reference to player.
+        player = GameManager.instance._player;
+
+        // Set NavMesch settings.
         navMeshAgent = GetComponent<NavMeshAgent>();
         navMeshAgent.speed = controllerClass.Speed;
     }
 
     private void FixedUpdate() {
-        CheckAttackRange();
         MoveToPlayer();
     }
 
@@ -29,14 +30,4 @@ public class FollowPlayer : MonoBehaviour
             navMeshAgent.SetDestination(player.transform.position);
         }
     }
-
-    // Check if the player is in the range of this enemy's attack.
-    private void CheckAttackRange(){
-        // The player is in the range of this enemies attack.
-        if(Vector3.Distance(transform.position, player.transform.position) <= controllerClass.AttackRange){
-            controllerClass.enemyState = EnemyBaseClass.EnemyState.Attack;
-            GetComponent<FollowPlayer>().enabled = false;
-        }
-    }
-
 }

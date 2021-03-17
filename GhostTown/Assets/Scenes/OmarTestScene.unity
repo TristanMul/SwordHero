@@ -10365,6 +10365,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Archer v.2
       objectReference: {fileID: 0}
+    - target: {fileID: 8763472851853637442, guid: d28d9e99d411ee64abeb87656383e9d0,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8763472851853637469, guid: d28d9e99d411ee64abeb87656383e9d0,
+        type: 3}
+      propertyPath: increaseSize
+      value: 0.01
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d28d9e99d411ee64abeb87656383e9d0, type: 3}
 --- !u!1001 &1241319903

@@ -15,7 +15,9 @@ public class GameManager : MonoBehaviour
     public float AnimationSpeed;
     public float PlayerSpeed;
     public int FontSize;
-    public GameObject _player;
+    [HideInInspector] public GameObject _player;
+    [HideInInspector]
+    public GameObject _enemy;
     public GameObject pressToStart;
     public GameObject gameOverUI;
     public int _speed;
@@ -44,6 +46,8 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        _player = GameObject.FindGameObjectWithTag("Player");
     }
 
     private void Update()

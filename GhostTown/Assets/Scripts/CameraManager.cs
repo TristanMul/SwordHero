@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class CameraManager : MonoBehaviour
 {
-    public Transform FollowTarget;
-    public Vector3 TargetOffset;
-    public float MoveSpeed = 3f;
-
-    private Transform _myTransform;
+    private Transform FollowTarget;
+    [SerializeField] private Vector3 TargetOffset;
+    [SerializeField] private float MoveSpeed = 3f;
 
     private void Start()
     {
-        _myTransform = transform;
+        FollowTarget = GameManager.instance._player.transform;
     }
 
     public void SetTarget(Transform aTransform)
@@ -23,6 +21,6 @@ public class CameraManager : MonoBehaviour
     private void LateUpdate()
     {
         if (FollowTarget != null)
-            _myTransform.position = Vector3.Lerp(_myTransform.position, FollowTarget.position + TargetOffset, MoveSpeed * Time.deltaTime);
+            transform.position = Vector3.Lerp(transform.position, FollowTarget.position + TargetOffset, MoveSpeed * Time.deltaTime);
     }
 }

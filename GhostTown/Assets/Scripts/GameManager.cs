@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 {
     [HideInInspector] public GameObject _enemy;
     [HideInInspector] public GameObject finishLine;
+    [HideInInspector] public GameObject _player;
 
     public static GameManager instance = null;
     private string sceneName;
@@ -15,9 +16,6 @@ public class GameManager : MonoBehaviour
     public float AnimationSpeed;
     public float PlayerSpeed;
     public int FontSize;
-    [HideInInspector] public GameObject _player;
-    [HideInInspector]
-    public GameObject _enemy;
     public GameObject pressToStart;
     public GameObject gameOverUI;
     public int _speed;

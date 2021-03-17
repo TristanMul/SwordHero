@@ -537,11 +537,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemy: {fileID: 0}
   finishLine: {fileID: 0}
+  _player: {fileID: 0}
   CameraSpeed: 0
   AnimationSpeed: 0
   PlayerSpeed: 0
   FontSize: 0
-  _player: {fileID: 0}
   pressToStart: {fileID: 1872523188}
   gameOverUI: {fileID: 685813960}
   _speed: 0
@@ -5059,6 +5059,12 @@ MeshRenderer:
     type: 3}
   m_PrefabInstance: {fileID: 1672633934}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &675101457 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8763472851684825447, guid: d28d9e99d411ee64abeb87656383e9d0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1231078854}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &685813960
 GameObject:
   m_ObjectHideFlags: 0
@@ -9314,7 +9320,7 @@ PrefabInstance:
         type: 3}
       propertyPath: FollowTarget
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 675101457}
     - target: {fileID: 7560107519605460805, guid: 5f0b6c9e4ccffcb46b0c47ca557070eb,
         type: 3}
       propertyPath: TargetOffset.x

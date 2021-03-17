@@ -13,7 +13,7 @@ public class PressToStart : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonDown(0))
         {
             Time.timeScale = 1;
             this.gameObject.SetActive(false);

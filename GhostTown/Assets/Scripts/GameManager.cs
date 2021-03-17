@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    [HideInInspector] public GameObject _enemy;
+    [HideInInspector] public GameObject finishLine;
+
     public static GameManager instance = null;
     private string sceneName;
     public float CameraSpeed;
@@ -13,11 +16,8 @@ public class GameManager : MonoBehaviour
     public float PlayerSpeed;
     public int FontSize;
     public GameObject _player;
-    [HideInInspector]
-    public GameObject _enemy;
     public GameObject pressToStart;
     public GameObject gameOverUI;
-    public GameObject finishLine;
     public int _speed;
     public bool playerAlive;
     public float vortexHangTime;
@@ -28,8 +28,9 @@ public class GameManager : MonoBehaviour
     GameObject[] enemies;
     Scene currScene;
 
-    private void Awake()
+    void Awake()
     {
+        finishLine = GameObject.FindWithTag("Finish");
         currScene = SceneManager.GetActiveScene();
         sceneName = currScene.name;
 

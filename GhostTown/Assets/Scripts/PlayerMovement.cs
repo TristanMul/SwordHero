@@ -4,37 +4,41 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public DynamicJoystick FixedJoystick;
-    public GameManager gameManager; 
-    public Animator animator;
-    public Rigidbody character;
-    public Transform firingPoint;
-    //public GameObject finish;
+    public GameObject defaultTarget;
     public float moveSpeed = 5f;
     public int lookSpeed;
-    //public bool shrinkPos;
-    [HideInInspector]
-    public GameObject _enemy;
-    [HideInInspector]
-    public bool attackAnim;
-    [HideInInspector]
-    public Vector3 movement;
+
+    private GameManager gameManager;
+    private DynamicJoystick dynamicJoystick;
+    private Rigidbody character;
+
+    [HideInInspector] public Animator animator;
+    [HideInInspector] public Transform firingPoint;
+    [HideInInspector] public GameObject _enemy;
+    [HideInInspector] public bool attackAnim;
+    [HideInInspector] public Vector3 movement;
+
     GameObject enemy;
     SpecialAbility ability;
     ArrowRing ringOfArrows;
-    public GameObject defaultTarget;
 
     void Awake()
     {
+        gameManager = GameObject.Find("EventSystem").GetComponent<GameManager>();
+        //gameManager = GameManager.instance;
+        dynamicJoystick = GameObject.Find("Dynamic Joystick").GetComponent<DynamicJoystick>();
+        animator = GetComponentInChildren<Animator>();
+        character = GetComponent<Rigidbody>();
         ringOfArrows = GetComponentInChildren<ArrowRing>();
         ability = transform.Find("Charging Circle").GetComponent<SpecialAbility>();
+        firingPoint = transform.Find("FiringPoint").GetComponent<Transform>();
         gameManager.playerAlive = true;
     }
 
     void FixedUpdate()
     {
-        movement.x = FixedJoystick.Horizontal;
-        movement.z = FixedJoystick.Vertical;
+        movement.x = dynamicJoystick.Horizontal;
+        movement.z = dynamicJoystick.Vertical;
 
         animator.SetFloat("AngleController", Mathf.Atan2(movement.z, movement.x) * Mathf.Rad2Deg);
         animator.SetFloat("AnglePlayer", transform.eulerAngles.y);

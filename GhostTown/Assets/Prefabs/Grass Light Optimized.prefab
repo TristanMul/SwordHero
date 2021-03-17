@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5484065096948992094}
   m_Layer: 0
   m_Name: Grass Light Optimized
-  m_TagString: Untagged
+  m_TagString: Walkable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 8212190916860020280}
   m_Layer: 12
   m_Name: 'Tile '
-  m_TagString: Untagged
+  m_TagString: Walkable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -141,7 +141,7 @@ GameObject:
   - component: {fileID: 8482273654491318362}
   m_Layer: 12
   m_Name: Grass (3)
-  m_TagString: Untagged
+  m_TagString: Walkable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -234,7 +234,7 @@ GameObject:
   - component: {fileID: 8482273654729890755}
   m_Layer: 12
   m_Name: Grass patch (1)
-  m_TagString: Untagged
+  m_TagString: Walkable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -270,7 +270,7 @@ GameObject:
   - component: {fileID: 8482273654859271869}
   m_Layer: 12
   m_Name: Grass
-  m_TagString: Untagged
+  m_TagString: Walkable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -365,7 +365,7 @@ GameObject:
   - component: {fileID: 8482273655654183729}
   m_Layer: 12
   m_Name: Grass (2)
-  m_TagString: Untagged
+  m_TagString: Walkable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -460,7 +460,7 @@ GameObject:
   - component: {fileID: 8482273655700589911}
   m_Layer: 12
   m_Name: Grass (1)
-  m_TagString: Untagged
+  m_TagString: Walkable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295

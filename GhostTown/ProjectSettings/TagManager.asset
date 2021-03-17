@@ -10,6 +10,7 @@ TagManager:
   - Animal
   - Water
   - Platform
+  - Walkable
   layers:
   - Default
   - TransparentFX

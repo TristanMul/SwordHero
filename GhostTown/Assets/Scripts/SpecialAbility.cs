@@ -23,8 +23,6 @@ public class SpecialAbility : MonoBehaviour
         arrowRing = player.GetComponentInChildren<ArrowRing>();
         sizeIncreased += transform.localScale.x;
         circleResetSize = transform.localScale;
-        //translucentYellow = new Color(249 / 255, 215 / 255, 0 / 255, 100 / 255);
-        //translucentWhite = new Color(1, 1, 1, 100 / 255);
     }
 
     private void FixedUpdate()
@@ -54,13 +52,6 @@ public class SpecialAbility : MonoBehaviour
                 powerCharged = true;
             }
         }
-
-        //if(player.movement.x == 0 && player.movement.z == 0 && powerCharged)
-        //{
-        //    StartCoroutine(PlayAnimation());
-        //    StopCoroutine(PlayAnimation());
-        //}
-
     }
     public void ResetCircleSize()
     {
@@ -71,15 +62,4 @@ public class SpecialAbility : MonoBehaviour
 
         particles.WhileChargedActive = false;
     }
-
-    //IEnumerator PlayAnimation()
-    //{
-    //    player.animator.SetBool("SuperAttack", true);
-    //    player.animator.SetLayerWeight(1, 0);
-    //    arrowRing.SpawnArrows();
-    //    yield return new WaitForSeconds(player.animator.GetCurrentAnimatorStateInfo(0).length + player.animator.GetCurrentAnimatorStateInfo(0).normalizedTime);
-    //    player.animator.SetBool("SuperAttack", false);
-    //    player.animator.SetLayerWeight(1, 1);
-    //    ResetCircleSize();
-    //}
 }

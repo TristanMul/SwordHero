@@ -41,6 +41,7 @@ public class MoveSpiderKing : MonoBehaviour
     void checkIfDestinationReached()
     {
         float distanceToTarget = Vector3.Distance(transform.position, target.transform.position);
+        Debug.Log(distanceToTarget);
         if (distanceToTarget < 1)
         {
 

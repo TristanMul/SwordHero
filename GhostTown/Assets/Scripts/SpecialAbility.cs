@@ -37,7 +37,7 @@ public class SpecialAbility : MonoBehaviour
 
     private void FixedUpdate()
     {
-        destroyAfterSeconds.timer = (triggerSize / 10f) / (arrowRing.arrowSpeed / 40);
+        destroyAfterSeconds.timer = (triggerSize / 10f) / (arrowRing.arrowSpeed / 32.5f);
         rangeRing.localScale = new Vector3(triggerSize / 1.22f, triggerSize / 1.22f, 0);
     }
 

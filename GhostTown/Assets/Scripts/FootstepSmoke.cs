@@ -6,8 +6,10 @@ public class FootstepSmoke : MonoBehaviour
 {
     public ParticleSystem footstepSmoke;
 
-    // Play the footstep smoke particle effect.
+    // Play the footstep smoke particle effect if not already playing.
     public void PlayFootstepSmokeEffect(){
-        footstepSmoke.Play();
+        if(!footstepSmoke.isPlaying){
+            footstepSmoke.Play();
+        }
     }
 }

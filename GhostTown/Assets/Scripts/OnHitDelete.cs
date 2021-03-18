@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class OnHitDelete : MonoBehaviour
 {
+    public GameObject hitEffect;
     private void OnTriggerEnter(Collider obj)
     {
         if (obj.tag == "Enemy")
@@ -11,6 +12,8 @@ public class OnHitDelete : MonoBehaviour
             if(obj.GetComponent<EnemyHealth>()){
                 obj.GetComponent<EnemyHealth>().TakeDamage(1f);
             }
+            Instantiate(hitEffect, transform.position, transform.rotation);
+
             Destroy(this.gameObject);
         }
     }

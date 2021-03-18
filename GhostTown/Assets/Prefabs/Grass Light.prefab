@@ -2250,6 +2250,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tile (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4399045663999600809, guid: 1a1357048e94e4dc5aa7d98c2b965635,
+        type: 3}
+      propertyPath: m_TagString
+      value: Walkable
+      objectReference: {fileID: 0}
     - target: {fileID: 4422037256552559487, guid: 1a1357048e94e4dc5aa7d98c2b965635,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

@@ -10,6 +10,8 @@ TagManager:
   - Animal
   - Water
   - Platform
+  - Walkable
+  - EnemyGroup
   layers:
   - Default
   - TransparentFX

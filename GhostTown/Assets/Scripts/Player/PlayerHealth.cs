@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -25,14 +26,6 @@ public class PlayerHealth : MonoBehaviour
         invulnerable = false;
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Mouse1))
-        {
-            animator.SetBool("IsDead", true);
-        }
-    }
-
     public void TakeDamage(float damage){
         if(!invulnerable){
             // Player can't take damage for a while after taking damage.
@@ -48,10 +41,20 @@ public class PlayerHealth : MonoBehaviour
             // Check if player is dead.
             if (currentHealth <= 0)
             {
-                // Player death logic here.
+                // Turn off player collider and logic.
+                GetComponent<Collider>().enabled = false;
+                GetComponent<Rigidbody>().isKinematic = true;
+                GetComponent<Rigidbody>().detectCollisions = false;
+                GetComponent<NavMeshAgent>().enabled = false;
                 GetComponent<PlayerMovement>().enabled = false;
+                transform.Find("FiringPoint").GetComponent<ShootArrow>().enabled = false;
+
+                // Hide player child objects.
+                healthBar.gameObject.SetActive(false);
+                transform.Find("Charging Circle").gameObject.SetActive(false);
+                transform.Find("Arrow Range").gameObject.SetActive(false);
                 
-                Debug.Log(animator);
+                // Play death animation.
                 animator.SetBool("IsDead", true);
             }
 

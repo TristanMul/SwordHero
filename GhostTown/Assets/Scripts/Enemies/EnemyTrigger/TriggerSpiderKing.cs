@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TriggerEnemies : MonoBehaviour
+public class TriggerSpiderKing : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other) {
         // Activate when player enters range.
@@ -20,10 +20,9 @@ public class TriggerEnemies : MonoBehaviour
                     GetComponent<Collider>().enabled = false;
 
                     // Enemies start following player.
-                    enemy.GetComponent<FollowPlayer>().enabled = true;
+                    enemy.GetComponent<MoveSpiderKing>().enabled = true;
                     enemy.GetComponent<EnemyBaseClass>().enemyState = EnemyBaseClass.EnemyState.Move;
                 }
-
             }
         }
     }

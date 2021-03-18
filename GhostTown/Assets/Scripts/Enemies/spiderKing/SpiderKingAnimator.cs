@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpiderAnimator : EnemyAnimator
+public class SpiderKingAnimator : EnemyAnimator
 {
-
+    // Start is called before the first frame update
     public override void Start()
     {
-        enemy = GetComponent<Spider>();
+        enemy = GetComponent<SpiderKing>();
         animator = GetComponent<Animator>();
     }
 }

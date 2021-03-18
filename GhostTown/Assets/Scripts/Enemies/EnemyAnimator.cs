@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class EnemyAnimator : MonoBehaviour
 {
-    [HideInInspector] public EnemyBaseClass enemy;
-    [HideInInspector] public Animator animator;
+    private EnemyBaseClass enemy;
+    private Animator animator;
 
     public virtual void Start()
     {
+        enemy = GetComponent<EnemyBaseClass>();
+        animator = GetComponent<Animator>();
+        enemy.setAnimations();
     }
 
     private void FixedUpdate()
@@ -22,22 +25,25 @@ public class EnemyAnimator : MonoBehaviour
         switch (enemy.enemyState)
         {
             case EnemyBaseClass.EnemyState.Idle:
-                animator.Play("Idle");
+                animator.Play(enemy.IdleAnimation);
                 break;
             case EnemyBaseClass.EnemyState.Move:
-                animator.Play("Crawl Forward Fast In Place");
+                animator.Play(enemy.MoveAnimation);
                 break;
             case EnemyBaseClass.EnemyState.Attack:
-                animator.Play("Bite Attack");
+                animator.Play(enemy.AttackAnimation);
                 break;
             case EnemyBaseClass.EnemyState.Damaged:
-                animator.Play("Take Damage");
+                animator.Play(enemy.DamagedAnimation);
                 break;
             case EnemyBaseClass.EnemyState.Death:
-                animator.Play("Die");
+                animator.Play(enemy.DeathAnimation);
+                break;
+            case EnemyBaseClass.EnemyState.SpecialAttack:
+                animator.Play(enemy.SpecialAttackAnimation);
                 break;
             default:
-                animator.Play("Idle");
+                animator.Play(enemy.IdleAnimation);
                 break;
         }
     }

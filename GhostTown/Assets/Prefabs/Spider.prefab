@@ -1015,10 +1015,10 @@ GameObject:
   - component: {fileID: 2351192173142595656}
   - component: {fileID: 7944890798685568740}
   - component: {fileID: -3523968100392989163}
-  - component: {fileID: 8020433434713809550}
   - component: {fileID: 1996433040898711555}
   - component: {fileID: -5502409402576693326}
   - component: {fileID: 7804880139828663475}
+  - component: {fileID: 1701320247757489343}
   m_Layer: 0
   m_Name: Spider
   m_TagString: Enemy
@@ -1103,18 +1103,6 @@ MonoBehaviour:
   whiteFlash: {fileID: 2100000, guid: 9dfded9c423fc5d4d966490f7522aadf, type: 2}
   deathParticles: {fileID: 6369984750543833569, guid: 3b3d25ef49a4d784aba925bacd707983,
     type: 3}
---- !u!114 &8020433434713809550
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1996433040889320387}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d10d12d747b02741be3654246ed8f38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!95 &1996433040898711555
 Animator:
   serializedVersion: 3
@@ -1169,6 +1157,18 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.8
   m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!114 &1701320247757489343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1996433040889320387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd0818be0a92bf74f9b02e124d032ea4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1996433040889320389
 GameObject:
   m_ObjectHideFlags: 0

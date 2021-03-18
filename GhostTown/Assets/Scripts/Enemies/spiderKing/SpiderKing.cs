@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.AI;
 public class SpiderKing : EnemyBaseClass
 {
     [SerializeField] private MoveSpiderKing movement;
@@ -9,20 +9,15 @@ public class SpiderKing : EnemyBaseClass
     int hashCastSpell; 
     void Start()
     {
-        hashCastSpell = Animator.StringToHash("castSpell");
-        enemyState = EnemyState.Idle;
+        setAnimations();
+        //enemyState = EnemyState.Idle;
     }
-    private void FixedUpdate()
+
+    public override void setAnimations()
     {
-        shootProjectiles();
-    }
-    IEnumerator shootProjectiles()
-    {
-        Debug.Log(npcAnimator.GetBool(movement.hashReachedDestination));
-        if (npcAnimator.GetBool(movement.hashReachedDestination))
-        {
-           yield return new WaitForSeconds(0.6f);
-            npcAnimator.SetBool(hashCastSpell, true);
-        }
+        IdleAnimation = "Idle";
+        MoveAnimation = "Crawl forward slow in place";
+        SpecialAttackAnimation = "Cast Spell";
+
     }
 }

@@ -1069,8 +1069,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 7
-  maxHealth: 10
-  currentHealth: 10
+  maxHealth: 1
+  currentHealth: 1
   attackRange: 2.5
   enemyState: 0
 --- !u!114 &7944890798685568740

@@ -9,7 +9,7 @@ public class SpecialAbility : MonoBehaviour
     [SerializeField] private float triggerSize;
     private float sizeIncreased = 0;
     private Transform rangeRing;
-    private DestroyAfterSeconds arrow;
+    private DestroyAfterSeconds destroyAfterSeconds;
 
     [HideInInspector] public bool powerCharged = false;
     public float specialDamage;
@@ -25,10 +25,11 @@ public class SpecialAbility : MonoBehaviour
     private void Awake()
     {
         //arrow = GameObject.Find("Special Attack").GetComponent<ArrowRing>();
-        arrow = GetComponent<DestroyAfterSeconds>();
         //arrowRange = arrow.arrow.GetComponent<DestroyAfterSeconds>();
         player = GetComponentInParent<PlayerMovement>();
-        arrowRing = player.GetComponentInChildren<ArrowRing>();
+        arrowRing = GetComponentInChildren<ArrowRing>();
+        destroyAfterSeconds = arrowRing.arrow.GetComponent<DestroyAfterSeconds>();
+        //arrowRing.GetComponent<>
         sizeIncreased += transform.localScale.x;
         circleResetSize = transform.localScale;
         rangeRing = GameObject.Find("Arrow Range").GetComponent<Transform>();
@@ -36,7 +37,7 @@ public class SpecialAbility : MonoBehaviour
 
     private void FixedUpdate()
     {
-        arrowRange.timer = (triggerSize / 10f) / (arrowRing.arrowSpeed / 40);
+        destroyAfterSeconds.timer = (triggerSize / 10f) / (arrowRing.arrowSpeed / 40);
         rangeRing.localScale = new Vector3(triggerSize / 1.22f, triggerSize / 1.22f, 0);
     }
 

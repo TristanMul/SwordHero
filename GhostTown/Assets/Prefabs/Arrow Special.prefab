@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 3423136755469318279}
   - component: {fileID: 3423136755469318280}
   - component: {fileID: 3423136755469318275}
-  - component: {fileID: 3423136755469318274}
   - component: {fileID: 7137063292246458524}
   m_Layer: 0
   m_Name: Arrow Special
@@ -223,18 +222,6 @@ TrailRenderer:
   m_MinVertexDistance: 1
   m_Autodestruct: 0
   m_Emitting: 1
---- !u!114 &3423136755469318274
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7223829883964454553}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93480b4c749e6ba43acac2c77b714473, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &7137063292246458524
 MonoBehaviour:
   m_ObjectHideFlags: 0

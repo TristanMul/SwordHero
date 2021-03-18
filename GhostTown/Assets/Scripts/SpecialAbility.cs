@@ -9,9 +9,10 @@ public class SpecialAbility : MonoBehaviour
     [SerializeField] private float triggerSize;
     private float sizeIncreased = 0;
     private Transform rangeRing;
-    private ArrowRing arrow;
+    private DestroyAfterSeconds arrow;
 
     [HideInInspector] public bool powerCharged = false;
+    public float specialDamage;
     public Color translucentYellow;
     public Color translucentWhite;
     public PlayerParticles particles;
@@ -23,8 +24,9 @@ public class SpecialAbility : MonoBehaviour
 
     private void Awake()
     {
-        arrow = GameObject.Find("Special Attack").GetComponent<ArrowRing>();
-        arrowRange = arrow.arrow.GetComponent<DestroyAfterSeconds>();
+        //arrow = GameObject.Find("Special Attack").GetComponent<ArrowRing>();
+        arrow = GetComponent<DestroyAfterSeconds>();
+        //arrowRange = arrow.arrow.GetComponent<DestroyAfterSeconds>();
         player = GetComponentInParent<PlayerMovement>();
         arrowRing = player.GetComponentInChildren<ArrowRing>();
         sizeIncreased += transform.localScale.x;
@@ -34,7 +36,7 @@ public class SpecialAbility : MonoBehaviour
 
     private void FixedUpdate()
     {
-        arrowRange.timer = triggerSize / 10f;
+        arrowRange.timer = (triggerSize / 10f) / (arrowRing.arrowSpeed / 40);
         rangeRing.localScale = new Vector3(triggerSize / 1.22f, triggerSize / 1.22f, 0);
     }
 
@@ -64,11 +66,24 @@ public class SpecialAbility : MonoBehaviour
     }
     public void ResetCircleSize()
     {
+        DetectEnemies(player.transform.position, triggerSize * 4f);
         GetComponent<SpriteRenderer>().color = translucentWhite;
         transform.localScale = circleResetSize;
         sizeIncreased = transform.localScale.x;
         powerCharged = false;
 
         particles.WhileChargedActive = false;
+    }
+
+    void DetectEnemies(Vector3 position, float radius)
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(position, radius);
+        foreach (Collider hitCollider in hitColliders)
+        {
+            if (hitCollider.tag == "Enemy")
+            {
+                hitCollider.GetComponent<EnemyHealth>().TakeDamage(specialDamage);
+            }
+        }
     }
 }

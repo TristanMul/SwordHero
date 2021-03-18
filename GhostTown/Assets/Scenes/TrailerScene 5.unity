@@ -6300,6 +6300,75 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 828501846}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &829972547
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1111470919919349658, guid: b8d618698f98ecb498e5e94b0007b5dc,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1111470919919349658, guid: b8d618698f98ecb498e5e94b0007b5dc,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 8.98
+      objectReference: {fileID: 0}
+    - target: {fileID: 1111470919919349658, guid: b8d618698f98ecb498e5e94b0007b5dc,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 1111470919919349658, guid: b8d618698f98ecb498e5e94b0007b5dc,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -228.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1111470919919349658, guid: b8d618698f98ecb498e5e94b0007b5dc,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1111470919919349658, guid: b8d618698f98ecb498e5e94b0007b5dc,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1111470919919349658, guid: b8d618698f98ecb498e5e94b0007b5dc,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1111470919919349658, guid: b8d618698f98ecb498e5e94b0007b5dc,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1111470919919349658, guid: b8d618698f98ecb498e5e94b0007b5dc,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1111470919919349658, guid: b8d618698f98ecb498e5e94b0007b5dc,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1111470919919349658, guid: b8d618698f98ecb498e5e94b0007b5dc,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2737906343060559884, guid: b8d618698f98ecb498e5e94b0007b5dc,
+        type: 3}
+      propertyPath: m_Name
+      value: SpiderKingTrigger
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b8d618698f98ecb498e5e94b0007b5dc, type: 3}
 --- !u!1001 &843749065
 PrefabInstance:
   m_ObjectHideFlags: 0

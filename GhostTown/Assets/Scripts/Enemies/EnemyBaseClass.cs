@@ -26,12 +26,30 @@ public class EnemyBaseClass : MonoBehaviour
         Attack,
         Damaged,
         Death,
+        SpecialAttack,
     }
+    protected string idleAnimation;
+    protected string moveAnimation;
+    protected string attackAnimation;
+    protected string damagedAnimation;
+    protected string deathAnimation;
+    protected string specialAttackAnimation;
+
+    public string IdleAnimation { get { return idleAnimation; } protected set { idleAnimation = value; } }
+    public string MoveAnimation { get { return moveAnimation; } protected set {  moveAnimation = value; } }
+    public string AttackAnimation { get { return attackAnimation; } protected set {  attackAnimation = value; } }
+    public string DamagedAnimation { get { return damagedAnimation; } protected set {  damagedAnimation = value; } }
+    public string DeathAnimation { get { return deathAnimation; } protected set {  deathAnimation = value; } }
+    public string SpecialAttackAnimation { get { return specialAttackAnimation; } protected set { specialAttackAnimation = value; } }
 
     private void Awake() {
         // Get healthbar for this enemy.
         healthBar = transform.Find("HealthBar").GetComponent<HealthBar>();
         healthBar.UpdateHealthBar(currentHealth, maxHealth);
+    }
+    public virtual void setAnimations()
+    {
+
     }
     
 }

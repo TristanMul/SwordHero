@@ -21,6 +21,7 @@ public class TriggerSpiderKing : MonoBehaviour
 
                     // Enemies start following player.
                     enemy.GetComponent<MoveSpiderKing>().enabled = true;
+                    enemy.GetComponent<SpiderKing>().enabled = true;
                     enemy.GetComponent<EnemyBaseClass>().enemyState = EnemyBaseClass.EnemyState.Move;
                 }
             }

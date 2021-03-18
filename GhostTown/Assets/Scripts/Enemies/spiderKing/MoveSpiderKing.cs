@@ -26,6 +26,8 @@ public class MoveSpiderKing : MonoBehaviour
     {
         moveToTarget();
         checkIfDestinationReached();
+       // Debug.Log("Cast Spell:" + npcAnimator.GetAnimatorTransitionInfo(0).IsName("hasCastSpell"));
+        //Debug.Log("Transitioning:" + npcAnimator.IsInTransition(0));
     }
     void moveToTarget()
     {
@@ -39,10 +41,13 @@ public class MoveSpiderKing : MonoBehaviour
     void checkIfDestinationReached()
     {
         float distanceToTarget = Vector3.Distance(transform.position, target.transform.position);
+        Debug.Log(distanceToTarget);
         if (distanceToTarget < 1)
         {
+
             navMeshAgent.speed = 0;
-            npcAnimator.SetBool(hashReachedDestination, true);
+            controllerClass.enemyState = EnemyBaseClass.EnemyState.SpecialAttack;
+            this.GetComponent<MoveSpiderKing>().enabled = false;
         }
     }
 }

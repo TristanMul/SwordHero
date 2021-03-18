@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AgroRange : MonoBehaviour
 {
-    public GameObject player;
+    private GameObject player;
     public float spotRange;
     public float attackRange;
     float distance;
@@ -13,6 +13,7 @@ public class AgroRange : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = GameManager.instance._player;
         plane = this.gameObject.GetComponent<SpriteRenderer>();
         plane.enabled = false;
     }

@@ -46,6 +46,7 @@ public class MoveSpiderKing : MonoBehaviour
 
             navMeshAgent.speed = 0;
             controllerClass.enemyState = EnemyBaseClass.EnemyState.SpecialAttack;
+            this.GetComponent<MoveSpiderKing>().enabled = false;
         }
     }
 }

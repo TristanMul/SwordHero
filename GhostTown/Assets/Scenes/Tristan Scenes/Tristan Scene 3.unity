@@ -1273,15 +1273,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32183873c0cfd2c4caece68b5ff45051, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _enemy: {fileID: 0}
+  finishLine: {fileID: 0}
+  _player: {fileID: 0}
   CameraSpeed: 0
   AnimationSpeed: 0
   PlayerSpeed: 0
   FontSize: 0
-  _player: {fileID: 0}
-  _enemy: {fileID: 0}
   pressToStart: {fileID: 1872523188}
   gameOverUI: {fileID: 685813960}
-  finishLine: {fileID: 0}
   _speed: 0
   playerAlive: 0
   vortexHangTime: 1
@@ -23509,6 +23509,31 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bd0818be0a92bf74f9b02e124d032ea4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1071847208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1071847206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f6f94c97e8622409883d85203504e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controllerClass: {fileID: 1071847210}
+--- !u!114 &1071847210 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7143653514068641013, guid: a1523669ffaf62b4fa55c398bd5f101d,
+    type: 3}
+  m_PrefabInstance: {fileID: 7143653514569405624}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1071847206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 927b79a204d618e479acc043deed58d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1080412995

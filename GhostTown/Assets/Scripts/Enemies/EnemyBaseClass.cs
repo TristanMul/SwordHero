@@ -27,6 +27,7 @@ public class EnemyBaseClass : MonoBehaviour
         Damaged,
         Death,
         SpecialAttack,
+        Emote, 
     }
     protected string idleAnimation;
     protected string moveAnimation;
@@ -34,6 +35,7 @@ public class EnemyBaseClass : MonoBehaviour
     protected string damagedAnimation;
     protected string deathAnimation;
     protected string specialAttackAnimation;
+    protected string emoteAnimation;
 
     public string IdleAnimation { get { return idleAnimation; } protected set { idleAnimation = value; } }
     public string MoveAnimation { get { return moveAnimation; } protected set {  moveAnimation = value; } }
@@ -41,6 +43,7 @@ public class EnemyBaseClass : MonoBehaviour
     public string DamagedAnimation { get { return damagedAnimation; } protected set {  damagedAnimation = value; } }
     public string DeathAnimation { get { return deathAnimation; } protected set {  deathAnimation = value; } }
     public string SpecialAttackAnimation { get { return specialAttackAnimation; } protected set { specialAttackAnimation = value; } }
+    public string EmoteAnimation { get { return emoteAnimation; } protected set { emoteAnimation = value; } }
 
     private void Awake() {
         // Get healthbar for this enemy.

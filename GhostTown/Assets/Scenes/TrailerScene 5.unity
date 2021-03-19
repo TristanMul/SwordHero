@@ -6367,6 +6367,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpiderKingTrigger
       objectReference: {fileID: 0}
+    - target: {fileID: 5561379197940319926, guid: b8d618698f98ecb498e5e94b0007b5dc,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5561379197940319926, guid: b8d618698f98ecb498e5e94b0007b5dc,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5561379197940319926, guid: b8d618698f98ecb498e5e94b0007b5dc,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b8d618698f98ecb498e5e94b0007b5dc, type: 3}
 --- !u!1001 &843749065
@@ -6672,6 +6687,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1507799521101589067, guid: 9fed8d7a0729ae44ab705d880df487d2,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 5357310080878962959, guid: 9fed8d7a0729ae44ab705d880df487d2,
+        type: 3}
+      propertyPath: ShapeModule.length
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5357310080878962959, guid: 9fed8d7a0729ae44ab705d880df487d2,
+        type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 5.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5357310080878962959, guid: 9fed8d7a0729ae44ab705d880df487d2,
+        type: 3}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5368363231678302902, guid: 9fed8d7a0729ae44ab705d880df487d2,
+        type: 3}
+      propertyPath: m_Name
+      value: CircleParticles
+      objectReference: {fileID: 0}
     - target: {fileID: 6905857894338607162, guid: 9fed8d7a0729ae44ab705d880df487d2,
         type: 3}
       propertyPath: arrowSpeed
@@ -9317,6 +9357,11 @@ PrefabInstance:
         type: 3}
       propertyPath: FollowTarget
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7560107519605460805, guid: 5f0b6c9e4ccffcb46b0c47ca557070eb,
+        type: 3}
+      propertyPath: doScreenShake
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7560107519605460805, guid: 5f0b6c9e4ccffcb46b0c47ca557070eb,
         type: 3}

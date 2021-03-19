@@ -42,6 +42,9 @@ public class EnemyAnimator : MonoBehaviour
             case EnemyBaseClass.EnemyState.SpecialAttack:
                 animator.Play(enemy.SpecialAttackAnimation);
                 break;
+            case EnemyBaseClass.EnemyState.Emote:
+                animator.Play("Bite Attack");
+                break;
             default:
                 animator.Play(enemy.IdleAnimation);
                 break;

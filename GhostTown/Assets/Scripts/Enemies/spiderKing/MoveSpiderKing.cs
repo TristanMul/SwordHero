@@ -12,6 +12,7 @@ public class MoveSpiderKing : MonoBehaviour
     public int hashSpeed, hashReachedDestination;
     [SerializeField] float movementSpeed;
     bool hasReachedDestination = false;
+    public bool isMoving;
     // Start is called before the first frame update
     private void Start()
     {
@@ -24,20 +25,33 @@ public class MoveSpiderKing : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        moveToTarget();
+        if (isMoving)
+        {
+            moveToTarget();
+        }
         checkIfDestinationReached();
-       // Debug.Log("Cast Spell:" + npcAnimator.GetAnimatorTransitionInfo(0).IsName("hasCastSpell"));
+        // Debug.Log("Cast Spell:" + npcAnimator.GetAnimatorTransitionInfo(0).IsName("hasCastSpell"));
         //Debug.Log("Transitioning:" + npcAnimator.IsInTransition(0));
     }
     void moveToTarget()
     {
-        if(controllerClass.enemyState == EnemyBaseClass.EnemyState.Move)
+        if (controllerClass.enemyState == EnemyBaseClass.EnemyState.Move)
         {
             navMeshAgent.speed = movementSpeed;
             navMeshAgent.SetDestination(target.transform.position);
             npcAnimator.SetFloat(hashSpeed, navMeshAgent.speed);
         }
     }
+
+    /// <summary>
+    /// Activates the movement of the player
+    /// </summary>
+    public void StartMoving()
+    {
+        isMoving = true;
+        GetComponent<EnemyBaseClass>().enemyState = EnemyBaseClass.EnemyState.Move;
+    }
+
     void checkIfDestinationReached()
     {
         float distanceToTarget = Vector3.Distance(transform.position, target.transform.position);

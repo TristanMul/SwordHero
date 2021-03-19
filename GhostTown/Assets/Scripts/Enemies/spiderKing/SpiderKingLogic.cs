@@ -29,9 +29,9 @@ public class SpiderKingLogic : MonoBehaviour
             StartCoroutine(shootProjectiles());
             animator.speed = 1;
             yield return new WaitForSeconds(0.4f);
-            hasCastSpell = true;
             controllerClass.enemyState = EnemyBaseClass.EnemyState.Idle;
         }
+        StopCoroutine(returnToIdle());
     }
     IEnumerator shootProjectiles()
     {

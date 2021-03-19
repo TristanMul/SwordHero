@@ -6408,6 +6408,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpiderKingTrigger
       objectReference: {fileID: 0}
+    - target: {fileID: 5561379197151134158, guid: b8d618698f98ecb498e5e94b0007b5dc,
+        type: 3}
+      propertyPath: maxFireBalls
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5561379197940319912, guid: b8d618698f98ecb498e5e94b0007b5dc,
         type: 3}
       propertyPath: m_Radius

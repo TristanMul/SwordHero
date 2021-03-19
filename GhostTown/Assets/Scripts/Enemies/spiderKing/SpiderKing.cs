@@ -16,7 +16,6 @@ public class SpiderKing : EnemyBaseClass
 
     void Awake()
     {
-        Debug.Log("startBoss");
         agent = GetComponent<NavMeshAgent>();
         cam = Camera.main.GetComponent<CameraManager>();
         rb = GetComponent<Rigidbody>();
@@ -35,7 +34,6 @@ public class SpiderKing : EnemyBaseClass
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.gameObject.tag);
         if (!hasDropped && collision.gameObject.tag == "Walkable")//What happens when the spider king hits the ground
         {
             hasDropped = true;
@@ -51,7 +49,6 @@ public class SpiderKing : EnemyBaseClass
 
             dropParticles.Play();
             GetComponent<EnemyBaseClass>().enemyState = EnemyBaseClass.EnemyState.Emote;
-            Debug.Log(npcAnimator.GetCurrentAnimatorStateInfo(0).length);
             StartCoroutine(waitAndStartWalking(npcAnimator.GetCurrentAnimatorStateInfo(0).length / npcAnimator.GetCurrentAnimatorStateInfo(0).speed));
         }
     }

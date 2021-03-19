@@ -15025,6 +15025,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerParticles
       objectReference: {fileID: 0}
+    - target: {fileID: 6354728167116534071, guid: cd54bd35f04cee843ae019e838b2d0ac,
+        type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 5.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8995409578221159879, guid: cd54bd35f04cee843ae019e838b2d0ac,
+        type: 3}
+      propertyPath: ShapeModule.length
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8995409578221159879, guid: cd54bd35f04cee843ae019e838b2d0ac,
+        type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 5.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8995409578221159879, guid: cd54bd35f04cee843ae019e838b2d0ac,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd54bd35f04cee843ae019e838b2d0ac, type: 3}
 --- !u!4 &2605890520966165204 stripped

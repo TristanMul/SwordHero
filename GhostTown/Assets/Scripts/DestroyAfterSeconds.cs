@@ -14,6 +14,9 @@ public class DestroyAfterSeconds : MonoBehaviour
 
     IEnumerator DestroyObject(float time)
     {
+        
+        transform.position = transform.position;
+        GetComponent<Rigidbody>().velocity = Vector3.zero;
         yield return new WaitForSeconds(time);
         Destroy(gameObject);
     }

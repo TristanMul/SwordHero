@@ -64,7 +64,6 @@ public class DeathAnimation : MonoBehaviour
             coinsText.material.color = newColor;
             yield return null;
         }
-        Debug.Log("destroy");
         Destroy(gameObject);
     }
 }

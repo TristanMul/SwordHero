@@ -12,7 +12,6 @@ public class explode : MonoBehaviour
     {
         if(other.gameObject.tag == "Walkable")
         {
-            Debug.Log("Has triggered");
             Instantiate(explosion,transform.position,Quaternion.identity);
         }
     }

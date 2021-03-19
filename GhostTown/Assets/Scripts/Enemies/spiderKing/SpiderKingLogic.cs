@@ -7,12 +7,16 @@ public class SpiderKingLogic : MonoBehaviour
     public EnemyBaseClass controllerClass;
     private Animator animator;
     bool hasCastSpell = false;
+    private GameObject bombArea;
+
     [SerializeField] private Object spiderBallPrefab;
     [SerializeField] private Transform mouth;
     [SerializeField] private int maxFireBalls;
     private void Start()
     {
         animator = GetComponent<Animator>();
+        bombArea = GameObject.Find("BombDropPlace");
+        bombArea.gameObject.SetActive(false);
     }
     private void FixedUpdate()
     {
@@ -37,9 +41,12 @@ public class SpiderKingLogic : MonoBehaviour
     {
         for(int i = 0; i < maxFireBalls; i++)
         {
-        Instantiate(spiderBallPrefab, mouth);      
-        yield return new WaitForSeconds(0.1f);
+            Instantiate(spiderBallPrefab, mouth);      
+            yield return new WaitForSeconds(0.1f);
         }
+
+        yield return new WaitForSeconds(1f);
+        bombArea.gameObject.SetActive(true);
         StopCoroutine(shootProjectiles());
     }
 }

@@ -24,11 +24,9 @@ public class explode : MonoBehaviour
 
     IEnumerator TurnOnTrigger(float explosionTime)
     {
-        Destroy(coll.transform.parent.gameObject);
         yield return new WaitForSeconds(explosionTime / 2);
         coll.enabled = true;
         yield return new WaitForSeconds(explosionTime);
-        coll.enabled = false;
-        
+        Destroy(coll.transform.parent.gameObject);
     }
 }

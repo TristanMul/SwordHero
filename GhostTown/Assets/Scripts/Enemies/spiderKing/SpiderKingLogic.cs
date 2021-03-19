@@ -9,7 +9,7 @@ public class SpiderKingLogic : MonoBehaviour
     bool hasCastSpell = false;
     [SerializeField] private Object spiderBallPrefab;
     [SerializeField] private Transform mouth;
-
+    [SerializeField] private int maxFireBalls;
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -35,17 +35,11 @@ public class SpiderKingLogic : MonoBehaviour
     }
     IEnumerator shootProjectiles()
     {
-        Debug.Log("Instantiating");
-        Instantiate(spiderBallPrefab, mouth);
-        Debug.Log("Instantiated");
+        for(int i = 0; i < maxFireBalls; i++)
+        {
+        Instantiate(spiderBallPrefab, mouth);      
         yield return new WaitForSeconds(0.1f);
-        Instantiate(spiderBallPrefab, mouth);
-        yield return new WaitForSeconds(0.1f);
-        Instantiate(spiderBallPrefab, mouth);
-        yield return new WaitForSeconds(0.1f);
-        Instantiate(spiderBallPrefab, mouth);
-        yield return new WaitForSeconds(0.1f);
-        Instantiate(spiderBallPrefab, mouth);
+        }
         StopCoroutine(shootProjectiles());
     }
 }

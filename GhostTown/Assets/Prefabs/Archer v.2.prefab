@@ -14760,7 +14760,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: ac0bd724802604cfab1fa87c91ec941d, type: 3}
-  m_Color: {r: 0.990566, g: 0.92081684, b: 0, a: 0.49019608}
+  m_Color: {r: 0.990566, g: 0.92081684, b: 0, a: 0.5882353}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -14787,7 +14787,7 @@ MonoBehaviour:
   powerCharged: 0
   specialDamage: 1
   translucentYellow: {r: 0.990566, g: 0.92081684, b: 0, a: 1}
-  translucentWhite: {r: 0.990566, g: 0.92081684, b: 0, a: 0.49019608}
+  translucentWhite: {r: 0.990566, g: 0.92081684, b: 0, a: 0.5882353}
   particles: {fileID: 2605890520966165203}
 --- !u!135 &3325918710366321934
 SphereCollider:

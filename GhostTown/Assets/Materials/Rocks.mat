@@ -87,7 +87,7 @@ Material:
     - _GradientCenterY: 0
     - _GradientEnabled: 0
     - _GradientSize: 10
-    - _LightContribution: 0
+    - _LightContribution: 0.7
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1

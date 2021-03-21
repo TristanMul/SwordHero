@@ -9933,6 +9933,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 33158654, guid: b8d618698f98ecb498e5e94b0007b5dc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 497752689, guid: b8d618698f98ecb498e5e94b0007b5dc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 1111470919919349658, guid: b8d618698f98ecb498e5e94b0007b5dc,
         type: 3}
       propertyPath: m_RootOrder
@@ -12067,6 +12075,101 @@ PrefabInstance:
     - target: {fileID: 2471021697360006750, guid: b2603ba97f8bea24c90c57a97762dab3,
         type: 3}
       propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6184909658477699051, guid: b2603ba97f8bea24c90c57a97762dab3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6184909658477699053, guid: b2603ba97f8bea24c90c57a97762dab3,
+        type: 3}
+      propertyPath: white.a
+      value: 0.78431374
+      objectReference: {fileID: 0}
+    - target: {fileID: 6184909658477699053, guid: b2603ba97f8bea24c90c57a97762dab3,
+        type: 3}
+      propertyPath: white.b
+      value: 0.25303364
+      objectReference: {fileID: 0}
+    - target: {fileID: 6184909658477699053, guid: b2603ba97f8bea24c90c57a97762dab3,
+        type: 3}
+      propertyPath: white.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6184909658477699053, guid: b2603ba97f8bea24c90c57a97762dab3,
+        type: 3}
+      propertyPath: transparent.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6184909658477699053, guid: b2603ba97f8bea24c90c57a97762dab3,
+        type: 3}
+      propertyPath: transparent.b
+      value: 0.25303364
+      objectReference: {fileID: 0}
+    - target: {fileID: 6184909658477699053, guid: b2603ba97f8bea24c90c57a97762dab3,
+        type: 3}
+      propertyPath: transparent.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7228923506564339621, guid: b2603ba97f8bea24c90c57a97762dab3,
+        type: 3}
+      propertyPath: white.a
+      value: 0.78431374
+      objectReference: {fileID: 0}
+    - target: {fileID: 7228923506564339621, guid: b2603ba97f8bea24c90c57a97762dab3,
+        type: 3}
+      propertyPath: white.b
+      value: 0.25303364
+      objectReference: {fileID: 0}
+    - target: {fileID: 7228923506564339621, guid: b2603ba97f8bea24c90c57a97762dab3,
+        type: 3}
+      propertyPath: white.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7228923506564339621, guid: b2603ba97f8bea24c90c57a97762dab3,
+        type: 3}
+      propertyPath: transparent.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7228923506564339621, guid: b2603ba97f8bea24c90c57a97762dab3,
+        type: 3}
+      propertyPath: transparent.b
+      value: 0.25303364
+      objectReference: {fileID: 0}
+    - target: {fileID: 7228923506564339621, guid: b2603ba97f8bea24c90c57a97762dab3,
+        type: 3}
+      propertyPath: transparent.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7228923506612185576, guid: b2603ba97f8bea24c90c57a97762dab3,
+        type: 3}
+      propertyPath: white.a
+      value: 0.78431374
+      objectReference: {fileID: 0}
+    - target: {fileID: 7228923506612185576, guid: b2603ba97f8bea24c90c57a97762dab3,
+        type: 3}
+      propertyPath: white.b
+      value: 0.25303364
+      objectReference: {fileID: 0}
+    - target: {fileID: 7228923506612185576, guid: b2603ba97f8bea24c90c57a97762dab3,
+        type: 3}
+      propertyPath: white.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7228923506612185576, guid: b2603ba97f8bea24c90c57a97762dab3,
+        type: 3}
+      propertyPath: transparent.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7228923506612185576, guid: b2603ba97f8bea24c90c57a97762dab3,
+        type: 3}
+      propertyPath: transparent.b
+      value: 0.25303364
+      objectReference: {fileID: 0}
+    - target: {fileID: 7228923506612185576, guid: b2603ba97f8bea24c90c57a97762dab3,
+        type: 3}
+      propertyPath: transparent.g
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7883942690434512248, guid: b2603ba97f8bea24c90c57a97762dab3,

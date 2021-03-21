@@ -48,7 +48,7 @@ public class SpiderKing : EnemyBaseClass
 
 
             dropParticles.Play();
-            GetComponent<EnemyBaseClass>().enemyState = EnemyBaseClass.EnemyState.Emote;
+            
             StartCoroutine(waitAndStartWalking(npcAnimator.GetCurrentAnimatorStateInfo(0).length / npcAnimator.GetCurrentAnimatorStateInfo(0).speed));
         }
     }
@@ -60,6 +60,7 @@ public class SpiderKing : EnemyBaseClass
     /// <returns></returns>
     IEnumerator waitAndStartWalking(float time)
     {
+        GetComponent<EnemyBaseClass>().enemyState = EnemyBaseClass.EnemyState.Emote;
         yield return new WaitForSeconds(time);
         moveSpiderKing.StartMoving();
     }

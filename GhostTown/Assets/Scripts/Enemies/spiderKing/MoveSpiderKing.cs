@@ -11,8 +11,9 @@ public class MoveSpiderKing : MonoBehaviour
     public Animator npcAnimator;
     public int hashSpeed, hashReachedDestination;
     [SerializeField] float movementSpeed;
-    bool hasReachedDestination = false;
     public bool isMoving;
+    public GameObject chargeParticle;
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -23,6 +24,7 @@ public class MoveSpiderKing : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         navMeshAgent.speed = controllerClass.Speed;
     }
+
     private void FixedUpdate()
     {
         if (isMoving)
@@ -30,9 +32,8 @@ public class MoveSpiderKing : MonoBehaviour
             moveToTarget();
         }
         checkIfDestinationReached();
-        // Debug.Log("Cast Spell:" + npcAnimator.GetAnimatorTransitionInfo(0).IsName("hasCastSpell"));
-        //Debug.Log("Transitioning:" + npcAnimator.IsInTransition(0));
     }
+
     void moveToTarget()
     {
         if (controllerClass.enemyState == EnemyBaseClass.EnemyState.Move)
@@ -55,12 +56,21 @@ public class MoveSpiderKing : MonoBehaviour
     void checkIfDestinationReached()
     {
         float distanceToTarget = Vector3.Distance(transform.position, target.transform.position);
-        if (distanceToTarget < 1)
+        if (distanceToTarget < 1f)
         {
-
-            navMeshAgent.speed = 0;
-            controllerClass.enemyState = EnemyBaseClass.EnemyState.SpecialAttack;
-            this.GetComponent<MoveSpiderKing>().enabled = false;
+            StartCoroutine(Wait());
         }
+    }
+
+    IEnumerator Wait()
+    {
+        navMeshAgent.speed = 0;
+        GetComponent<EnemyBaseClass>().enemyState = EnemyBaseClass.EnemyState.Idle;
+        chargeParticle.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        controllerClass.enemyState = EnemyBaseClass.EnemyState.SpecialAttack;
+        this.GetComponent<MoveSpiderKing>().enabled = false;
+        yield return new WaitForSeconds(0.75f);
+        chargeParticle.SetActive(false);
     }
 }

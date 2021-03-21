@@ -8,7 +8,7 @@ public class DamagePlayer : MonoBehaviour
 
     private void Start()
     {
-        player = GameObject.Find("Archer v.2").GetComponent<PlayerHealth>();
+        player = GameObject.Find("Archer").GetComponent<PlayerHealth>();
     }
 
     private void OnTriggerEnter(Collider other)

@@ -23,7 +23,6 @@ public class SpiderKingLogic : MonoBehaviour
     private void FixedUpdate()
     {
         StartCoroutine(returnToIdle());
-       
     }
 
     IEnumerator returnToIdle()

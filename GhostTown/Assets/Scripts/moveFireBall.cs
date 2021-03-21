@@ -6,6 +6,7 @@ public class moveFireBall : MonoBehaviour
 {
     [SerializeField] private float MovementSpeed;
     [SerializeField] private float destructionTimer;
+
     void FixedUpdate()
     {
         transform.position += Vector3.up * MovementSpeed;
@@ -14,6 +15,5 @@ public class moveFireBall : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-
     }
 }

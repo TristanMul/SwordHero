@@ -6,7 +6,8 @@ using TMPro;
 
 public class DeathAnimation : MonoBehaviour
 {
-    private TextMeshProUGUI coinsText;
+    //private TextMeshProUGUI coinsText;
+    public SpriteRenderer coinsText;
     public GameObject canvas;
     public float canvasMoveSpeed;
     private float textDisappearTime = .5f;
@@ -17,13 +18,13 @@ public class DeathAnimation : MonoBehaviour
     /// <param name="amountOfCoins">The amount of coins gained</param>
     public void Setup(int amountOfCoins)
     {
-        coinsText = canvas.GetComponentInChildren<TextMeshProUGUI>();
+        //coinsText = canvas.GetComponentInChildren<TextMeshProUGUI>();
         StartCoroutine(MoveObject());
-        coinsText.text = "+" + amountOfCoins;
+        //coinsText.text = "+" + amountOfCoins;
     }
     private void Start()
     {
-        coinsText = canvas.GetComponentInChildren<TextMeshProUGUI>();
+        //coinsText = canvas.GetComponentInChildren<TextMeshProUGUI>();
         StartCoroutine(MoveObject());
 
     }
@@ -33,7 +34,6 @@ public class DeathAnimation : MonoBehaviour
         Quaternion r1 = Quaternion.LookRotation(canvas.transform.position - Camera.main.transform.position, Vector3.up);
         Vector3 euler2 = canvas.transform.eulerAngles;
         canvas.transform.rotation = Quaternion.Euler(r1.eulerAngles.x, euler2.y, euler2.z);
-        
         UpdateText();
     }
 
@@ -43,16 +43,11 @@ public class DeathAnimation : MonoBehaviour
         Vector3 newLocation = canvas.transform.position;//Updates the location of the text
         newLocation.y += canvasMoveSpeed * coinsText.color.a;
         canvas.transform.position = newLocation;
-
-
-        /*Color textColor = coinsText.material.color;
-        textColor.a -= Time.deltaTime / textDisappearTime;
-        coinsText.material.color = textColor;*/
-        //if(coinsText.material.color.a < .1f) { Destroy(gameObject); }
     }
 
     IEnumerator MoveObject()
     {
+        yield return new WaitForSeconds(0.25f);
         float elapsed = 0.0f;
         float duration = 10f;
         while (elapsed < duration)

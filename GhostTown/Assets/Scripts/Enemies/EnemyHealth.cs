@@ -9,6 +9,7 @@ public class EnemyHealth : MonoBehaviour
     public Material ownMaterial;
     public Material whiteFlash;
     public GameObject deathParticles;
+    private bool isDead = false;
 
     // Enemy took a hit.
     public void TakeDamage(float damage){
@@ -17,8 +18,9 @@ public class EnemyHealth : MonoBehaviour
         controllerClass.HealthBar.UpdateHealthBar(controllerClass.CurrenHealth, controllerClass.MaxHealth);
 
         // Enemy is dead.
-        if(controllerClass.CurrenHealth <= 0){
+        if(controllerClass.CurrenHealth <= 0 && !isDead){
             EnemyDeath();
+            isDead = true;
         }
     }
 

@@ -10244,6 +10244,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpiderKingTrigger
       objectReference: {fileID: 0}
+    - target: {fileID: 7771805217052710621, guid: b8d618698f98ecb498e5e94b0007b5dc,
+        type: 3}
+      propertyPath: m_Radius
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b8d618698f98ecb498e5e94b0007b5dc, type: 3}
 --- !u!23 &833000500 stripped

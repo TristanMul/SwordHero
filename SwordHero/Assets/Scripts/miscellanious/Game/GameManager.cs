@@ -79,6 +79,11 @@ public class GameManager : MonoBehaviour
             }
             StartCoroutine(StartScene());
         }
+
+        if (Input.GetKeyDown(KeyCode.Space))//test for slowtime
+        {
+            StartCoroutine(SlowTime(1f, .5f));
+        }
     }
 
     public IEnumerator StartScene()
@@ -104,5 +109,19 @@ public class GameManager : MonoBehaviour
     {
         //Play animation
         yield return null;
+    }
+
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="duration">The realtime duration of the time slow</param>
+    /// <param name="magnitude">The timescale applied</param>
+    /// <returns></returns>
+    public IEnumerator SlowTime(float duration, float magnitude)
+    {
+        Time.timeScale = magnitude;
+        yield return new WaitForSecondsRealtime(duration);
+        Time.timeScale = 1f;
     }
 }

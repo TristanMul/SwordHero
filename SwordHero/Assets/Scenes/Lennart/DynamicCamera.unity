@@ -16109,36 +16109,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7560107519605460805, guid: 5f0b6c9e4ccffcb46b0c47ca557070eb,
-        type: 3}
-      propertyPath: FollowTarget
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7560107519605460805, guid: 5f0b6c9e4ccffcb46b0c47ca557070eb,
-        type: 3}
-      propertyPath: TargetOffset.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7560107519605460805, guid: 5f0b6c9e4ccffcb46b0c47ca557070eb,
-        type: 3}
-      propertyPath: TargetOffset.y
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 7560107519605460805, guid: 5f0b6c9e4ccffcb46b0c47ca557070eb,
-        type: 3}
-      propertyPath: TargetOffset.z
-      value: -15
-      objectReference: {fileID: 0}
-    - target: {fileID: 7560107519605460805, guid: 5f0b6c9e4ccffcb46b0c47ca557070eb,
-        type: 3}
-      propertyPath: distanceLerpSpeed
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7560107519605460805, guid: 5f0b6c9e4ccffcb46b0c47ca557070eb,
-        type: 3}
-      propertyPath: moveDistanceMagnitude
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 7560107519605460806, guid: 5f0b6c9e4ccffcb46b0c47ca557070eb,
         type: 3}
       propertyPath: m_RootOrder
@@ -16194,30 +16164,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7560107519605460807, guid: 5f0b6c9e4ccffcb46b0c47ca557070eb,
-        type: 3}
-      propertyPath: field of view
-      value: 72.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 7560107519605460807, guid: 5f0b6c9e4ccffcb46b0c47ca557070eb,
-        type: 3}
-      propertyPath: far clip plane
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 7560107519605460807, guid: 5f0b6c9e4ccffcb46b0c47ca557070eb,
-        type: 3}
-      propertyPath: m_CullingMask.m_Bits
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 7560107519605460825, guid: 5f0b6c9e4ccffcb46b0c47ca557070eb,
         type: 3}
       propertyPath: m_Name
       value: Main Camera
-      objectReference: {fileID: 0}
-    - target: {fileID: 7560107519605460825, guid: 5f0b6c9e4ccffcb46b0c47ca557070eb,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f0b6c9e4ccffcb46b0c47ca557070eb, type: 3}
@@ -22364,6 +22314,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6320262571399674411, guid: fd92380cb691de94d9e40117cc1c12ad,
+        type: 3}
+      propertyPath: angleOfShots
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6320262572185545365, guid: fd92380cb691de94d9e40117cc1c12ad,
         type: 3}
       propertyPath: m_RootOrder

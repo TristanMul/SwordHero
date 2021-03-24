@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     GameObject enemy;
     SpecialAbility ability;
     ArrowRing ringOfArrows;
+    GameObject[] allEnemies;
 
     void Awake()
     {
@@ -33,6 +34,8 @@ public class PlayerMovement : MonoBehaviour
         ability = transform.Find("Charging Circle").GetComponent<SpecialAbility>();
         firingPoint = transform.Find("FiringPoint").GetComponent<Transform>();
         gameManager.playerAlive = true;
+        allEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+
     }
 
     void FixedUpdate()
@@ -77,16 +80,19 @@ public class PlayerMovement : MonoBehaviour
     {
         float closestEnemy = Mathf.Infinity;
         GameObject enemy = null;
-        GameObject[] allEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+       
 
         foreach (GameObject currentEnemy in allEnemies)
         {
-            var targetRotation = currentEnemy.transform.position - transform.position;
-            float distanceToEnemy = (currentEnemy.transform.position - this.transform.position).sqrMagnitude;
-            if (distanceToEnemy < closestEnemy)
+            if (currentEnemy)
             {
-                closestEnemy = distanceToEnemy;
-                enemy = currentEnemy;
+                var targetRotation = currentEnemy.transform.position - transform.position;
+                float distanceToEnemy = (currentEnemy.transform.position - this.transform.position).sqrMagnitude;
+                if (distanceToEnemy < closestEnemy)
+                {
+                    closestEnemy = distanceToEnemy;
+                    enemy = currentEnemy;
+                }
             }
         }
 

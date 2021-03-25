@@ -12,7 +12,6 @@ public class GolemFollow : FollowPlayer
     public override void MoveToPlayer()
     {
         float dist = Vector3.Distance(player.transform.position, transform.position);
-        Debug.Log(dist);
         if (player)
         {
             if(dist > triggerRange && !isAttacking)

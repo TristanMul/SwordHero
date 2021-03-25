@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class SpecialAbility : MonoBehaviour
 {
-   
+
+    [SerializeField] private bool specialActive;
     [SerializeField] private float increaseSize;
     [SerializeField] private float triggerSize;
     private float sizeIncreased = 0;
@@ -43,30 +44,34 @@ public class SpecialAbility : MonoBehaviour
 
     public void ChargePower()
     {
-        if (player.movement.x != 0 && player.movement.z != 0)
+        if (specialActive)
         {
-            if (sizeIncreased <= triggerSize)
+            if (player.movement.x != 0 && player.movement.z != 0)
             {
-                transform.localScale += new Vector3(increaseSize, increaseSize, 0);
-                sizeIncreased += increaseSize;
-                if (!particles.ChargingParticlesActive)
+                if (sizeIncreased <= triggerSize)
                 {
-                    particles.ChargingParticlesActive = true;
+                    transform.localScale += new Vector3(increaseSize, increaseSize, 0);
+                    sizeIncreased += increaseSize;
+                    if (!particles.ChargingParticlesActive)
+                    {
+                        particles.ChargingParticlesActive = true;
+                    }
                 }
-            }
-            else if (!powerCharged)
-            {
-                particles.PlayIsCharged();
-                particles.WhileChargedActive = true;
-                particles.ChargingParticlesActive = false;
+                else if (!powerCharged)
+                {
+                    particles.PlayIsCharged();
+                    particles.WhileChargedActive = true;
+                    particles.ChargingParticlesActive = false;
 
-                GetComponent<SpriteRenderer>().color = translucentYellow;
-                powerCharged = true;
+                    GetComponent<SpriteRenderer>().color = translucentYellow;
+                    powerCharged = true;
+                }
             }
         }
     }
     public void ResetCircleSize()
     {
+        
         DetectEnemies(player.transform.position, triggerSize * 4f);
         GetComponent<SpriteRenderer>().color = translucentWhite;
         transform.localScale = circleResetSize;

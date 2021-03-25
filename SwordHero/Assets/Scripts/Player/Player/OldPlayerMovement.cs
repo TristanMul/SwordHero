@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class OldPlayerMovement : MonoBehaviour
 {
     public GameObject defaultTarget;
     public float moveSpeed = 5f;
@@ -21,24 +21,18 @@ public class PlayerMovement : MonoBehaviour
     GameObject enemy;
     SpecialAbility ability;
     ArrowRing ringOfArrows;
-    List<GameObject> allEnemies = new List<GameObject>();
 
     void Awake()
     {
-
-        //allEnemies = GameObject.FindGameObjectsWithTag("Enemy");
         gameManager = GameObject.Find("EventSystem").GetComponent<GameManager>();
-        gameManager.playerAlive = true;
-
         //gameManager = GameManager.instance;
         dynamicJoystick = GameObject.Find("Dynamic Joystick").GetComponent<DynamicJoystick>();
         animator = GetComponentInChildren<Animator>();
         character = GetComponent<Rigidbody>();
-        firingPoint = transform.Find("FiringPoint").GetComponent<Transform>();
-        ringOfArrows = GetComponentInChildren<ArrowRing>();
         ability = transform.Find("Charging Circle").GetComponent<SpecialAbility>();
-
-
+        firingPoint = transform.Find("FiringPoint").GetComponent<Transform>();
+        gameManager.playerAlive = true;
+        ringOfArrows = GetComponentInChildren<ArrowRing>();
     }
 
     void FixedUpdate()
@@ -53,28 +47,20 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("MovementXZ", (Mathf.Abs(movement.x * 10) + Mathf.Abs(movement.z * 10)) / 2, 0.1f, Time.deltaTime);
         animator.SetFloat("AttackSpeed", 1 / gameObject.GetComponentInChildren<ShootArrow>().fireRate);
         transform.Translate(movement * moveSpeed * Time.deltaTime, Space.World);
-        //transform.rotation = Quaternion.LookRotation(movement);
         FaceClosestEnemy();
+        //transform.rotation = Quaternion.LookRotation(movement);
 
         // Play footstep smoke effect if player is moving.
-        if (movement.x != 0 || movement.z != 0)
-        {
+        if(movement.x != 0 || movement.z != 0){
             transform.GetComponent<FootstepSmoke>().PlayFootstepSmokeEffect();
-            if (ability != null)
-            {
-                ability.ChargePower();
-            }
+            ability.ChargePower();
         }
-
+        
         //whenever activate ability whenever player is not moving.
         if (movement.x == 0 && movement.z == 0 && ability.powerCharged)
         {
-            if (ability != null)
-            {
-                StartCoroutine(SpecialAttack());
-
-                ability.powerCharged = false;
-            }
+            StartCoroutine(SpecialAttack());
+            ability.powerCharged = false;
         }
 
         if (attackAnim)
@@ -86,62 +72,66 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("AttackRange", false);
         }
     }
-
+  
     void FaceClosestEnemy()
     {
-        if (allEnemies.Count > 0)
+        float closestEnemy = Mathf.Infinity;
+        GameObject enemy = null;
+        GameObject[] allEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+        foreach (GameObject currentEnemy in allEnemies)
         {
-            float closestEnemy = Mathf.Infinity;
-            GameObject enemy = null;
-
-            foreach (GameObject currentEnemy in allEnemies)
+            var targetRotation = currentEnemy.transform.position - transform.position;
+            float distanceToEnemy = (currentEnemy.transform.position - this.transform.position).sqrMagnitude;
+            if (distanceToEnemy < closestEnemy)
             {
-                //var targetRotation = currentEnemy.transform.position - transform.position;
-                if (currentEnemy != null)
-                {
-                    //float distanceToEnemy = (currentEnemy.transform.position - this.transform.position).sqrMagnitude;
-                    float distanceToEnemy = Vector3.Distance(currentEnemy.transform.position, this.transform.position);
-
-                    if (distanceToEnemy < closestEnemy)
-                    {
-                        closestEnemy = distanceToEnemy;
-                        enemy = currentEnemy;
-                    }
-                }
+                closestEnemy = distanceToEnemy;
+                enemy = currentEnemy;
             }
+        }
 
-            if (enemy != null)
+        if (enemy != null)
+        {
+            // Only target enemies that move towards or attack player.
+            if(enemy.GetComponent<EnemyBaseClass>().enemyState == EnemyBaseClass.EnemyState.Move ||
+                enemy.GetComponent<EnemyBaseClass>().enemyState == EnemyBaseClass.EnemyState.Attack)
             {
-                DoRotationToTarget(enemy.transform);
+                StartCoroutine(DoRotationAtTargetDirection(enemy.transform));
                 _enemy = enemy;
             }
-
+            // Ther are no enemies moving towards or attacking player.
+            else
+            {
+                enemy = null;
+            }
+            
         }
-        else
+        if(enemy == null)
         {
-            DoRotationToTarget(defaultTarget.transform);
+            StartCoroutine(DoRotationAtTargetDirection(defaultTarget.transform));
+            //Not a great solution, but needed if the code isn't going to be rewritten. needs a defaultTarget to be assigned-
         }
     }
 
-    void DoRotationToTarget(Transform targetEnemy)
+    IEnumerator DoRotationAtTargetDirection(Transform opponentPlayer)
     {
-        float rotationSpeed = Time.deltaTime * lookSpeed;
-        if (targetEnemy != null)
+        Quaternion targetRotation = Quaternion.identity;
+        do
         {
-            Vector3 targetDirection = targetEnemy.position - transform.position;
-            Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, rotationSpeed, 0.0f);
-            transform.rotation = Quaternion.LookRotation(newDirection);
-        }
+            Vector3 targetDirection = (new Vector3(opponentPlayer.position.x, 0, opponentPlayer.position.z) - new Vector3(transform.position.x, 0, transform.position.z)).normalized;
+            targetRotation = Quaternion.LookRotation(targetDirection);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, Time.deltaTime * (moveSpeed * lookSpeed));
+            yield return null;
+
+        } while (Quaternion.Angle(transform.rotation, targetRotation) < 0.01f && gameObject != null && opponentPlayer);
     }
 
-    public void AddEnemy(GameObject enemy)
+    public IEnumerator OnDeath()
     {
-        allEnemies.Add(enemy);
-    }
-
-    public void RemoveEnemy(GameObject enemy)
-    {
-        allEnemies.Remove(enemy);
+        movement = new Vector3(0, 0, 0);
+        gameObject.GetComponentInChildren<Animator>().enabled = false;
+        gameManager.playerAlive = false;
+        yield return null;
     }
 
 
@@ -152,16 +142,7 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("SuperAttack", true);
         yield return new WaitForSeconds(0.3f);
         animator.SetBool("SuperAttack", false);
-        if (ability != null)
-        { ability.ResetCircleSize(); }
+        ability.ResetCircleSize();
         animator.SetLayerWeight(1, 1);
-    }
-
-    public IEnumerator OnDeath()
-    {
-        movement = new Vector3(0, 0, 0);
-        gameObject.GetComponentInChildren<Animator>().enabled = false;
-        gameManager.playerAlive = false;
-        yield return null;
     }
 }

@@ -22,6 +22,8 @@ public class PlayerMovement : MonoBehaviour
     SpecialAbility ability;
     ArrowRing ringOfArrows;
     List<GameObject> allEnemies = new List<GameObject>();
+    ShootArrow shootArrow;
+    public bool isMoving { get { return movement.magnitude != 0f; } }
 
     void Awake()
     {
@@ -37,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
         firingPoint = transform.Find("FiringPoint").GetComponent<Transform>();
         ringOfArrows = GetComponentInChildren<ArrowRing>();
         ability = transform.Find("Charging Circle").GetComponent<SpecialAbility>();
+        shootArrow = GetComponentInChildren<ShootArrow>();
 
     }
 
@@ -45,13 +48,18 @@ public class PlayerMovement : MonoBehaviour
         movement.x = dynamicJoystick.Horizontal;
         movement.z = dynamicJoystick.Vertical;
 
+
+        transform.Translate(movement * moveSpeed * Time.deltaTime, Space.World);
+
         animator.SetFloat("AngleController", Mathf.Atan2(movement.z, movement.x) * Mathf.Rad2Deg);
         animator.SetFloat("AnglePlayer", transform.eulerAngles.y);
         animator.SetFloat("MovementX", Mathf.Abs(movement.x * 10), 0.1f, Time.deltaTime);
         animator.SetFloat("MovementZ", Mathf.Abs(movement.z * 10), 0.1f, Time.deltaTime);
         animator.SetFloat("MovementXZ", (Mathf.Abs(movement.x * 10) + Mathf.Abs(movement.z * 10)) / 2, 0.1f, Time.deltaTime);
-        animator.SetFloat("AttackSpeed", 1 / gameObject.GetComponentInChildren<ShootArrow>().fireRate);
-        transform.Translate(movement * moveSpeed * Time.deltaTime, Space.World);
+        if(shootArrow != null)
+        {
+            animator.SetFloat("AttackSpeed", 1 / shootArrow.fireRate);
+        }
         //transform.rotation = Quaternion.LookRotation(movement);
         FaceClosestEnemy();
 
@@ -85,6 +93,8 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("AttackRange", false);
         }
     }
+
+
 
     void FaceClosestEnemy()
     {

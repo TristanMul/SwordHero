@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2078355558920774490
 Transform:
   m_ObjectHideFlags: 0
@@ -67,6 +67,7 @@ GameObject:
   - component: {fileID: 2078355559740339183}
   - component: {fileID: 3295858364109055382}
   - component: {fileID: 2614744808696084946}
+  - component: {fileID: 6454672952090796528}
   m_Layer: 0
   m_Name: Swordsman
   m_TagString: Player
@@ -193,6 +194,18 @@ MonoBehaviour:
   _enemy: {fileID: 0}
   attackAnim: 0
   movement: {x: 0, y: 0, z: 0}
+--- !u!114 &6454672952090796528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2078355559740339180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87ad79e9104b4f444b019c304684604d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2078355559780720068
 GameObject:
   m_ObjectHideFlags: 0

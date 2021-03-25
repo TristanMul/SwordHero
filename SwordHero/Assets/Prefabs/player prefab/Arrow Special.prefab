@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3423136755469318280}
   - component: {fileID: 3423136755469318275}
   - component: {fileID: 7137063292246458524}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Arrow Special
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -234,7 +234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a65a50b0ac203444188993cc6a313414, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 0.27083334
+  timer: 0.40625
 --- !u!1001 &3856887754484988058
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -246,6 +246,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Ring Mesh
+      objectReference: {fileID: 0}
+    - target: {fileID: 470203539330463469, guid: 7d81b250910dc4a42919df31bb7835fa,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 2234298983890487388, guid: 7d81b250910dc4a42919df31bb7835fa,
         type: 3}

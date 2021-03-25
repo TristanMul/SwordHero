@@ -9,7 +9,7 @@ public class PlayerParticles : MonoBehaviour
     bool whileChargedActive;
     public ParticleSystem chargingParticles;
     public ParticleSystem isChargedParticles;
-    public ParticleSystem whileChargedParticles, secondWhileCharge;
+    public ParticleSystem whileChargedParticles;
 
 
     public bool ChargingParticlesActive//set to activate/deactivate particles
@@ -37,12 +37,10 @@ public class PlayerParticles : MonoBehaviour
             if (value)
             {
                 whileChargedParticles.Play();
-                secondWhileCharge.Play();
             }
             else
             {
                 whileChargedParticles.Stop();
-                secondWhileCharge.Stop();
             }
             whileChargedActive = value;
         }

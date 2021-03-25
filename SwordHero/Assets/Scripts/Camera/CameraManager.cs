@@ -7,12 +7,18 @@ public class CameraManager : MonoBehaviour
     public bool doScreenShake;
     Vector3 shakeOffset;
     private Transform FollowTarget;
+    private PlayerMovement playerMovement;
     [SerializeField] private Vector3 TargetOffset;
     [SerializeField] private float MoveSpeed = 3f;
+    [SerializeField] private float moveDistanceMagnitude = 1f;
+    private float moveDistanceMult = 1;
+    [SerializeField] private float distanceLerpSpeed = 1f;
+    private float distanceMult = 1f;
 
     private void Start()
     {
         FollowTarget = GameManager.instance._player.transform;
+        playerMovement = FollowTarget.GetComponent<PlayerMovement>();
     }
 
     public void SetTarget(Transform aTransform)
@@ -24,7 +30,7 @@ public class CameraManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
-            StartCoroutine(Shake(.2f, .05f));
+            ChangeDistance(.5f);
         }
         transform.position += shakeOffset;
 
@@ -34,10 +40,23 @@ public class CameraManager : MonoBehaviour
     {
         if (FollowTarget != null)
         {
-            transform.position = Vector3.Lerp(transform.position, FollowTarget.position + TargetOffset , MoveSpeed * Time.deltaTime);
+            moveDistanceMult = 1f + (playerMovement.movement.magnitude * moveDistanceMagnitude);
+            distanceMult = Mathf.Lerp(distanceMult, 1f, distanceLerpSpeed * Time.deltaTime);
+
+            transform.position = Vector3.Lerp(transform.position, FollowTarget.position + TargetOffset * moveDistanceMult * distanceMult, MoveSpeed * Time.deltaTime);
         }
 
     }
+
+    /// <summary>
+    /// Change the distance from the player
+    /// </summary>
+    /// <param name="magnitude">The scale of the distance, 1 is normal</param>
+    public void ChangeDistance(float magnitude)
+    {
+        distanceMult = magnitude;
+    }
+
     public IEnumerator Shake(float duration, float magnitude)
     {
         if (doScreenShake)

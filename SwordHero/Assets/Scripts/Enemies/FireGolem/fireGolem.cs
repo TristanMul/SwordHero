@@ -14,8 +14,8 @@ public class fireGolem : EnemyBaseClass
     public override void setAnimations()
     {
         IdleAnimation = "Idle";
-        MoveAnimation = "";
-        AttackAnimation = "";
+        MoveAnimation = "Fly Forward In Place";
+        AttackAnimation = "Cast Spell";
         DeathAnimation = "Die";
         DamagedAnimation = "Take Damage";
 

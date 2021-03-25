@@ -61,7 +61,8 @@ public class shootProjectile : MonoBehaviour
         if (animationTimer >= npcAnimator.GetCurrentAnimatorStateInfo(0).length)
         {
             hasCastSpell = true;
-            Instantiate(projectile, startingPoint);
+            Instantiate(projectile, startingPoint.position, startingPoint.rotation);
+           // projectile.transform.Rotate(0, 0, 0);
             animationTimer = 0;
             controllerClass.enemyState = EnemyBaseClass.EnemyState.Move;
             navMeshAgent.speed = controllerClass.Speed;

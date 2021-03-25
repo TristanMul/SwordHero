@@ -11,7 +11,7 @@ public class ShootArrow : MonoBehaviour
     public float fireRate;
     public int numberOfProjectiles;
     public float angleOfShots;
-    public PlayerMovement enemyPos;
+    //public PlayerMovement enemyPos;
     float lastShot;
     float distance;
 
@@ -44,9 +44,9 @@ public class ShootArrow : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (enemyPos.GetComponent<PlayerMovement>()._enemy)
+        if (player.GetComponent<PlayerMovement>()._enemy)
         {
-            distance = Vector3.Distance(player.transform.position, enemyPos._enemy.transform.position);
+            distance = Vector3.Distance(player.transform.position, player.GetComponent<PlayerMovement>()._enemy.transform.position);
 
             if (distance < range && (Time.time > fireRate + lastShot))
             {

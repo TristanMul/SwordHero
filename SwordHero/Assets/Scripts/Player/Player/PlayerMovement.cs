@@ -38,7 +38,6 @@ public class PlayerMovement : MonoBehaviour
         ringOfArrows = GetComponentInChildren<ArrowRing>();
         ability = transform.Find("Charging Circle").GetComponent<SpecialAbility>();
 
-
     }
 
     void FixedUpdate()

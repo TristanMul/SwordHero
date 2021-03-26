@@ -5,7 +5,8 @@ using UnityEngine;
 public class PhysicsDamage : MonoBehaviour
 {
     Rigidbody rb;
-    [SerializeField] private float damageMultiplier = 1.5f;
+    [SerializeField] private float velocityTreshold = 1;
+    [SerializeField] private float damageMultiplier = 0.5f;
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -17,6 +18,7 @@ public class PhysicsDamage : MonoBehaviour
         {
             if (other.GetComponent<EnemyHealth>())
             {
+                if(rb.velocity.magnitude > velocityTreshold)
                 other.GetComponent<EnemyHealth>().TakeDamage(rb.velocity.magnitude * damageMultiplier);
                 
             }

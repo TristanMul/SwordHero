@@ -9,6 +9,11 @@ public class Attack : MonoBehaviour
     Animator animator;
     Weapon weapon;
     bool playerHasStarted;
+    PlayerParticles particles;
+
+    bool attackIsCharged;
+    float chargeTimer;
+    [SerializeField] float chargeTime;
 
     // Start is called before the first frame update
     void Start()
@@ -16,6 +21,7 @@ public class Attack : MonoBehaviour
         movement = GetComponent<PlayerMovement>();
         animator = GetComponentInChildren<Animator>();
         weapon = GetComponentInChildren<Weapon>();
+        particles = GetComponentInChildren<PlayerParticles>();
     }
 
     // Update is called once per frame
@@ -33,24 +39,43 @@ public class Attack : MonoBehaviour
             {
                 StartAttack();
                 playerStatic = true;
+                particles.ChargingParticlesActive = false;
+
             }
-            else if (movement != null & movement.isMoving && playerStatic)
+            else if (movement != null & movement.isMoving)
             {
-                StopAttack();
-                playerStatic = false;
+
+                if (playerStatic)
+                {
+                    StopAttack();
+                    playerStatic = false;
+                    particles.ChargingParticlesActive = true;
+                    Debug.Log("start charging");
+                }
+                chargeTimer += Time.deltaTime;
             }
+
+
         }
     }
 
+
+    /// <summary>
+    /// Activates the sword to do damage and activates the visuals
+    /// </summary>
     void StartAttack()
     {
         if (animator != null) { animator.SetBool("Attack", true); }
-        if (weapon != null) { weapon.StartAttack();}
+        if (weapon != null) { weapon.StartAttack(); }
         if (movement != null) { movement.Dash(); }
     }
+
+    /// <summary>
+    /// Deactivates the sword to do damage and deactivates the visuals
+    /// </summary>
     void StopAttack()
     {
         if (animator != null) { animator.SetBool("Attack", false); }
-        if (weapon != null) { weapon.StopAttack();}
+        if (weapon != null) { weapon.StopAttack(); }
     }
 }

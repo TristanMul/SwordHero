@@ -7,6 +7,8 @@ public class PlayerMovement : MonoBehaviour
     public GameObject defaultTarget;
     public float moveSpeed = 5f;
     public int lookSpeed;
+    [SerializeField] private float dashSpeed;
+
 
     private GameManager gameManager;
     private DynamicJoystick dynamicJoystick;
@@ -24,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
     List<GameObject> allEnemies = new List<GameObject>();
     ShootArrow shootArrow;
     public bool isMoving { get { return movement.magnitude != 0f; } }
+    bool isDashing;
 
     void Awake()
     {
@@ -45,24 +48,35 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        movement.x = dynamicJoystick.Horizontal;
-        movement.z = dynamicJoystick.Vertical;
-
+        if (!isDashing)
+        {
+            movement.x = dynamicJoystick.Horizontal;
+            movement.z = dynamicJoystick.Vertical;
+        }
 
         transform.Translate(movement * moveSpeed * Time.deltaTime, Space.World);
+
+        if (isDashing) { transform.Translate(transform.forward * dashSpeed * Time.deltaTime, Space.World); }
 
         animator.SetFloat("AngleController", Mathf.Atan2(movement.z, movement.x) * Mathf.Rad2Deg);
         animator.SetFloat("AnglePlayer", transform.eulerAngles.y);
         animator.SetFloat("MovementX", Mathf.Abs(movement.x * 10), 0.1f, Time.deltaTime);
         animator.SetFloat("MovementZ", Mathf.Abs(movement.z * 10), 0.1f, Time.deltaTime);
         animator.SetFloat("MovementXZ", (Mathf.Abs(movement.x * 10) + Mathf.Abs(movement.z * 10)) / 2, 0.1f, Time.deltaTime);
-        if(shootArrow != null)
+        if (shootArrow != null)
         {
             animator.SetFloat("AttackSpeed", 1 / shootArrow.fireRate);
         }
         //transform.rotation = Quaternion.LookRotation(movement);
-        FaceClosestEnemy();
 
+        //makes the player rotate towards the walking direction
+        if (!isDashing)
+        {
+            float rotationSpeed = Time.deltaTime * lookSpeed;
+            Vector3 targetDirection = movement;
+            Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, rotationSpeed, 0.0f);
+            transform.rotation = Quaternion.LookRotation(newDirection);
+        }
         // Play footstep smoke effect if player is moving.
         if (movement.x != 0 || movement.z != 0)
         {
@@ -74,6 +88,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //whenever activate ability whenever player is not moving.
+        
         if (movement.x == 0 && movement.z == 0 && ability.powerCharged)
         {
             if (ability != null)
@@ -83,6 +98,7 @@ public class PlayerMovement : MonoBehaviour
                 ability.powerCharged = false;
             }
         }
+
 
         if (attackAnim)
         {
@@ -95,6 +111,16 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
+    public void Dash()
+    {
+        isDashing = true;
+        StartCoroutine(StopDashInTime(.2f));
+    }
+    private IEnumerator StopDashInTime(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        isDashing = false;
+    }
 
     void FaceClosestEnemy()
     {

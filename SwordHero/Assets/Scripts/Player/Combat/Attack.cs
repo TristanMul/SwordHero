@@ -9,6 +9,7 @@ public class Attack : MonoBehaviour
     Animator animator;
     TrailRenderer trail;
     Weapon weapon;
+    bool playerHasStarted;
 
     // Start is called before the first frame update
     void Start()
@@ -22,37 +23,36 @@ public class Attack : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (movement != null && !movement.isMoving && !playerStatic)
+        if (!playerHasStarted && movement.isMoving)
         {
-            Strike();
-            playerStatic = true;
+            playerHasStarted = true;
         }
-        else if (movement != null & movement.isMoving && playerStatic)
+
+        if (playerHasStarted)
         {
-            StopAttack();
-            playerStatic = false;
+            //starts the attack
+            if (movement != null && !movement.isMoving && !playerStatic)
+            {
+                StartAttack();
+                playerStatic = true;
+            }
+            else if (movement != null & movement.isMoving && playerStatic)
+            {
+                StopAttack();
+                playerStatic = false;
+            }
         }
     }
 
-    void Strike()
+    void StartAttack()
     {
-        if (animator != null)
-        {
-            animator.SetBool("Attack", true);
-        }
-        if (weapon != null)
-        {
-            weapon.StartAttack();
-        }
+        if (animator != null) { animator.SetBool("Attack", true); }
+        if (weapon != null) { weapon.StartAttack(); }
+        if (movement != null) { movement.Dash(); }
     }
     void StopAttack()
     {
-        if (animator != null)
-        {
-            animator.SetBool("Attack", false);
-        }
-        if (weapon != null) {
-            weapon.StopAttack();
-        }
+        if (animator != null) { animator.SetBool("Attack", false); }
+        if (weapon != null) { weapon.StopAttack(); }
     }
 }

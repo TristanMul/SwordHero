@@ -28,6 +28,7 @@ public class EnemyBaseClass : MonoBehaviour
         Death,
         SpecialAttack,
         Emote, 
+        Fall,
     }
     protected string idleAnimation;
     protected string moveAnimation;

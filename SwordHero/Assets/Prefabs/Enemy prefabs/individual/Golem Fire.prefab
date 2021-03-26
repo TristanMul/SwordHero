@@ -24782,13 +24782,15 @@ GameObject:
   m_Component:
   - component: {fileID: 3800196993595925430}
   - component: {fileID: 7087874012683385292}
-  - component: {fileID: 135349017098189159}
   - component: {fileID: 135349017098189154}
   - component: {fileID: 135349017098189157}
   - component: {fileID: 135349017098189156}
   - component: {fileID: 135349017098189158}
   - component: {fileID: 135349017098189160}
   - component: {fileID: 4609103972630444303}
+  - component: {fileID: 1724898323651538031}
+  - component: {fileID: 3883695259558114483}
+  - component: {fileID: 5203957761779819875}
   m_Layer: 0
   m_Name: Golem Fire
   m_TagString: Enemy
@@ -24843,20 +24845,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!136 &135349017098189159
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4609103972630444300}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 1
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &135349017098189154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24986,6 +24974,46 @@ MonoBehaviour:
   controllerClass: {fileID: 135349017098189160}
   player: {fileID: 0}
   navMeshAgent: {fileID: 0}
+--- !u!114 &1724898323651538031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4609103972630444300}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bbd3f0f94bf8524bbf94e7ad10ecd07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocityTreshold: 1
+  damageMultiplier: 0.5
+--- !u!65 &3883695259558114483
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4609103972630444300}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.4679027, y: 2.7122388, z: 0.8826016}
+  m_Center: {x: 0.027603865, y: 1.4142838, z: 0.058699176}
+--- !u!65 &5203957761779819875
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4609103972630444300}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.567903, y: 2.812239, z: 0.9826016}
+  m_Center: {x: 0.027603865, y: 1.4142838, z: 0.058699176}
 --- !u!1 &4768685063832041304
 GameObject:
   m_ObjectHideFlags: 0

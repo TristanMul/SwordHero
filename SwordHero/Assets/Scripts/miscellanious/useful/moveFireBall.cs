@@ -9,7 +9,7 @@ public class moveFireBall : MonoBehaviour
 
     void FixedUpdate()
     {
-        transform.position += Vector3.up * MovementSpeed;
+        transform.position += transform.up * MovementSpeed * Time.deltaTime;
         destructionTimer -= Time.deltaTime;
         if(destructionTimer <= 0)
         {

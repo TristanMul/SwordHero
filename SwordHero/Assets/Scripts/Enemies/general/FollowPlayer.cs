@@ -7,8 +7,8 @@ using UnityEngine.AI;
 public class FollowPlayer : MonoBehaviour
 {
     public EnemyBaseClass controllerClass;  // The controller class of this enemy object.
-    private GameObject player;
-    private NavMeshAgent navMeshAgent;
+    [HideInInspector] public GameObject player;
+    [HideInInspector] public NavMeshAgent navMeshAgent;
     
     void Start()
     {
@@ -25,7 +25,7 @@ public class FollowPlayer : MonoBehaviour
     }
 
     // Face the player and move towards them.
-    private void MoveToPlayer(){
+    public virtual void MoveToPlayer(){
         if(player && controllerClass.enemyState == EnemyBaseClass.EnemyState.Move){
             navMeshAgent.SetDestination(player.transform.position);
         }

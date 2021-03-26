@@ -8,12 +8,16 @@ public class CameraManager : MonoBehaviour
     Vector3 shakeOffset;
     private Transform FollowTarget;
     private PlayerMovement playerMovement;
-    [SerializeField] private Vector3 TargetOffset;
+    [SerializeField] private Vector3 NormalOffset;
+    [SerializeField] private Vector3 DashingOffset;
+    private Vector3 TargetOffset;
     [SerializeField] private float MoveSpeed = 3f;
-    [SerializeField] private float moveDistanceMagnitude = 1f;
     private float moveDistanceMult = 1;
-    [SerializeField] private float distanceLerpSpeed = 1f;
     private float distanceMult = 1f;
+
+    [SerializeField] float timeAfterDash = 1f;
+    float afterDashTimer;
+
 
     private void Start()
     {
@@ -28,11 +32,10 @@ public class CameraManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse1))
-        {
-            ChangeDistance(.5f);
-        }
         transform.position += shakeOffset;
+
+
+        
 
     }
 
@@ -40,12 +43,22 @@ public class CameraManager : MonoBehaviour
     {
         if (FollowTarget != null)
         {
-            moveDistanceMult = 1f + (playerMovement.movement.magnitude * moveDistanceMagnitude);
-            distanceMult = Mathf.Lerp(distanceMult, 1f, distanceLerpSpeed * Time.deltaTime);
-
             transform.position = Vector3.Lerp(transform.position, FollowTarget.position + TargetOffset * moveDistanceMult * distanceMult, MoveSpeed * Time.deltaTime);
         }
 
+        if (playerMovement.IsDashing)
+        {
+            afterDashTimer = timeAfterDash;
+            TargetOffset = DashingOffset;
+        }
+        if (afterDashTimer > 0f)
+        {
+            afterDashTimer -= Time.deltaTime;
+        }
+        if (afterDashTimer <= 0f)
+        {
+            TargetOffset = NormalOffset;
+        }
     }
 
     /// <summary>

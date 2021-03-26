@@ -49,13 +49,15 @@ public class PlayerHealth : MonoBehaviour
                 GetComponent<PlayerMovement>().enabled = false;
                 transform.Find("FiringPoint").GetComponent<ShootArrow>().enabled = false;
 
+                // Play death animation.
+                animator.SetBool("IsDead", true);
+
                 // Hide player child objects.
                 healthBar.gameObject.SetActive(false);
                 transform.Find("Charging Circle").gameObject.SetActive(false);
                 transform.Find("Arrow Range").gameObject.SetActive(false);
                 
-                // Play death animation.
-                animator.SetBool("IsDead", true);
+
             }
 
         }

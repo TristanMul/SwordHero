@@ -7,7 +7,6 @@ public class Attack : MonoBehaviour
     PlayerMovement movement;
     bool playerStatic;
     Animator animator;
-    TrailRenderer trail;
     Weapon weapon;
     bool playerHasStarted;
 
@@ -16,7 +15,6 @@ public class Attack : MonoBehaviour
     {
         movement = GetComponent<PlayerMovement>();
         animator = GetComponentInChildren<Animator>();
-        trail = GetComponentInChildren<TrailRenderer>();
         weapon = GetComponentInChildren<Weapon>();
     }
 
@@ -47,12 +45,12 @@ public class Attack : MonoBehaviour
     void StartAttack()
     {
         if (animator != null) { animator.SetBool("Attack", true); }
-        if (weapon != null) { weapon.StartAttack(); }
+        if (weapon != null) { weapon.StartAttack();}
         if (movement != null) { movement.Dash(); }
     }
     void StopAttack()
     {
         if (animator != null) { animator.SetBool("Attack", false); }
-        if (weapon != null) { weapon.StopAttack(); }
+        if (weapon != null) { weapon.StopAttack();}
     }
 }

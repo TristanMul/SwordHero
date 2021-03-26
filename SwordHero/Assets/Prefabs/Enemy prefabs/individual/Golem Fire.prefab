@@ -24791,6 +24791,8 @@ GameObject:
   - component: {fileID: 1724898323651538031}
   - component: {fileID: 3883695259558114483}
   - component: {fileID: 5203957761779819875}
+  - component: {fileID: -8477163687492924873}
+  - component: {fileID: 6213134644146934899}
   m_Layer: 0
   m_Name: Golem Fire
   m_TagString: Enemy
@@ -25014,6 +25016,40 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.567903, y: 2.812239, z: 0.9826016}
   m_Center: {x: 0.027603865, y: 1.4142838, z: 0.058699176}
+--- !u!114 &-8477163687492924873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4609103972630444300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abb47798d42b09a489ee7acf3e82d07b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controllerClass: {fileID: 0}
+  player: {fileID: 0}
+  navMeshAgent: {fileID: 0}
+  attackRange: 20
+  triggerRange: 40
+  isAttacking: 0
+--- !u!54 &6213134644146934899
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4609103972630444300}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &4768685063832041304
 GameObject:
   m_ObjectHideFlags: 0

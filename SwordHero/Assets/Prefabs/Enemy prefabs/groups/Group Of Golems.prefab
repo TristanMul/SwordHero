@@ -1,0 +1,761 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &291495033419538382
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5255525131821491930}
+  m_Layer: 0
+  m_Name: Group Of Golems
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5255525131821491930
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 291495033419538382}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 9.01, y: 17, z: -285.91}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 5294153113905777424}
+  - {fileID: 4008253244128034233}
+  - {fileID: 3728366966862336571}
+  - {fileID: 6027691968826656789}
+  - {fileID: 8296166679585044121}
+  - {fileID: 2642148751738934008}
+  - {fileID: 2303625644571645467}
+  - {fileID: 9127373512236369652}
+  - {fileID: 8847854759307768088}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!1001 &385421201823184505
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 5255525131821491930}
+    m_Modifications:
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3078305369748373051, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_Name
+      value: Golem Earth (5)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 465a471e97939b645958614c30c4413f, type: 3}
+--- !u!4 &2642148751738934008 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+    type: 3}
+  m_PrefabInstance: {fileID: 385421201823184505}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1319084927372129978
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 5255525131821491930}
+    m_Modifications:
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3078305369748373051, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_Name
+      value: Golem Earth
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 465a471e97939b645958614c30c4413f, type: 3}
+--- !u!4 &3728366966862336571 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1319084927372129978}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1608818430779709752
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 5255525131821491930}
+    m_Modifications:
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3078305369748373051, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_Name
+      value: Golem Earth (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 465a471e97939b645958614c30c4413f, type: 3}
+--- !u!4 &4008253244128034233 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1608818430779709752}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4470835905570763418
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 5255525131821491930}
+    m_Modifications:
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3078305369748373051, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_Name
+      value: Golem Earth (6)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 465a471e97939b645958614c30c4413f, type: 3}
+--- !u!4 &2303625644571645467 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+    type: 3}
+  m_PrefabInstance: {fileID: 4470835905570763418}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5967939537784934936
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 5255525131821491930}
+    m_Modifications:
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3078305369748373051, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_Name
+      value: Golem Earth (4)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 465a471e97939b645958614c30c4413f, type: 3}
+--- !u!4 &8296166679585044121 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+    type: 3}
+  m_PrefabInstance: {fileID: 5967939537784934936}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6573676310579565977
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 5255525131821491930}
+    m_Modifications:
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3078305369748373051, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_Name
+      value: Golem Earth (8)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 465a471e97939b645958614c30c4413f, type: 3}
+--- !u!4 &8847854759307768088 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+    type: 3}
+  m_PrefabInstance: {fileID: 6573676310579565977}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6870653658902536821
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 5255525131821491930}
+    m_Modifications:
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3078305369748373051, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_Name
+      value: Golem Earth (7)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 465a471e97939b645958614c30c4413f, type: 3}
+--- !u!4 &9127373512236369652 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+    type: 3}
+  m_PrefabInstance: {fileID: 6870653658902536821}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7533144441752055697
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 5255525131821491930}
+    m_Modifications:
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3078305369748373051, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_Name
+      value: Golem Earth (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 465a471e97939b645958614c30c4413f, type: 3}
+--- !u!4 &5294153113905777424 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+    type: 3}
+  m_PrefabInstance: {fileID: 7533144441752055697}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8238542945843965076
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 5255525131821491930}
+    m_Modifications:
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3078305369748373051, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_Name
+      value: Golem Earth (3)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 465a471e97939b645958614c30c4413f, type: 3}
+--- !u!4 &6027691968826656789 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2446447181796156545, guid: 465a471e97939b645958614c30c4413f,
+    type: 3}
+  m_PrefabInstance: {fileID: 8238542945843965076}
+  m_PrefabAsset: {fileID: 0}

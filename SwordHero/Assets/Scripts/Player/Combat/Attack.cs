@@ -50,7 +50,6 @@ public class Attack : MonoBehaviour
                     StopAttack();
                     playerStatic = false;
                     particles.ChargingParticlesActive = true;
-                    Debug.Log("start charging");
                 }
                 chargeTimer += Time.deltaTime;
             }

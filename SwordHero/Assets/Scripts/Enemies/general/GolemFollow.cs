@@ -32,6 +32,6 @@ public class GolemFollow : FollowPlayer
     void ExecuteAction(EnemyBaseClass.EnemyState state, Vector3 _position)
     {
         navMeshAgent.SetDestination(_position);
-        controllerClass.enemyState = state;
+//        controllerClass.enemyState = state;
     }
 }

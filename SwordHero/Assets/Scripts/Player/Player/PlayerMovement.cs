@@ -27,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
     ShootArrow shootArrow;
     public bool isMoving { get { return movement.magnitude != 0f; } }
     bool isDashing;
+    public bool IsDashing { get { return isDashing; } }
 
     void Awake()
     {

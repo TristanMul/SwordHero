@@ -7,17 +7,21 @@ public class Attack : MonoBehaviour
     PlayerMovement movement;
     bool playerStatic;
     Animator animator;
-    TrailRenderer trail;
     Weapon weapon;
     bool playerHasStarted;
+    PlayerParticles particles;
+
+    bool attackIsCharged;
+    float chargeTimer;
+    [SerializeField] float chargeTime;
 
     // Start is called before the first frame update
     void Start()
     {
         movement = GetComponent<PlayerMovement>();
         animator = GetComponentInChildren<Animator>();
-        trail = GetComponentInChildren<TrailRenderer>();
         weapon = GetComponentInChildren<Weapon>();
+        particles = GetComponentInChildren<PlayerParticles>();
     }
 
     // Update is called once per frame
@@ -35,21 +39,39 @@ public class Attack : MonoBehaviour
             {
                 StartAttack();
                 playerStatic = true;
+                particles.ChargingParticlesActive = false;
+
             }
-            else if (movement != null & movement.isMoving && playerStatic)
+            else if (movement != null & movement.isMoving)
             {
-                StopAttack();
-                playerStatic = false;
+
+                if (playerStatic)
+                {
+                    StopAttack();
+                    playerStatic = false;
+                    particles.ChargingParticlesActive = true;
+                }
+                chargeTimer += Time.deltaTime;
             }
+
+
         }
     }
 
+
+    /// <summary>
+    /// Activates the sword to do damage and activates the visuals
+    /// </summary>
     void StartAttack()
     {
         if (animator != null) { animator.SetBool("Attack", true); }
         if (weapon != null) { weapon.StartAttack(); }
         if (movement != null) { movement.Dash(); }
     }
+
+    /// <summary>
+    /// Deactivates the sword to do damage and deactivates the visuals
+    /// </summary>
     void StopAttack()
     {
         if (animator != null) { animator.SetBool("Attack", false); }

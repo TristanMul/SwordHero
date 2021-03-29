@@ -5,20 +5,18 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     TrailRenderer trail;
-     bool isAttacking;
+    bool isAttacking;
     bool IsAttacking
     {
         get { return isAttacking; }
-        set
-        {
-            isAttacking = value;
-        }
+        set{isAttacking = value;}
     }
 
     // Start is called before the first frame update
     void Start()
     {
         trail = GetComponentInChildren<TrailRenderer>();
+        StopAttack();
     }
 
 
@@ -40,7 +38,8 @@ public class Weapon : MonoBehaviour
 
     public void StopAttack()
     {
-        IsAttacking = true;
+        IsAttacking = false;
         trail.enabled = false;
+
     }
 }

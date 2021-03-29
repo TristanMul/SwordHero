@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.AI;
 public class PhysicsDamage : MonoBehaviour
 {
     Rigidbody rb;
+    NavMeshAgent agent;
+    EnemyBaseClass controllerClass;
     [SerializeField] private float velocityTreshold = 0;
     [SerializeField] private float damageMultiplier = 0.5f;
     [SerializeField] private float playerKnockbackForce = 100;
@@ -13,22 +15,25 @@ public class PhysicsDamage : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        if(this.tag == "Enemy")
+        {
+            agent = GetComponent<NavMeshAgent>();
+            controllerClass = GetComponent<EnemyBaseClass>();
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Has triggered");
+
+        if (other.tag == "Player")
+        {
+            knockbackForce = playerKnockbackForce;
+        }
+        Vector3 direction = this.transform.position - other.transform.position;
+        direction.Normalize();
         if (rb.velocity.magnitude > velocityTreshold)
         {
-            Debug.Log("threshold passed");
-            Vector3 direction = this.transform.position - other.transform.position;
-            direction.Normalize();
-            if(other.tag == "Player")
-            {
-                Debug.Log("Player detected");
-                knockbackForce = playerKnockbackForce;
-            }
-            else if(other.tag == "Enemy")
+           if (other.tag == "Enemy")
             {
                 Debug.Log("Enemy detected");
                 knockbackForce = enemyKnockbackForce;
@@ -39,8 +44,9 @@ public class PhysicsDamage : MonoBehaviour
                 Debug.Log("no player or enemy detected");
                 knockbackForce = 0;
             }
-            rb.AddForce(direction * knockbackForce, ForceMode.Impulse);
+
             Debug.Log("Force added");
         }
+        rb.AddForce(direction * knockbackForce, ForceMode.Impulse);
     }
 }

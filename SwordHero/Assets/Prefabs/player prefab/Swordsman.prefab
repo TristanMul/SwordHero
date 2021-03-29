@@ -201,10 +201,11 @@ GameObject:
   - component: {fileID: 2078355559740339169}
   - component: {fileID: 921130455873908699}
   - component: {fileID: 2078355559740339182}
-  - component: {fileID: 2078355559740339183}
   - component: {fileID: 3295858364109055382}
   - component: {fileID: 2614744808696084946}
   - component: {fileID: 6454672952090796528}
+  - component: {fileID: 3002203906299986388}
+  - component: {fileID: 2187305326682237735}
   m_Layer: 0
   m_Name: Swordsman
   m_TagString: Player
@@ -276,19 +277,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   footstepSmoke: {fileID: 4771383149515703613, guid: 1fcc38ec429c106468c9e051965352b9,
     type: 3}
---- !u!65 &2078355559740339183
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2078355559740339180}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.730856, y: 3.6559696, z: 1.3024597}
-  m_Center: {x: -0.026817322, y: 1.8078527, z: 0.024612427}
 --- !u!195 &3295858364109055382
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -347,6 +335,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chargeTime: 1
+--- !u!136 &3002203906299986388
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2078355559740339180}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.8105266
+  m_Height: 3.733593
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.7049828, z: 0}
+--- !u!136 &2187305326682237735
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2078355559740339180}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.910527
+  m_Height: 3.733593
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.7049828, z: 0}
 --- !u!1 &2078355559780720068
 GameObject:
   m_ObjectHideFlags: 0

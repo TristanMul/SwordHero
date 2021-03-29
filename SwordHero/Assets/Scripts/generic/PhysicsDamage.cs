@@ -7,8 +7,9 @@ public class PhysicsDamage : MonoBehaviour
     Rigidbody rb;
     [SerializeField] private float velocityTreshold = 1;
     [SerializeField] private float damageMultiplier = 0.5f;
-    [SerializeField] private float blockKnockbackForce = 100;
+    [SerializeField] private float playerKnockbackForce = 100;
     [SerializeField] private float enemyKnockbackForce = 25;
+    private float knockbackForce;
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -16,22 +17,25 @@ public class PhysicsDamage : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player")
+        if (rb.velocity.magnitude > velocityTreshold)
         {
-            Debug.Log("Player Toched");
             Vector3 direction = this.transform.position - other.transform.position;
             direction.Normalize();
-            rb.AddForce(direction * blockKnockbackForce, ForceMode.Impulse);
-
-        }
-        if (other.tag == "Enemy")
-        {
-            if (other.GetComponent<EnemyHealth>())
+            if(other.tag == "Player")
             {
-                if(rb.velocity.magnitude > velocityTreshold)
-                other.GetComponent<EnemyHealth>().TakeDamage(rb.velocity.magnitude * damageMultiplier);
-                
+                knockbackForce = playerKnockbackForce;
             }
+            else if(other.tag == "Enemy")
+            {
+                knockbackForce = enemyKnockbackForce;
+                other.GetComponent<EnemyHealth>().TakeDamage(rb.velocity.magnitude * damageMultiplier);
+            }
+            else
+            {
+                knockbackForce = 0;
+            }
+            rb.AddForce(direction * knockbackForce, ForceMode.Impulse);
+
         }
     }
 }

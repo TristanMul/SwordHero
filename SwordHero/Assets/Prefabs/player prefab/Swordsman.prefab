@@ -244,7 +244,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
@@ -344,6 +344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87ad79e9104b4f444b019c304684604d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chargeTime: 0
 --- !u!1 &2078355559780720068
 GameObject:
   m_ObjectHideFlags: 0
@@ -477,18 +478,6 @@ MonoBehaviour:
   arrow: {fileID: 7223829883964454553, guid: 2c1ea40dc769e4799b36b10eef6f7076, type: 3}
   numObjects: 20
   arrowSpeed: 20
---- !u!114 &3654165809239366656
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4460281266648369078}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c403fb146a7ec6d40812b2b83382ef94, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &4317734646881217050
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -502,6 +491,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.34595188, y: 1.8454174, z: 0.51935136}
   m_Center: {x: -0.0000059883673, y: -0.71267146, z: 0.07620088}
+--- !u!114 &3654165809239366656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4460281266648369078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c403fb146a7ec6d40812b2b83382ef94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1401879787
 MonoBehaviour:
   m_ObjectHideFlags: 0

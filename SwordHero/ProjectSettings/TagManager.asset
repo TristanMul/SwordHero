@@ -12,6 +12,7 @@ TagManager:
   - Platform
   - Walkable
   - EnemyGroup
+  - Weapon
   layers:
   - Default
   - TransparentFX

@@ -53,12 +53,12 @@ public class CameraManager : MonoBehaviour
         }
         if (afterDashTimer > 0f)
         {
-            TargetOffset = Vector3.Lerp(TargetOffset, DashingOffset, zoomSpeed);
+            TargetOffset = Vector3.Slerp(TargetOffset, DashingOffset, zoomSpeed * Time.deltaTime);
             afterDashTimer -= Time.deltaTime;
         }
         else if (afterDashTimer <= 0f)
         {
-            TargetOffset = Vector3.Lerp(TargetOffset, NormalOffset, zoomSpeed);
+            TargetOffset = Vector3.Slerp(TargetOffset, NormalOffset, zoomSpeed * Time.deltaTime);
         }
     }
 

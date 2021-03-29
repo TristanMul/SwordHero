@@ -96,8 +96,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82bd6af7bec24c24a874966035bbb637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doScreenShake: 0
-  TargetOffset: {x: 0, y: 20, z: -15}
+  doScreenShake: 1
+  NormalOffset: {x: 0, y: 20, z: -15}
+  DashingOffset: {x: 0, y: 30, z: -20}
   MoveSpeed: 3
-  moveDistanceMagnitude: 0.5
-  distanceLerpSpeed: 2
+  timeAfterDash: 1
+  zoomSpeed: 0.01

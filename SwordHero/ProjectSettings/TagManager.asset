@@ -12,6 +12,8 @@ TagManager:
   - Platform
   - Walkable
   - EnemyGroup
+  - Projectile
+  - Missile
   layers:
   - Default
   - TransparentFX

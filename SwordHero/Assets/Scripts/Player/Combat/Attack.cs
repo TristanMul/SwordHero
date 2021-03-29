@@ -22,6 +22,7 @@ public class Attack : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         weapon = GetComponentInChildren<Weapon>();
         particles = GetComponentInChildren<PlayerParticles>();
+
     }
 
     // Update is called once per frame
@@ -30,6 +31,7 @@ public class Attack : MonoBehaviour
         if (!playerHasStarted && movement.isMoving)
         {
             playerHasStarted = true;
+            particles.ChargingParticlesActive = true;
         }
 
         if (playerHasStarted)
@@ -51,11 +53,18 @@ public class Attack : MonoBehaviour
                     playerStatic = false;
                     particles.ChargingParticlesActive = true;
                 }
-                chargeTimer += Time.deltaTime;
+
+                chargeTimer += Time.deltaTime / chargeTime;
+                if (!attackIsCharged && chargeTimer > 1f)
+                {
+                    attackIsCharged = true;
+                    particles.ChargingParticlesActive = false;
+                    particles.PlayIsCharged();
+                }
             }
-
-
         }
+
+
     }
 
 
@@ -66,7 +75,12 @@ public class Attack : MonoBehaviour
     {
         if (animator != null) { animator.SetBool("Attack", true); }
         if (weapon != null) { weapon.StartAttack(); }
-        if (movement != null) { movement.Dash(); }
+        if (attackIsCharged)
+        {
+            attackIsCharged = false;
+            chargeTimer = 0f;
+            if (movement != null) { movement.Dash(); }
+        }
     }
 
     /// <summary>

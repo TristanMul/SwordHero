@@ -16,6 +16,7 @@ public class CameraManager : MonoBehaviour
     private float distanceMult = 1f;
 
     [SerializeField] float timeAfterDash = 1f;
+    [SerializeField] float zoomSpeed = 1f;
     float afterDashTimer;
 
 
@@ -49,15 +50,15 @@ public class CameraManager : MonoBehaviour
         if (playerMovement.IsDashing)
         {
             afterDashTimer = timeAfterDash;
-            TargetOffset = DashingOffset;
         }
         if (afterDashTimer > 0f)
         {
+            TargetOffset = Vector3.Lerp(TargetOffset, DashingOffset, zoomSpeed);
             afterDashTimer -= Time.deltaTime;
         }
-        if (afterDashTimer <= 0f)
+        else if (afterDashTimer <= 0f)
         {
-            TargetOffset = NormalOffset;
+            TargetOffset = Vector3.Lerp(TargetOffset, NormalOffset, zoomSpeed);
         }
     }
 

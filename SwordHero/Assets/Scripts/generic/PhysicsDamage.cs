@@ -11,6 +11,7 @@ public class PhysicsDamage : MonoBehaviour
     [SerializeField] private float damageMultiplier = 0.5f;
     [SerializeField] private float playerKnockbackForce = 100;
     [SerializeField] private float enemyKnockbackForce = 25;
+    [SerializeField] private float getUpTime = 0.5f;
     private float knockbackForce;
     private void Start()
     {
@@ -38,6 +39,7 @@ public class PhysicsDamage : MonoBehaviour
                 other.gameObject.GetComponent<Rigidbody>().isKinematic = false;
                 other.gameObject.GetComponent<Rigidbody>().useGravity = true;
                 controllerClass.enemyState = EnemyBaseClass.EnemyState.Fall;
+                //StartCoroutine(getBackUp(getUpTime));
             }
             else
             {
@@ -48,5 +50,14 @@ public class PhysicsDamage : MonoBehaviour
             
         }
         rb.AddForce(direction * knockbackForce, ForceMode.Impulse);
+    }
+    IEnumerator getBackUp(float time)
+    {
+        Debug.Log("Started coroutine");
+        yield return new WaitForSeconds(time);
+        this.GetComponent<NavMeshAgent>().enabled = true;
+        this.GetComponent<Rigidbody>().isKinematic = true;
+        this.GetComponent<Rigidbody>().useGravity = false;
+        controllerClass.enemyState = EnemyBaseClass.EnemyState.Move;
     }
 }

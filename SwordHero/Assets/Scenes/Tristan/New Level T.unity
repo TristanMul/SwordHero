@@ -6340,6 +6340,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Golem Earth
       objectReference: {fileID: 0}
+    - target: {fileID: 3078305369748373051, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4449804002494541978, guid: 465a471e97939b645958614c30c4413f,
         type: 3}
       propertyPath: m_IsKinematic
@@ -9804,6 +9809,11 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1789033031}
+    - target: {fileID: 135349017738297496, guid: 48c63a7f42bc79b4d9d6bbe4db08a59a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.2
+      objectReference: {fileID: 0}
     - target: {fileID: 3800196993595925430, guid: 48c63a7f42bc79b4d9d6bbe4db08a59a,
         type: 3}
       propertyPath: m_RootOrder
@@ -9863,6 +9873,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Golem Fire
+      objectReference: {fileID: 0}
+    - target: {fileID: 6213134644146934899, guid: 48c63a7f42bc79b4d9d6bbe4db08a59a,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 96
       objectReference: {fileID: 0}
     - target: {fileID: 6213134644146934899, guid: 48c63a7f42bc79b4d9d6bbe4db08a59a,
         type: 3}
@@ -10302,7 +10317,7 @@ PrefabInstance:
     - target: {fileID: 1108374950523393483, guid: c51c906783df52145a9d20b5f5893726,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1108374950625442648, guid: c51c906783df52145a9d20b5f5893726,
         type: 3}

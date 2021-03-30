@@ -31,9 +31,20 @@ public class PlayerMovement : MonoBehaviour
     ArrowRing ringOfArrows;
     List<GameObject> allEnemies = new List<GameObject>();
     ShootArrow shootArrow;
+
+
+    #region events
+    public delegate void DashDelegate();
+    public DashDelegate onDash;
+    public delegate void StopDashDelegate();
+    public StopDashDelegate stopDash;
+    #endregion
+
+    #region Dashing Variables
     public bool isMoving { get { return movement.magnitude != 0f; } }
     bool isDashing;
     public bool IsDashing { get { return isDashing; } }
+    #endregion
 
     void Awake()
     {
@@ -125,11 +136,13 @@ public class PlayerMovement : MonoBehaviour
         isDashing = true;
         StartCoroutine(StopDashInTime(dashTime));
         currentDashSpeed = dashSpeed;
+        onDash();
     }
     private IEnumerator StopDashInTime(float duration)
     {
         yield return new WaitForSeconds(duration);
         isDashing = false;
+        stopDash();
     }
 
     void FaceClosestEnemy()

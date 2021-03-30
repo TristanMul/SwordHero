@@ -11,6 +11,8 @@ public class PlayerHealth : MonoBehaviour
     private Animator animator;
     private bool invulnerable;
     Renderer[] renderers;
+    PlayerMovement movement;
+
 
     void Start()
     {
@@ -24,10 +26,20 @@ public class PlayerHealth : MonoBehaviour
 
 
         invulnerable = false;
+
+        //Events
+        movement = GetComponent<PlayerMovement>();
+        if (movement != null)
+        {
+            movement.onDash += OnDash;
+            movement.stopDash += StopDash;
+        }
     }
 
-    public void TakeDamage(float damage){
-        if(!invulnerable){
+    public void TakeDamage(float damage)
+    {
+        if (!invulnerable)
+        {
             // Player can't take damage for a while after taking damage.
             invulnerable = true;
 
@@ -56,21 +68,22 @@ public class PlayerHealth : MonoBehaviour
                 healthBar.gameObject.SetActive(false);
                 transform.Find("Charging Circle").gameObject.SetActive(false);
                 transform.Find("Arrow Range").gameObject.SetActive(false);
-                
+
 
             }
 
         }
     }
 
-    IEnumerator DamagedEffect(){
+    IEnumerator DamagedEffect()
+    {
         int flashDuration = 5;   // The amount of times renderer should be turned off and on again.
         int flashCount = 0;     //  Counter for flashing.
 
         // Turn renederer off and on again for flashing effect.
         while (flashCount < flashDuration)
         {
-            foreach(Renderer r in renderers)
+            foreach (Renderer r in renderers)
             {
                 r.enabled = false;
             }
@@ -89,18 +102,35 @@ public class PlayerHealth : MonoBehaviour
         invulnerable = false;
     }
 
-    private void OnCollisionEnter(Collision other) {
+    private void OnCollisionEnter(Collision other)
+    {
         // Player got hit by enemy.
-        if(other.gameObject.tag == "Enemy"){
+        if (other.gameObject.tag == "Enemy")
+        {
             TakeDamage(2f);
         }
     }
 
-    private void OnCollisionStay(Collision other) {
+    private void OnCollisionStay(Collision other)
+    {
         // Player got hit by enemy.
-        if(other.gameObject.tag == "Enemy"){
+        if (other.gameObject.tag == "Enemy")
+        {
             TakeDamage(2f);
         }
     }
 
+
+    private void OnDash()
+    {
+        invulnerable = true;
+    }
+
+    /// <summary>
+    /// Subscribed to stop dash in player movement
+    /// </summary>
+    private void StopDash()
+    {
+        invulnerable = false;
+    }
 }

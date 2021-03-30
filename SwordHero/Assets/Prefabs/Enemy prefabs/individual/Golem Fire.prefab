@@ -24860,10 +24860,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f595484b7ab078d479632fb183f3f8af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 6652343466263064415, guid: 101b2443f53c16b44b9344baa1cd3126,
-    type: 3}
+  projectile: {fileID: 1762376750822800, guid: 8af58820b26f1d8478004ea81664c7d5, type: 3}
   character: {fileID: 4609103972630444300}
-  player: {fileID: 0}
   startingPoint: {fileID: 135349017738297496}
   npcAnimator: {fileID: 7087874012683385292}
   cooldownTimer: 1

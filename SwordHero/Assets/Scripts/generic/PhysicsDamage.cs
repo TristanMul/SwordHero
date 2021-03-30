@@ -1,37 +1,52 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.AI;
 public class PhysicsDamage : MonoBehaviour
 {
     Rigidbody rb;
-    [SerializeField] private float velocityTreshold = 1;
+    NavMeshAgent agent;
+    EnemyBaseClass controllerClass;
+    [SerializeField] private float velocityTreshold = 0;
     [SerializeField] private float damageMultiplier = 0.5f;
-    [SerializeField] private float blockKnockbackForce = 100;
+    [SerializeField] private float playerKnockbackForce = 100;
     [SerializeField] private float enemyKnockbackForce = 25;
+    private float knockbackForce;
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        if(this.tag == "Enemy")
+        {
+            agent = GetComponent<NavMeshAgent>();
+            controllerClass = GetComponent<EnemyBaseClass>();
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player")
-        {
-            Debug.Log("Player Toched");
-            Vector3 direction = this.transform.position - other.transform.position;
-            direction.Normalize();
-            rb.AddForce(direction * blockKnockbackForce, ForceMode.Impulse);
 
-        }
-        if (other.tag == "Enemy")
+        if (other.tag == "Player")
         {
-            if (other.GetComponent<EnemyHealth>())
-            {
-                if(rb.velocity.magnitude > velocityTreshold)
-                other.GetComponent<EnemyHealth>().TakeDamage(rb.velocity.magnitude * damageMultiplier);
-                
-            }
+            knockbackForce = playerKnockbackForce;
         }
+        Vector3 direction = this.transform.position - other.transform.position;
+        direction.Normalize();
+        if (rb.velocity.magnitude > velocityTreshold)
+        {
+           if (other.tag == "Enemy")
+            {
+                Debug.Log("Enemy detected");
+                knockbackForce = enemyKnockbackForce;
+                other.GetComponent<EnemyHealth>().TakeDamage(rb.velocity.magnitude * damageMultiplier);
+            }
+            else
+            {
+                Debug.Log("no player or enemy detected");
+                knockbackForce = 0;
+            }
+
+            Debug.Log("Force added");
+        }
+        rb.AddForce(direction * knockbackForce, ForceMode.Impulse);
     }
 }

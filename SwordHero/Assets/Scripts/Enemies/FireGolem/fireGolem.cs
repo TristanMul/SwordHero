@@ -15,7 +15,7 @@ public class fireGolem : EnemyBaseClass
     {
         IdleAnimation = "Idle";
         MoveAnimation = "Fly Forward In Place";
-        AttackAnimation = "Cast Spell";
+        AttackAnimation = "Spin Attack Once";
         DeathAnimation = "Die";
         DamagedAnimation = "Take Damage";
 

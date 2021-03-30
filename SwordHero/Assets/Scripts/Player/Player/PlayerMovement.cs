@@ -8,6 +8,12 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed = 5f;
     public int lookSpeed;
     [SerializeField] private float dashSpeed;
+    /// <summary>
+    /// The speed with which the dash speed reduces to the movement speed 0-1
+    /// </summary>
+    [SerializeField] private float dashSpeedReduction = 10f;
+    [SerializeField] private float dashTime = .4f;
+    private float currentDashSpeed;
 
 
     private GameManager gameManager;
@@ -49,15 +55,17 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!isDashing)
+
+        movement.x = dynamicJoystick.Horizontal;
+        movement.z = dynamicJoystick.Vertical;
+
+        if (!isDashing) { transform.Translate(movement * moveSpeed * Time.deltaTime, Space.World); }//Normal movement
+
+        else if (isDashing)
         {
-            movement.x = dynamicJoystick.Horizontal;
-            movement.z = dynamicJoystick.Vertical;
+            currentDashSpeed = Mathf.Lerp(currentDashSpeed, moveSpeed, dashSpeedReduction * Time.deltaTime);
+            transform.Translate(transform.forward * currentDashSpeed * Time.deltaTime, Space.World);
         }
-
-        transform.Translate(movement * moveSpeed * Time.deltaTime, Space.World);
-
-        if (isDashing) { transform.Translate(transform.forward * dashSpeed * Time.deltaTime, Space.World); }
 
         animator.SetFloat("AngleController", Mathf.Atan2(movement.z, movement.x) * Mathf.Rad2Deg);
         animator.SetFloat("AnglePlayer", transform.eulerAngles.y);
@@ -89,7 +97,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //whenever activate ability whenever player is not moving.
-        
+
         if (movement.x == 0 && movement.z == 0 && ability.powerCharged)
         {
             if (ability != null)
@@ -115,7 +123,8 @@ public class PlayerMovement : MonoBehaviour
     public void Dash()
     {
         isDashing = true;
-        StartCoroutine(StopDashInTime(.2f));
+        StartCoroutine(StopDashInTime(dashTime));
+        currentDashSpeed = dashSpeed;
     }
     private IEnumerator StopDashInTime(float duration)
     {

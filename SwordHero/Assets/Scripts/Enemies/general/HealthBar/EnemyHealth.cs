@@ -14,6 +14,7 @@ public class EnemyHealth : MonoBehaviour
     // Enemy took a hit.
     public void TakeDamage(float damage){
         StartCoroutine(WhiteFlash());
+        controllerClass.enemyState = EnemyBaseClass.EnemyState.Fall;
         controllerClass.CurrenHealth -= damage;
         controllerClass.HealthBar.UpdateHealthBar(controllerClass.CurrenHealth, controllerClass.MaxHealth);
 

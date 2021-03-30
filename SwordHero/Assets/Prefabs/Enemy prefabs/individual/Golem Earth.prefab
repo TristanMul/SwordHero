@@ -286,13 +286,14 @@ GameObject:
   - component: {fileID: 2446447181796156545}
   - component: {fileID: 8580388720191667963}
   - component: {fileID: 4449804002494541978}
-  - component: {fileID: 4449804002494541979}
   - component: {fileID: 4449804002494541952}
   - component: {fileID: 4449804002494541959}
   - component: {fileID: 4449804002494541958}
   - component: {fileID: 4449804002494541957}
   - component: {fileID: 4449804002494541956}
   - component: {fileID: 6199756427426955552}
+  - component: {fileID: 3140229020824365368}
+  - component: {fileID: 6236799493354646874}
   m_Layer: 0
   m_Name: Golem Earth
   m_TagString: Enemy
@@ -309,7 +310,7 @@ Transform:
   m_GameObject: {fileID: 3078305369748373051}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.1764705, y: 2, z: 1.1764705}
   m_Children:
   - {fileID: 9139781648687360521}
   - {fileID: 2189408214438931114}
@@ -363,19 +364,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &4449804002494541979
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3078305369748373051}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2, y: 3, z: 0.8}
-  m_Center: {x: 0, y: 0.8, z: 0}
 --- !u!114 &4449804002494541952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -476,6 +464,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocityTreshold: 1
   damageMultiplier: 0.5
+  playerKnockbackForce: 100
+  enemyKnockbackForce: 25
+--- !u!136 &3140229020824365368
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3078305369748373051}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.7256277
+  m_Height: 2.210084
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.2117658, z: 0}
+--- !u!136 &6236799493354646874
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3078305369748373051}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.8256277
+  m_Height: 2.210084
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.2117658, z: 0}
 --- !u!1 &3208334065706230830
 GameObject:
   m_ObjectHideFlags: 0

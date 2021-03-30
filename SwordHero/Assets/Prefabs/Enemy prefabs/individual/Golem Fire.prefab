@@ -24861,7 +24861,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 1762376750822800, guid: 8af58820b26f1d8478004ea81664c7d5, type: 3}
   character: {fileID: 4609103972630444300}
-  player: {fileID: 0}
   startingPoint: {fileID: 135349017738297496}
   npcAnimator: {fileID: 7087874012683385292}
   cooldownTimer: 1

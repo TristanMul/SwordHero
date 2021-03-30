@@ -5408,11 +5408,6 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7560107519605460805, guid: 5f0b6c9e4ccffcb46b0c47ca557070eb,
         type: 3}
-      propertyPath: zoomSpeed
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7560107519605460805, guid: 5f0b6c9e4ccffcb46b0c47ca557070eb,
-        type: 3}
       propertyPath: FollowTarget
       value: 
       objectReference: {fileID: 0}
@@ -9971,11 +9966,6 @@ PrefabInstance:
         type: 3}
       propertyPath: currentHealth
       value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 2472467656332943554, guid: 48c63a7f42bc79b4d9d6bbe4db08a59a,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 3800196993595925430, guid: 48c63a7f42bc79b4d9d6bbe4db08a59a,
         type: 3}

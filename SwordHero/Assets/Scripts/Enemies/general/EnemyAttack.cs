@@ -26,8 +26,7 @@ public class EnemyAttack : MonoBehaviour
     private void Attack(){
         // The player is in the range of this enemies attack.
         isAttacking = true;
-        controllerClass.enemyState = EnemyBaseClass.EnemyState.Attack;
-        GetComponent<FollowPlayer>().enabled = false;
+        
 
         attackTimer = animator.GetCurrentAnimatorStateInfo(0).length;
         Invoke("AttackCompleted", attackTimer);
@@ -35,7 +34,5 @@ public class EnemyAttack : MonoBehaviour
 
     private void AttackCompleted(){
         isAttacking = false;
-        controllerClass.enemyState = EnemyBaseClass.EnemyState.Move;
-        GetComponent<FollowPlayer>().enabled = true;
     }
 }

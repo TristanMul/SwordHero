@@ -19,22 +19,18 @@ public class EnemyAttack : MonoBehaviour
     }
 
     private void Update() {
-        CheckAttackRange();
+        Attack();
     }
 
     // Check if the player is in the range of this enemy's attack.
-    private void CheckAttackRange(){
+    private void Attack(){
         // The player is in the range of this enemies attack.
-        float distance = Vector3.Distance(transform.position, player.transform.position);
-        if(distance <= controllerClass.AttackRange && !isAttacking){
-            isAttacking = true;
-            controllerClass.enemyState = EnemyBaseClass.EnemyState.Attack;
-            GetComponent<FollowPlayer>().enabled = false;
+        isAttacking = true;
+        controllerClass.enemyState = EnemyBaseClass.EnemyState.Attack;
+        GetComponent<FollowPlayer>().enabled = false;
 
-            attackTimer = animator.GetCurrentAnimatorStateInfo(0).length;
-            Invoke("AttackCompleted", attackTimer);
-
-        }
+        attackTimer = animator.GetCurrentAnimatorStateInfo(0).length;
+        Invoke("AttackCompleted", attackTimer);
     }
 
     private void AttackCompleted(){

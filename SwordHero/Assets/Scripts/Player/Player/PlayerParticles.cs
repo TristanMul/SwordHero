@@ -7,9 +7,11 @@ public class PlayerParticles : MonoBehaviour
     public bool testing;
     bool chargingParcticlesActive;//To activate the charging particles set ParticlesRunning to true, mind the capitol letter
     bool whileChargedActive;
-    public ParticleSystem chargingParticles;
-    public ParticleSystem isChargedParticles;
-    public ParticleSystem whileChargedParticles;
+    private Attack attack;
+    [SerializeField] ParticleSystem chargingParticles;
+    [SerializeField] ParticleSystem isChargedParticles;
+    [SerializeField] ParticleSystem whileChargedParticles;
+    [SerializeField] private ParticleSystem attackSwipe;
 
 
     public bool ChargingParticlesActive//set to activate/deactivate particles
@@ -50,6 +52,10 @@ public class PlayerParticles : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        attack = GetComponentInParent<Attack>();
+
+        //events
+        attack.onAttack += OnAttack;
     }
 
     // Update is called once per frame
@@ -73,4 +79,7 @@ public class PlayerParticles : MonoBehaviour
         isChargedParticles.Play();
     }
 
+    void OnAttack() {
+        attackSwipe.Play();
+    }
 }

@@ -14,6 +14,8 @@ public class Attack : MonoBehaviour
     bool attackIsCharged;
     float chargeTimer;
     [SerializeField] float chargeTime;
+    [SerializeField] float waitToChargeTime = .2f;
+    float waitToChargeTimer;
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +24,6 @@ public class Attack : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         weapon = GetComponentInChildren<Weapon>();
         particles = GetComponentInChildren<PlayerParticles>();
-
     }
 
     // Update is called once per frame
@@ -31,7 +32,6 @@ public class Attack : MonoBehaviour
         if (!playerHasStarted && movement.isMoving)
         {
             playerHasStarted = true;
-            particles.ChargingParticlesActive = true;
         }
 
         if (playerHasStarted)
@@ -51,17 +51,22 @@ public class Attack : MonoBehaviour
                 {
                     StopAttack();
                     playerStatic = false;
-                    particles.ChargingParticlesActive = true;
                 }
-
-                chargeTimer += Time.deltaTime / chargeTime;
-                if (!attackIsCharged && chargeTimer > 1f)
+                if (waitToChargeTimer > waitToChargeTime)
                 {
-                    attackIsCharged = true;
-                    particles.ChargingParticlesActive = false;
-                    particles.PlayIsCharged();
+                    if (!particles.ChargingParticlesActive) { particles.ChargingParticlesActive = true; }
+                    chargeTimer += Time.deltaTime / chargeTime;
+                    if (!attackIsCharged && chargeTimer > 1f)
+                    {
+                        attackIsCharged = true;
+                        particles.ChargingParticlesActive = false;
+                        particles.PlayIsCharged();
+                    }
                 }
+                else waitToChargeTimer += Time.deltaTime;
+
             }
+            else waitToChargeTimer = 0f;
         }
 
 

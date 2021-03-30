@@ -287,13 +287,13 @@ GameObject:
   - component: {fileID: 8580388720191667963}
   - component: {fileID: 4449804002494541978}
   - component: {fileID: 4449804002494541952}
-  - component: {fileID: 4449804002494541959}
   - component: {fileID: 4449804002494541958}
   - component: {fileID: 4449804002494541957}
   - component: {fileID: 4449804002494541956}
   - component: {fileID: 6199756427426955552}
   - component: {fileID: 3140229020824365368}
   - component: {fileID: 6236799493354646874}
+  - component: {fileID: 1290317720}
   m_Layer: 0
   m_Name: Golem Earth
   m_TagString: Enemy
@@ -381,24 +381,6 @@ MonoBehaviour:
   whiteFlash: {fileID: 2100000, guid: 9dfded9c423fc5d4d966490f7522aadf, type: 2}
   deathParticles: {fileID: 6369984750543833569, guid: 3b3d25ef49a4d784aba925bacd707983,
     type: 3}
---- !u!114 &4449804002494541959
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3078305369748373051}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abb47798d42b09a489ee7acf3e82d07b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controllerClass: {fileID: 4449804002494541957}
-  player: {fileID: 0}
-  navMeshAgent: {fileID: 0}
-  attackRange: 4
-  triggerRange: 20
-  isAttacking: 0
 --- !u!195 &4449804002494541958
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -494,6 +476,21 @@ CapsuleCollider:
   m_Height: 2.210084
   m_Direction: 1
   m_Center: {x: 0, y: 1.2117658, z: 0}
+--- !u!114 &1290317720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3078305369748373051}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d284cf84af6e6c948aab374174f53eb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controllerClass: {fileID: 4449804002494541957}
+  player: {fileID: 0}
+  navMeshAgent: {fileID: 0}
 --- !u!1 &3208334065706230830
 GameObject:
   m_ObjectHideFlags: 0

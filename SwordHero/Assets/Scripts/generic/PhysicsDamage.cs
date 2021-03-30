@@ -33,19 +33,20 @@ public class PhysicsDamage : MonoBehaviour
         direction.Normalize();
         if (rb.velocity.magnitude > velocityTreshold)
         {
+            Debug.Log("Past treshold");
            if (other.tag == "Enemy")
             {
-                Debug.Log("Enemy detected");
+              
                 knockbackForce = enemyKnockbackForce;
                 other.GetComponent<EnemyHealth>().TakeDamage(rb.velocity.magnitude * damageMultiplier);
             }
             else
             {
-                Debug.Log("no player or enemy detected");
+                
                 knockbackForce = 0;
             }
 
-            Debug.Log("Force added");
+            
         }
         rb.AddForce(direction * knockbackForce, ForceMode.Impulse);
     }

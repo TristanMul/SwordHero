@@ -10,14 +10,4 @@ public class fireGolem : EnemyBaseClass
         enemyState = EnemyState.Idle;
         setAnimations();
     }
-
-    public override void setAnimations()
-    {
-        IdleAnimation = "Idle";
-        MoveAnimation = "Fly Forward In Place";
-        AttackAnimation = "Spin Attack Once";
-        DeathAnimation = "Die";
-        DamagedAnimation = "Take Damage";
-
-    }
 }

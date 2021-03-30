@@ -9,12 +9,4 @@ public class Gollem : EnemyBaseClass
         enemyState = EnemyState.Idle;
         setAnimations();
     }
-    public override void setAnimations()
-    {
-        IdleAnimation = "Idle";
-        MoveAnimation = "Move";
-        AttackAnimation = "Attack";
-        DeathAnimation = "Death";
-        DamagedAnimation = "Take Damage";
-    }
 }

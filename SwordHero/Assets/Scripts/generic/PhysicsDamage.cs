@@ -15,17 +15,12 @@ public class PhysicsDamage : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        if(this.tag == "Enemy")
-        {
-            agent = GetComponent<NavMeshAgent>();
-            controllerClass = GetComponent<EnemyBaseClass>();
-        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
 
-        if (other.tag == "Player")
+        if (other.tag == "Weapon" && other.gameObject.GetComponent<Weapon>().isAttacking)
         {
             knockbackForce = playerKnockbackForce;
         }

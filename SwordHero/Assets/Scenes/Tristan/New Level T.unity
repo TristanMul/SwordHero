@@ -2287,6 +2287,8 @@ GameObject:
   - component: {fileID: 410545732}
   - component: {fileID: 410545731}
   - component: {fileID: 410545730}
+  - component: {fileID: 410545735}
+  - component: {fileID: 410545734}
   m_Layer: 0
   m_Name: WaterPlane
   m_TagString: Untagged
@@ -2371,6 +2373,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &410545734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 410545729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0200ac67472bb0a4490f9113aab3c7cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &410545735
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 410545729}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.1, z: 6.123235e-17}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &444145491
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6313,6 +6340,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Golem Earth
       objectReference: {fileID: 0}
+    - target: {fileID: 4449804002494541978, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6236799493354646874, guid: 465a471e97939b645958614c30c4413f,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 465a471e97939b645958614c30c4413f, type: 3}
 --- !u!1001 &1333101883
@@ -9826,6 +9863,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Golem Fire
+      objectReference: {fileID: 0}
+    - target: {fileID: 6213134644146934899, guid: 48c63a7f42bc79b4d9d6bbe4db08a59a,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48c63a7f42bc79b4d9d6bbe4db08a59a, type: 3}

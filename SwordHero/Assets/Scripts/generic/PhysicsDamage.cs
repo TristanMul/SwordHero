@@ -33,12 +33,15 @@ public class PhysicsDamage : MonoBehaviour
         direction.Normalize();
         if (rb.velocity.magnitude > velocityTreshold)
         {
-            Debug.Log("Past treshold");
+            
            if (other.tag == "Enemy")
             {
               
                 knockbackForce = enemyKnockbackForce;
                 other.GetComponent<EnemyHealth>().TakeDamage(rb.velocity.magnitude * damageMultiplier);
+                agent.enabled = false;
+                rb.isKinematic = false;
+                controllerClass.enemyState = EnemyBaseClass.EnemyState.Fall;
             }
             else
             {

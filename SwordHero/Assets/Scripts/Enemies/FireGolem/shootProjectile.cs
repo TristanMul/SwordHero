@@ -7,7 +7,7 @@ public class shootProjectile : MonoBehaviour
     EnemyBaseClass controllerClass;
     public GameObject projectile;
     public GameObject character;
-    public GameObject player;
+    private GameObject player;
     public Transform startingPoint;
     public Animator npcAnimator;
     private NavMeshAgent navMeshAgent;
@@ -25,6 +25,7 @@ public class shootProjectile : MonoBehaviour
         setTimer = Random.Range(minRandomTime, maxRandomTime);
         decreaseCooldown = cooldownTimer;
         navMeshAgent = GetComponent<NavMeshAgent>();
+        player = GameManager.instance._player;
     }
 
     // Update is called once per frame

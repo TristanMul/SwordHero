@@ -39,8 +39,9 @@ public class PhysicsDamage : MonoBehaviour
               
                 knockbackForce = enemyKnockbackForce;
                 other.GetComponent<EnemyHealth>().TakeDamage(rb.velocity.magnitude * damageMultiplier);
-                agent.enabled = false;
-                rb.isKinematic = false;
+                other.gameObject.GetComponent<NavMeshAgent>().enabled = false;
+                other.gameObject.GetComponent<Rigidbody>().isKinematic = false;
+                other.gameObject.GetComponent<Rigidbody>().useGravity = true;
                 controllerClass.enemyState = EnemyBaseClass.EnemyState.Fall;
             }
             else

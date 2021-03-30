@@ -37,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Awake()
     {
-        projectile = GameObject.FindGameObjectWithTag("Projectile").GetComponent<Rigidbody>();
+        //projectile = GameObject.FindGameObjectWithTag("Projectile").GetComponent<Rigidbody>();
         //allEnemies = GameObject.FindGameObjectsWithTag("Enemy");
         gameManager = GameObject.Find("EventSystem").GetComponent<GameManager>();
         gameManager.playerAlive = true;

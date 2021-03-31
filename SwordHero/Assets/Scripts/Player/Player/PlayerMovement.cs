@@ -202,6 +202,13 @@ public class PlayerMovement : MonoBehaviour
         allEnemies.Remove(enemy);
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(isDashing && collision.gameObject.tag == "Enemy")
+        {
+            collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(1f);
+        }
+    }
 
     IEnumerator SpecialAttack()
     {

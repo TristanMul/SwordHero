@@ -24788,7 +24788,6 @@ GameObject:
   - component: {fileID: 135349017098189160}
   - component: {fileID: 4609103972630444303}
   - component: {fileID: 1724898323651538031}
-  - component: {fileID: -8477163687492924873}
   - component: {fileID: 6213134644146934899}
   - component: {fileID: 4473772704849269455}
   - component: {fileID: 4628796545326274825}
@@ -24860,10 +24859,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f595484b7ab078d479632fb183f3f8af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 6652343466263064415, guid: 101b2443f53c16b44b9344baa1cd3126,
-    type: 3}
+  projectile: {fileID: 1762376750822800, guid: 8af58820b26f1d8478004ea81664c7d5, type: 3}
   character: {fileID: 4609103972630444300}
-  player: {fileID: 0}
   startingPoint: {fileID: 135349017738297496}
   npcAnimator: {fileID: 7087874012683385292}
   cooldownTimer: 1
@@ -24951,24 +24948,6 @@ MonoBehaviour:
   damageMultiplier: 0.5
   playerKnockbackForce: 100
   enemyKnockbackForce: 25
---- !u!114 &-8477163687492924873
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4609103972630444300}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abb47798d42b09a489ee7acf3e82d07b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controllerClass: {fileID: 135349017098189160}
-  player: {fileID: 0}
-  navMeshAgent: {fileID: 0}
-  attackRange: 20
-  triggerRange: 40
-  isAttacking: 0
 --- !u!54 &6213134644146934899
 Rigidbody:
   m_ObjectHideFlags: 0

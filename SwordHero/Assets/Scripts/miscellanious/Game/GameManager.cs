@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public GameObject finishLine;
     [HideInInspector] public GameObject _player;
 
+    public FillProgressBar progressBar;
     public static GameManager instance = null;
     private string sceneName;
     public float CameraSpeed;
@@ -33,6 +34,7 @@ public class GameManager : MonoBehaviour
         finishLine = GameObject.FindWithTag("Finish");
         currScene = SceneManager.GetActiveScene();
         sceneName = currScene.name;
+        progressBar = GameObject.Find("ProgressBar").GetComponent<FillProgressBar>();
 
         gameOverUI.SetActive(false);
 

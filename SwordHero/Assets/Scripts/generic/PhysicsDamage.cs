@@ -22,6 +22,11 @@ public class PhysicsDamage : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        if(this.tag == "Enemy")
+        {
+            agent = GetComponent<NavMeshAgent>();
+            controllerClass = GetComponent<EnemyBaseClass>();
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -30,6 +35,10 @@ public class PhysicsDamage : MonoBehaviour
         if (other.tag == "Weapon" && other.gameObject.GetComponent<Weapon>().isAttacking)
         {
             knockbackForce = playerKnockbackForce;
+            if(this.tag == "Enemy")
+            {
+                EnemyHit(this.gameObject);
+            }
         }
         Vector3 direction = this.transform.position - other.transform.position;
         direction.Normalize();
@@ -41,11 +50,7 @@ public class PhysicsDamage : MonoBehaviour
               
                 knockbackForce = enemyKnockbackForce;
                 other.GetComponent<EnemyHealth>().TakeDamage(rb.velocity.magnitude * damageMultiplier);
-                other.gameObject.GetComponent<NavMeshAgent>().enabled = false;
-                other.gameObject.GetComponent<Rigidbody>().isKinematic = false;
-                other.gameObject.GetComponent<Rigidbody>().useGravity = true;
-                controllerClass.enemyState = EnemyBaseClass.EnemyState.Fall;
-                //StartCoroutine(getBackUp(getUpTime));
+                EnemyHit(other.gameObject);
             }
             else
             {
@@ -55,15 +60,23 @@ public class PhysicsDamage : MonoBehaviour
 
             
         }
-        rb.AddForce(direction * knockbackForce, ForceMode.Impulse);
+        this.rb.AddForce(direction * knockbackForce, ForceMode.Impulse);
     }
-    IEnumerator getBackUp(float time)
+    void EnemyHit(GameObject Enemy)
+    {
+        Enemy.GetComponent<NavMeshAgent>().enabled = false;
+        Enemy.gameObject.GetComponent<Rigidbody>().isKinematic = false;
+        Enemy.gameObject.GetComponent<Rigidbody>().useGravity = true;
+        controllerClass.enemyState = EnemyBaseClass.EnemyState.Fall;
+        StartCoroutine(getBackUp(getUpTime, Enemy));
+    }
+    IEnumerator getBackUp(float time, GameObject Enemy)
     {
         Debug.Log("Started coroutine");
         yield return new WaitForSeconds(time);
-        this.GetComponent<NavMeshAgent>().enabled = true;
-        this.GetComponent<Rigidbody>().isKinematic = true;
-        this.GetComponent<Rigidbody>().useGravity = false;
+        Enemy.GetComponent<NavMeshAgent>().enabled = true;
+        Enemy.GetComponent<Rigidbody>().isKinematic = true;
+        Enemy.GetComponent<Rigidbody>().useGravity = false;
         controllerClass.enemyState = EnemyBaseClass.EnemyState.Move;
     }
 }

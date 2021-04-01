@@ -12,26 +12,31 @@ public class EnemyAttackTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
         if(other.tag == "Player"){
-            parentEnemy.GetComponent<EnemyBaseClass>().enemyState = EnemyBaseClass.EnemyState.Attack;
-            parentEnemy.GetComponent<EnemyAttack>().enabled = true;
-            parentEnemy.GetComponent<FollowPlayer>().enabled = false;
+            PlayerIsInRange();
         }
     }
     private void OnTriggerStay(Collider other) {
         if(other.tag == "Player"){
-            parentEnemy.GetComponent<EnemyBaseClass>().enemyState = EnemyBaseClass.EnemyState.Attack;
-            parentEnemy.GetComponent<EnemyAttack>().enabled = true;
-            parentEnemy.GetComponent<FollowPlayer>().enabled = false;
+            PlayerIsInRange();
         }
     }
 
     void OnTriggerExit(Collider other)
     {
         if(other.tag == "Player"){
-            parentEnemy.GetComponent<EnemyBaseClass>().enemyState = EnemyBaseClass.EnemyState.Move;
-            parentEnemy.GetComponent<FollowPlayer>().enabled = true;
-            parentEnemy.GetComponent<EnemyAttack>().enabled = false;
-            parentEnemy.GetComponent<FollowPlayer>().enabled = true;
+            PlayerWentOutOfRange();
         }
+    }
+
+    private void PlayerIsInRange(){
+        parentEnemy.GetComponent<EnemyBaseClass>().enemyState = EnemyBaseClass.EnemyState.Attack;
+        parentEnemy.GetComponent<EnemyAttack>().enabled = true;
+        parentEnemy.GetComponent<FollowPlayer>().enabled = false;
+    }
+
+    private void PlayerWentOutOfRange(){
+        parentEnemy.GetComponent<EnemyBaseClass>().enemyState = EnemyBaseClass.EnemyState.Move;
+        parentEnemy.GetComponent<FollowPlayer>().enabled = true;
+        parentEnemy.GetComponent<EnemyAttack>().enabled = false;
     }
 }

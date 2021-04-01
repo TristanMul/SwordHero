@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float dashTime = .4f;
     private float currentDashSpeed;
 
-
+    private Rigidbody projectile;
     private GameManager gameManager;
     private DynamicJoystick dynamicJoystick;
     private Rigidbody character;
@@ -48,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Awake()
     {
-
+        //projectile = GameObject.FindGameObjectWithTag("Projectile").GetComponent<Rigidbody>();
         //allEnemies = GameObject.FindGameObjectsWithTag("Enemy");
         gameManager = GameObject.Find("EventSystem").GetComponent<GameManager>();
         gameManager.playerAlive = true;

@@ -10,6 +10,7 @@ public class EnemyBaseClass : MonoBehaviour
     [SerializeField] protected float currentHealth;
     [SerializeField] protected float attackRange;
     protected HealthBar healthBar;
+    protected List<string> animationsList = new List<string>();
 
     // Properties that other scripts can use to read variables of enemy.
     public float Speed {get{return speed;} protected set{speed = value;}}
@@ -17,6 +18,7 @@ public class EnemyBaseClass : MonoBehaviour
     public float CurrenHealth {get{return currentHealth;} set{currentHealth = value;}}
     public float AttackRange {get{return attackRange;} protected set{attackRange = value;}}
     public HealthBar HealthBar {get{return healthBar;}}
+    public List<string> AnimationList { get { return animationsList; } }
     
     // All states enemies can have.
     public EnemyState enemyState;
@@ -53,7 +55,21 @@ public class EnemyBaseClass : MonoBehaviour
     }
     public virtual void setAnimations()
     {
+        IdleAnimation = "Idle";
+        MoveAnimation = "Move";
+        AttackAnimation = "Attack";
+        DamagedAnimation = "Damaged";
+        DeathAnimation = "Dead";
+        SpecialAttackAnimation = "Special";
+        EmoteAnimation = "Emote";
 
+        animationsList.Add(IdleAnimation);
+        animationsList.Add(MoveAnimation);
+        animationsList.Add(AttackAnimation);
+        animationsList.Add(DamagedAnimation);
+        animationsList.Add(DeathAnimation);
+        animationsList.Add(SpecialAttackAnimation);
+        animationsList.Add(EmoteAnimation);
     }
     
 }

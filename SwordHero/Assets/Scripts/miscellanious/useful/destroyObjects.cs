@@ -2,12 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class fireGolem : EnemyBaseClass
+public class destroyObjects : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Start()
+    private void OnTriggerEnter(Collider other)
     {
-        enemyState = EnemyState.Idle;
-        setAnimations();
+        other.gameObject.SetActive(false);
     }
 }

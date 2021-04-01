@@ -25,29 +25,44 @@ public class EnemyAnimator : MonoBehaviour
         switch (enemy.enemyState)
         {
             case EnemyBaseClass.EnemyState.Idle:
-                animator.Play(enemy.IdleAnimation);
+                AnimationSetter(enemy.IdleAnimation);
                 break;
             case EnemyBaseClass.EnemyState.Move:
-                animator.Play(enemy.MoveAnimation);
+                AnimationSetter(enemy.MoveAnimation);
                 break;
             case EnemyBaseClass.EnemyState.Attack:
-                animator.Play(enemy.AttackAnimation);
+                AnimationSetter(enemy.AttackAnimation);
                 break;
             case EnemyBaseClass.EnemyState.Damaged:
-                animator.Play(enemy.DamagedAnimation);
+                AnimationSetter(enemy.DamagedAnimation);
                 break;
             case EnemyBaseClass.EnemyState.Death:
-                animator.Play(enemy.DeathAnimation);
+                AnimationSetter(enemy.DeathAnimation);
                 break;
             case EnemyBaseClass.EnemyState.SpecialAttack:
-                animator.Play(enemy.SpecialAttackAnimation);
+                AnimationSetter(enemy.SpecialAttackAnimation);
                 break;
             case EnemyBaseClass.EnemyState.Emote:
-                animator.Play("Bite Attack");
+                AnimationSetter(enemy.EmoteAnimation);
                 break;
             default:
-                animator.Play(enemy.IdleAnimation);
+                AnimationSetter(enemy.IdleAnimation);
                 break;
+        }
+    }
+
+    private void AnimationSetter(string state)
+    {
+        foreach(string _state in enemy.AnimationList)
+        {
+            if(_state == state)
+            {
+                animator.SetBool(state, true);
+            }
+            else
+            {
+                animator.SetBool(_state, false);
+            }
         }
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     TrailRenderer trail;
-    bool isAttacking;
+    public bool isAttacking;
     bool IsAttacking
     {
         get { return isAttacking; }

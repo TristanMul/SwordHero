@@ -11,21 +11,17 @@ public class PhysicsDamage : MonoBehaviour
     [SerializeField] private float damageMultiplier = 0.5f;
     [SerializeField] private float playerKnockbackForce = 100;
     [SerializeField] private float enemyKnockbackForce = 25;
+    [SerializeField] private float getUpTime = 0.5f;
     private float knockbackForce;
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        if(this.tag == "Enemy")
-        {
-            agent = GetComponent<NavMeshAgent>();
-            controllerClass = GetComponent<EnemyBaseClass>();
-        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
 
-        if (other.tag == "Player")
+        if (other.tag == "Weapon" && other.gameObject.GetComponent<Weapon>().isAttacking)
         {
             knockbackForce = playerKnockbackForce;
         }
@@ -33,20 +29,35 @@ public class PhysicsDamage : MonoBehaviour
         direction.Normalize();
         if (rb.velocity.magnitude > velocityTreshold)
         {
+            
            if (other.tag == "Enemy")
             {
-                Debug.Log("Enemy detected");
+              
                 knockbackForce = enemyKnockbackForce;
                 other.GetComponent<EnemyHealth>().TakeDamage(rb.velocity.magnitude * damageMultiplier);
+                other.gameObject.GetComponent<NavMeshAgent>().enabled = false;
+                other.gameObject.GetComponent<Rigidbody>().isKinematic = false;
+                other.gameObject.GetComponent<Rigidbody>().useGravity = true;
+                controllerClass.enemyState = EnemyBaseClass.EnemyState.Fall;
+                //StartCoroutine(getBackUp(getUpTime));
             }
             else
             {
-                Debug.Log("no player or enemy detected");
+                
                 knockbackForce = 0;
             }
 
-            Debug.Log("Force added");
+            
         }
         rb.AddForce(direction * knockbackForce, ForceMode.Impulse);
+    }
+    IEnumerator getBackUp(float time)
+    {
+        Debug.Log("Started coroutine");
+        yield return new WaitForSeconds(time);
+        this.GetComponent<NavMeshAgent>().enabled = true;
+        this.GetComponent<Rigidbody>().isKinematic = true;
+        this.GetComponent<Rigidbody>().useGravity = false;
+        controllerClass.enemyState = EnemyBaseClass.EnemyState.Move;
     }
 }

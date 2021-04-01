@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class EnemyAttackTrigger : MonoBehaviour
 {
@@ -32,7 +31,6 @@ public class EnemyAttackTrigger : MonoBehaviour
     private void PlayerIsInRange(){
         parentEnemy.GetComponent<EnemyBaseClass>().enemyState = EnemyBaseClass.EnemyState.Attack;
         parentEnemy.GetComponent<EnemyAttack>().enabled = true;
-        parentEnemy.GetComponent<NavMeshAgent>().SetDestination(parentEnemy.transform.position);
         parentEnemy.GetComponent<FollowPlayer>().enabled = false;
     }
 

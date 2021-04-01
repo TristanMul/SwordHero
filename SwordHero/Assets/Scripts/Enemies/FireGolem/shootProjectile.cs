@@ -59,6 +59,7 @@ public class shootProjectile : EnemyAttack
             if (animationTimer >= npcAnimator.GetCurrentAnimatorStateInfo(0).length)
             {
                 hasCastSpell = true;
+                navMeshAgent.SetDestination(transform.position);
                 transform.LookAt(player.transform);
                 Instantiate(projectile, startingPoint.position, startingPoint.rotation);
                 // projectile.transform.Rotate(0, 0, 0);

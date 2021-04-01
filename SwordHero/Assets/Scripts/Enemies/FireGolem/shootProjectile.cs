@@ -2,12 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-public class shootProjectile : MonoBehaviour
+public class shootProjectile : EnemyAttack
 {
-    EnemyBaseClass controllerClass;
     public GameObject projectile;
     public GameObject character;
-    private GameObject player;
     public Transform startingPoint;
     public Animator npcAnimator;
     private NavMeshAgent navMeshAgent;
@@ -20,18 +18,18 @@ public class shootProjectile : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        controllerClass = GetComponent<EnemyBaseClass>();
+        player = GameManager.instance._player;
        // animationTimer = ;
-        controllerClass = gameObject.GetComponent<EnemyBaseClass>();
         setTimer = Random.Range(minRandomTime, maxRandomTime);
         decreaseCooldown = cooldownTimer;
         navMeshAgent = GetComponent<NavMeshAgent>();
-        player = GameManager.instance._player;
     }
 
     // Update is called once per frame
     void Update()
     {
-        checkIfInRange();
+        Attack();
         CooldownTimer();
     }
     void checkIfInRange()
@@ -56,19 +54,18 @@ public class shootProjectile : MonoBehaviour
     }
     void Attack()
     {
-        animationTimer += Time.deltaTime;
-        controllerClass.enemyState = EnemyBaseClass.EnemyState.Attack;
-        navMeshAgent.speed = 0;
-        if (animationTimer >= npcAnimator.GetCurrentAnimatorStateInfo(0).length)
-        {
-            hasCastSpell = true;
-            transform.LookAt(player.transform);
-            Instantiate(projectile, startingPoint.position, startingPoint.rotation);
-           // projectile.transform.Rotate(0, 0, 0);
-            animationTimer = 0;
-            controllerClass.enemyState = EnemyBaseClass.EnemyState.Move;
-            navMeshAgent.speed = controllerClass.Speed;
+        if(!hasCastSpell){
+            animationTimer += Time.deltaTime;
+            if (animationTimer >= npcAnimator.GetCurrentAnimatorStateInfo(0).length)
+            {
+                hasCastSpell = true;
+                transform.LookAt(player.transform);
+                Instantiate(projectile, startingPoint.position, startingPoint.rotation);
+                // projectile.transform.Rotate(0, 0, 0);
+                animationTimer = 0;
+            }
         }
+        
     }
     void CooldownTimer()
     {

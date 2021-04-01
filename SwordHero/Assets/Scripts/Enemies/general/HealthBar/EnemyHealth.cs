@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 [RequireComponent(typeof(EnemyBaseClass))]
 public class EnemyHealth : MonoBehaviour
@@ -11,8 +12,13 @@ public class EnemyHealth : MonoBehaviour
     public GameObject deathParticles;
     private bool isDead = false;
 
+    #region Events
+    public event Action StartRagdoll;
+    public event Action StopRagdoll;
+    #endregion
     // Enemy took a hit.
     public void TakeDamage(float damage){
+        StartRagdoll?.Invoke();
         StartCoroutine(WhiteFlash());
         controllerClass.enemyState = EnemyBaseClass.EnemyState.Fall;
         controllerClass.CurrenHealth -= damage;

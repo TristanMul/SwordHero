@@ -15,10 +15,7 @@ public class PhysicsDamage : MonoBehaviour
     [SerializeField] private float getUpTime = 0.5f;
     private float knockbackForce;
 
-    #region Events
-    public event Action StartRagdoll;
-    public event Action StopRagdoll;
-    #endregion
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -64,6 +61,7 @@ public class PhysicsDamage : MonoBehaviour
     }
     void EnemyHit(GameObject Enemy)
     {
+        Debug.Log("AmHit");
         Enemy.GetComponent<NavMeshAgent>().enabled = false;
         Enemy.gameObject.GetComponent<Rigidbody>().isKinematic = false;
         Enemy.gameObject.GetComponent<Rigidbody>().useGravity = true;

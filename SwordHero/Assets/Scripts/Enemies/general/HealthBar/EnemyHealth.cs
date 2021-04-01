@@ -9,8 +9,13 @@ public class EnemyHealth : MonoBehaviour
     public Material ownMaterial;
     public Material whiteFlash;
     public GameObject deathParticles;
+    private FillProgressBar progressBar;
     private bool isDead = false;
 
+    private void Start()
+    {
+        progressBar = GameManager.instance.progressBar;
+    }
     // Enemy took a hit.
     public void TakeDamage(float damage){
         StartCoroutine(WhiteFlash());
@@ -32,8 +37,9 @@ public class EnemyHealth : MonoBehaviour
         // Play death effect.
         GameObject newDeathAnimation =  Instantiate(deathParticles, transform.position, deathParticles.transform.rotation);
         newDeathAnimation.GetComponent<DeathAnimation>().Setup(5);
-
-        Destroy(gameObject);
+        progressBar.Remove(this.gameObject);
+        progressBar.UpdateProgressBar();
+        this.gameObject.SetActive(false);
     }
 
     // Enemy flashes white when hit.

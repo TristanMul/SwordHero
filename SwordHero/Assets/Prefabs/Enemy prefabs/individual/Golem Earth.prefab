@@ -311,7 +311,7 @@ Transform:
   m_GameObject: {fileID: 3078305369748373051}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.1764705, y: 2, z: 1.1764705}
+  m_LocalScale: {x: 1.1764705, y: 1.1764705, z: 1.1764705}
   m_Children:
   - {fileID: 9139781648687360521}
   - {fileID: 2189408214438931114}
@@ -359,8 +359,8 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3078305369748373051}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
+  m_Mass: 3
+  m_Drag: 0.8
   m_AngularDrag: 0.05
   m_UseGravity: 0
   m_IsKinematic: 1
@@ -449,7 +449,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocityTreshold: 1
   damageMultiplier: 0.5
-  playerKnockbackForce: 100
+  playerKnockbackForce: 25
   enemyKnockbackForce: 25
   getUpTime: 0.5
 --- !u!136 &6236799493354646874
@@ -507,7 +507,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dab3fa0901a52704a8cb55e3ce4b95fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controllerClass: {fileID: 4449804002494541957}
 --- !u!1 &3208334065706230830
 GameObject:
   m_ObjectHideFlags: 0
@@ -992,7 +991,7 @@ GameObject:
   - component: {fileID: 4449804004204202379}
   m_Layer: 0
   m_Name: RigRArmPalm
-  m_TagString: Enemy
+  m_TagString: EnemyWeapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1371,26 +1370,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2446447181796156545}
     m_Modifications:
-    - target: {fileID: 397759145226815096, guid: 39517948c0623a747872bac2a6291875,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 7f9fab9d1c29246e09fb17c57c71f7bf,
-        type: 3}
     - target: {fileID: 397759145226815098, guid: 39517948c0623a747872bac2a6291875,
         type: 3}
       propertyPath: m_RootOrder
       value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 397759145226815098, guid: 39517948c0623a747872bac2a6291875,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.32
-      objectReference: {fileID: 0}
-    - target: {fileID: 397759145226815098, guid: 39517948c0623a747872bac2a6291875,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.55
       objectReference: {fileID: 0}
     - target: {fileID: 397759145226815098, guid: 39517948c0623a747872bac2a6291875,
         type: 3}
@@ -1405,7 +1388,7 @@ PrefabInstance:
     - target: {fileID: 397759145226815098, guid: 39517948c0623a747872bac2a6291875,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 397759145226815098, guid: 39517948c0623a747872bac2a6291875,
         type: 3}
@@ -1480,12 +1463,12 @@ PrefabInstance:
     - target: {fileID: 3844476636293586721, guid: 201e33c6c3cd7c24fbac6169899865d2,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3844476636293586721, guid: 201e33c6c3cd7c24fbac6169899865d2,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3844476636293586721, guid: 201e33c6c3cd7c24fbac6169899865d2,
         type: 3}
@@ -1495,7 +1478,7 @@ PrefabInstance:
     - target: {fileID: 3844476636293586721, guid: 201e33c6c3cd7c24fbac6169899865d2,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3844476636293586721, guid: 201e33c6c3cd7c24fbac6169899865d2,
         type: 3}
@@ -1510,7 +1493,7 @@ PrefabInstance:
     - target: {fileID: 3844476636293586721, guid: 201e33c6c3cd7c24fbac6169899865d2,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 3844476636293586721, guid: 201e33c6c3cd7c24fbac6169899865d2,
         type: 3}

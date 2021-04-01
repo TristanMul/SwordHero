@@ -13,6 +13,7 @@ TagManager:
   - Walkable
   - EnemyGroup
   - Weapon
+  - Projectile
   layers:
   - Default
   - TransparentFX
@@ -29,7 +30,7 @@ TagManager:
   - Ground
   - Water
   - Projectile
-  - 
+  - Ragdoll
   - 
   - 
   - 

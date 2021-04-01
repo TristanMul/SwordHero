@@ -4,25 +4,30 @@ using UnityEngine;
 
 public class Ricochet : MonoBehaviour
 {
-    private Transform projectilePos;
-    private Rigidbody projectileRigid;
+    //private Transform projectilePos;
+    //private Rigidbody projectileRigid;
     private bool canRicochet;
     Collider obj;
+    Animator _animator;
+
+    private void Awake()
+    {
+        _animator = GetComponentInParent<Animator>();
+    }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && canRicochet)
+        if (_animator.GetCurrentAnimatorStateInfo(0).IsName("Swordhit") && canRicochet && obj != null)
         {
             Richocet(obj.transform);
-            Debug.Log("Hit");
             canRicochet = false;
         }
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         obj = other;
-        if (other.CompareTag("Projectile"))
+        if (other.CompareTag("Enemy"))
         {
             canRicochet = true;
         }
@@ -30,7 +35,8 @@ public class Ricochet : MonoBehaviour
 
     void Richocet(Transform _object)
     {
-        _object.GetComponent<Rigidbody>().velocity = -_object.GetComponent<Rigidbody>().velocity;
-        Debug.Log("Changed units");
+        _object.GetComponent<Rigidbody>().velocity = -_object.GetComponent<Rigidbody>().velocity * 1.5f;
+        _object.gameObject.layer = 14;
+        _object.GetComponent<Collider>().isTrigger = true;
     }
 }

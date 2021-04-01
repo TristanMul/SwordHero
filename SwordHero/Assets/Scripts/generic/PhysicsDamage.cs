@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using System;
 public class PhysicsDamage : MonoBehaviour
 {
     Rigidbody rb;
@@ -13,6 +14,11 @@ public class PhysicsDamage : MonoBehaviour
     [SerializeField] private float enemyKnockbackForce = 25;
     [SerializeField] private float getUpTime = 0.5f;
     private float knockbackForce;
+
+    #region Events
+    public event Action StartRagdoll;
+    public event Action StopRagdoll;
+    #endregion
     private void Start()
     {
         rb = GetComponent<Rigidbody>();

@@ -39,13 +39,14 @@ public class RagdollManager : MonoBehaviour
 
     void SetupRagdoll()
     {
-        animator.enabled = false;
-        agent.enabled = false;
-        ChangeRagdollColliders(true);
-        rb.isKinematic = false;
-
         if (!fallRotationStarted)
         {
+            animator.enabled = false;
+            agent.enabled = false;
+            ChangeRagdollColliders(true);
+            rb.isKinematic = false;
+
+
             StartCoroutine(FallRotation());
             fallRotationStarted = true;
         }
@@ -90,7 +91,8 @@ public class RagdollManager : MonoBehaviour
         DisableRagdoll();
     }
 
-    public void CharacterIsStanding() {
+    public void CharacterIsStanding()
+    {
         fallRotationStarted = false;//Enables the ability to fall down
     }
 

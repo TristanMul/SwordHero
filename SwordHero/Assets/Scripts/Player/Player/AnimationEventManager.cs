@@ -11,9 +11,10 @@ public class AnimationEventManager : MonoBehaviour
     void Start()
     {
         weapon = GetComponentInChildren<Weapon>();
+        attack = GetComponentInParent<Attack>();
     }
 
     public void OnAttackEnd() {
-        weapon.StopAttack();
+        attack.StopAttack();
     }
 }

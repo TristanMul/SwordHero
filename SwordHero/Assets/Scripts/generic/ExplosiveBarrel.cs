@@ -7,6 +7,7 @@ public class ExplosiveBarrel : MonoBehaviour
     [SerializeField] private float power;
     [SerializeField] private float radius;
     [SerializeField] private float upForce;
+    [SerializeField] private float explosionDamage;
 
     private void Update() {
         if(Input.GetKeyDown(KeyCode.A)) Detonate();
@@ -22,7 +23,7 @@ public class ExplosiveBarrel : MonoBehaviour
             if(target.GetComponent<Rigidbody>() && target.GetComponent<PhysicsDamage>()){
                 // Have enemies act like a ragdoll.
                 if(target.CompareTag("Enemy")){
-                    target.GetComponent<PhysicsDamage>().EnemyHit(target.gameObject);
+                    target.GetComponent<EnemyHealth>().TakeDamage(explosionDamage);
                 }
                 
                 target.GetComponent<Rigidbody>().AddExplosionForce(power, transform.position, radius, upForce, ForceMode.Impulse);

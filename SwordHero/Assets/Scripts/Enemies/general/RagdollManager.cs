@@ -83,6 +83,7 @@ public class RagdollManager : MonoBehaviour
     IEnumerator FallRotation()
     {
         float distanceRotated = 0f;
+        float fallDelay;
         currentRotationSpeed = startRotationSpeed;
         Quaternion startRotation = transform.rotation;//saves the rotation at the beginning
         while (distanceRotated < 90f)
@@ -97,9 +98,11 @@ public class RagdollManager : MonoBehaviour
         transform.rotation = startRotation;
         animator.Play("StandUp");
         DisableRagdoll();
+        fallDelay = animator.GetCurrentAnimatorStateInfo(0).length;
+        Invoke("CharacterIsStanding", fallDelay);
     }
 
-    public void CharacterIsStanding()
+    private void CharacterIsStanding()
     {
         fallRotationStarted = false;//Enables the ability to fall down
         Debug.Log("Standing");

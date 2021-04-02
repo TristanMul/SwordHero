@@ -129,3 +129,4 @@ MonoBehaviour:
   power: 20
   radius: 10
   upForce: 1
+  explosionDamage: 3

@@ -128,6 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocityTreshold: 1
   damageMultiplier: 1.5
+  forceMultiplier: 0.1
   playerKnockbackForce: 25
   enemyKnockbackForce: 25
   getUpTime: 0.5

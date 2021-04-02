@@ -30,7 +30,7 @@ public class PhysicsDamage : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         // make sure only objects with a specific tag collide with this object & checks if the velocity threshold has been reached.
-        if(other.tag == "Weapon" || ((other.tag == "Object" || other.tag == "Enemy") && other.GetComponent<Rigidbody>().velocity.magnitude >= velocityTreshold))
+        if(other.tag == "Weapon" || ((other.tag == "Object" || other.tag == "Enemy") && other.gameObject.GetComponent<Rigidbody>().velocity.magnitude >= velocityTreshold))
         {
             //create a vector between the current object and the object it hits, give it a length of 1.
             Vector3 direction = this.transform.position - other.transform.position;
@@ -38,6 +38,7 @@ public class PhysicsDamage : MonoBehaviour
 
             //assign a value to knockbackforce
             knockbackForce = assignKnockbackforce(other.gameObject);
+            Debug.Log(knockbackForce);
             //if the current object is an enemy, take damage equal to the speed the other object has times a multiplier
             if (this.tag == "Enemy")
                 {

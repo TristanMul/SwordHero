@@ -102,6 +102,7 @@ public class RagdollManager : MonoBehaviour
     public void CharacterIsStanding()
     {
         fallRotationStarted = false;//Enables the ability to fall down
+        Debug.Log("Standing");
     }
 
 }

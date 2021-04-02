@@ -63,6 +63,7 @@ public class PhysicsDamage : MonoBehaviour
 
     public void EnemyHit(GameObject Enemy)
     {
+        Debug.Log("AmHit");
         Enemy.GetComponent<NavMeshAgent>().enabled = false;
         Enemy.gameObject.GetComponent<Rigidbody>().isKinematic = false;
         Enemy.gameObject.GetComponent<Rigidbody>().useGravity = true;

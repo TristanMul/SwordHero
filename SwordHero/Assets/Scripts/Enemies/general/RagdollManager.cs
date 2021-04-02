@@ -18,6 +18,14 @@ public class RagdollManager : MonoBehaviour
     float currentRotationSpeed;
     [SerializeField] float rotationAcceleration;
     bool fallRotationStarted;
+
+    public bool FallRotationStarted { get { return fallRotationStarted; }
+        set { 
+            fallRotationStarted = value;
+            
+        }
+    }
+
     [SerializeField] float timeToStandUp;
     #endregion
     // Start is called before the first frame update
@@ -79,7 +87,7 @@ public class RagdollManager : MonoBehaviour
         Quaternion startRotation = transform.rotation;//saves the rotation at the beginning
         while (distanceRotated < 90f)
         {
-            transform.Rotate(new Vector3(currentRotationSpeed * Time.deltaTime, 0f, 0f));
+            transform.Rotate(new Vector3(-currentRotationSpeed * Time.deltaTime, 0f, 0f));
             distanceRotated += currentRotationSpeed * Time.deltaTime;
             currentRotationSpeed += Time.deltaTime * rotationAcceleration;//Speeds up the falling
             yield return null;

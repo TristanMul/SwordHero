@@ -15,28 +15,26 @@ public class Ricochet : MonoBehaviour
         _animator = GetComponentInParent<Animator>();
     }
 
-    private void Update()
-    {
-        if (_animator.GetCurrentAnimatorStateInfo(0).IsName("Swordhit") && canRicochet && obj != null)
-        {
-            Richocet(obj.transform);
-            canRicochet = false;
-        }
-    }
-
     private void OnTriggerEnter(Collider other)
     {
-        obj = other;
-        if (other.CompareTag("Enemy"))
+        if(other != null)
         {
-            canRicochet = true;
+            if (other.CompareTag("EnemyProjectile"))
+            {
+                Richocet(other.transform);
+            }
         }
     }
 
     void Richocet(Transform _object)
     {
-        _object.GetComponent<Rigidbody>().velocity = -_object.GetComponent<Rigidbody>().velocity * 1.5f;
-        _object.gameObject.layer = 14;
-        _object.GetComponent<Collider>().isTrigger = true;
+        if (_animator.GetCurrentAnimatorStateInfo(0).IsName("Swordhit") &&  _object != null)
+        {
+            _object.GetComponent<Rigidbody>().velocity = -_object.GetComponent<Rigidbody>().velocity * 1.5f;
+            _object.gameObject.layer = 14;
+            _object.GetComponent<Collider>().isTrigger = true;
+            canRicochet = false;
+        }
     }
 }
+

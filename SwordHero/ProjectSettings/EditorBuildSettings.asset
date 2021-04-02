@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/TrailerScenes/Scenes/Old/TrailerScene 7.unity
-    guid: 295afdf8d49b041819cf4fab78acb87b
+    path: Assets/Scenes/LoaderScene/LoaderScene.unity
+    guid: 30b4344fc3c7154499fc42ed62b30eca
   m_configObjects: {}

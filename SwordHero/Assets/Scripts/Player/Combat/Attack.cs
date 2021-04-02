@@ -102,7 +102,7 @@ public class Attack : MonoBehaviour
     /// <summary>
     /// Deactivates the sword to do damage and deactivates the visuals
     /// </summary>
-    void StopAttack()
+    public void StopAttack()
     {
         if (animator != null) { animator.SetBool("Attack", false); }
         if (weapon != null) { weapon.StopAttack(); }

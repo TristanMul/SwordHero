@@ -97,7 +97,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8758c29e87a4aa4a855776feb1cd6db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   spotRange: 40
   attackRange: 20
 --- !u!114 &5392157839802089352
@@ -158,7 +157,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 20.55275
+  m_Radius: 25
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &7553385097655477647
 MonoBehaviour:

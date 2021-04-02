@@ -11,6 +11,7 @@ public class EnemyHealth : MonoBehaviour
     public GameObject deathParticles;
     private FillProgressBar progressBar;
     private bool isDead = false;
+    [SerializeField] private int numberOfCoins;
 
     private void Start()
     {
@@ -36,7 +37,8 @@ public class EnemyHealth : MonoBehaviour
 
         // Play death effect.
         GameObject newDeathAnimation =  Instantiate(deathParticles, transform.position, deathParticles.transform.rotation);
-        newDeathAnimation.GetComponent<DeathAnimation>().Setup(5);
+        newDeathAnimation.GetComponent<DeathAnimation>().Setup(numberOfCoins);
+        PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + numberOfCoins);
         progressBar.Remove(this.gameObject);
         progressBar.UpdateProgressBar();
         this.gameObject.SetActive(false);

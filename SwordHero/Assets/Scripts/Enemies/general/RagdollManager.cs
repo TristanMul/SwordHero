@@ -15,6 +15,7 @@ public class RagdollManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log(transform.rotation);
         ragdollColliders = GetComponentsInChildren<CapsuleCollider>();
         physicsDamage = GetComponent<PhysicsDamage>();
         agent = GetComponent<NavMeshAgent>();

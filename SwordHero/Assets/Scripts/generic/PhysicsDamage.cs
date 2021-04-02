@@ -25,6 +25,8 @@ public class PhysicsDamage : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Vector3 direction = this.transform.position - other.transform.position;
+        direction.Normalize();
 
         if (other.tag == "Weapon" && other.gameObject.GetComponent<Weapon>().isAttacking)
         {
@@ -34,8 +36,7 @@ public class PhysicsDamage : MonoBehaviour
                 EnemyHit(this.gameObject);
             }
         }
-        Vector3 direction = this.transform.position - other.transform.position;
-        direction.Normalize();
+
         if (rb.velocity.magnitude > velocityTreshold)
         {
             
@@ -56,7 +57,8 @@ public class PhysicsDamage : MonoBehaviour
         }
         this.rb.AddForce(direction * knockbackForce, ForceMode.Impulse);
     }
-    void EnemyHit(GameObject Enemy)
+
+    public void EnemyHit(GameObject Enemy)
     {
         Enemy.GetComponent<NavMeshAgent>().enabled = false;
         Enemy.gameObject.GetComponent<Rigidbody>().isKinematic = false;

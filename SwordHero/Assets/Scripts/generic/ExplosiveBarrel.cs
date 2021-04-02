@@ -7,6 +7,10 @@ public class ExplosiveBarrel : MonoBehaviour
     [SerializeField] private float power;
     [SerializeField] private float radius;
     [SerializeField] private float upForce;
+
+    private void Update() {
+        if(Input.GetKeyDown(KeyCode.A)) Detonate();
+    }
     
     /// <summary>
     /// Makes a list of objects within radius and adds force to objects with PhysicsDamageComponent.

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using System;
 public class PhysicsDamage : MonoBehaviour
 {
     Rigidbody rb;
@@ -13,6 +14,8 @@ public class PhysicsDamage : MonoBehaviour
     [SerializeField] private float enemyKnockbackForce = 25;
     [SerializeField] private float getUpTime = 0.5f;
     private float knockbackForce;
+
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -60,6 +63,7 @@ public class PhysicsDamage : MonoBehaviour
 
     public void EnemyHit(GameObject Enemy)
     {
+        Debug.Log("AmHit");
         Enemy.GetComponent<NavMeshAgent>().enabled = false;
         Enemy.gameObject.GetComponent<Rigidbody>().isKinematic = false;
         Enemy.gameObject.GetComponent<Rigidbody>().useGravity = true;

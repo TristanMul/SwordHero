@@ -11,6 +11,7 @@ public class RagdollManager : MonoBehaviour
     NavMeshAgent agent;
     Rigidbody rb;
     EnemyHealth health;
+    EnemyBaseClass controllerclass;
 
     [Header("fall variables")]
     #region variablesForFalling
@@ -37,7 +38,7 @@ public class RagdollManager : MonoBehaviour
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         health = GetComponent<EnemyHealth>();
-
+        controllerclass = GetComponent<EnemyBaseClass>();
 
         health.StartRagdoll += SetupRagdoll;
         health.StopRagdoll += DisableRagdoll;
@@ -100,6 +101,8 @@ public class RagdollManager : MonoBehaviour
         DisableRagdoll();
         fallDelay = animator.GetCurrentAnimatorStateInfo(0).length;
         Invoke("CharacterIsStanding", fallDelay);
+        yield return new WaitForSeconds(fallDelay);
+        controllerclass.enemyState = EnemyBaseClass.EnemyState.Move;
     }
 
     private void CharacterIsStanding()

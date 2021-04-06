@@ -1343,6 +1343,7 @@ GameObject:
   - component: {fileID: 2005752753}
   - component: {fileID: 2005752754}
   - component: {fileID: 2033664481}
+  - component: {fileID: 841634915}
   m_Layer: 9
   m_Name: Skeleton
   m_TagString: Enemy
@@ -1359,7 +1360,7 @@ Transform:
   m_GameObject: {fileID: 4158914863561781709}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 967550783862220124}
   - {fileID: 77795048771435984}
@@ -1438,8 +1439,8 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4158914863561781709}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
+  m_Mass: 50
+  m_Drag: 0.8
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 1
@@ -1536,12 +1537,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bbd3f0f94bf8524bbf94e7ad10ecd07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocityTreshold: 0
+  velocityTreshold: 5.5
   damageMultiplier: 0.5
-  forceMultiplier: 0.1
-  playerKnockbackForce: 100
-  enemyKnockbackForce: 25
+  forceMultiplier: 10
+  playerKnockbackForce: 500
   getUpTime: 0.5
+--- !u!114 &841634915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4158914863561781709}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d284cf84af6e6c948aab374174f53eb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controllerClass: {fileID: 5871199494760709456}
+  player: {fileID: 0}
+  navMeshAgent: {fileID: 0}
 --- !u!1 &4362037648077105350
 GameObject:
   m_ObjectHideFlags: 0

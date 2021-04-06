@@ -12,7 +12,6 @@ public class PhysicsDamage : MonoBehaviour
     [SerializeField] private float damageMultiplier = 0.5f;
     [SerializeField] private float forceMultiplier = 0.1f;
     [SerializeField] private float playerKnockbackForce = 100;
-    [SerializeField] private float enemyKnockbackForce = 25;
     [SerializeField] private float getUpTime = 0.5f;
     private float knockbackForce;
 
@@ -29,87 +28,45 @@ public class PhysicsDamage : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if(other.tag == "Weapon")
+        {
+            ApplyKnockBack(playerKnockbackForce, other.gameObject);
+        }
         // make sure only objects with a specific tag collide with this object & checks if the velocity threshold has been reached.
-        if(other.tag == "Weapon" || ((other.tag == "Object" || other.tag == "Enemy") && other.gameObject.GetComponent<Rigidbody>().velocity.magnitude >= velocityTreshold))
+        if (other.GetComponent<PhysicsDamage>() && other.gameObject.GetComponent<Rigidbody>().velocity.magnitude >= velocityTreshold)
         {
-            //create a vector between the current object and the object it hits, give it a length of 1.
-            Vector3 direction = this.transform.position - other.transform.position;
-            direction.Normalize();
-
-            //assign a value to knockbackforce
-            knockbackForce = assignKnockbackforce(other.gameObject);
-            Debug.Log(knockbackForce);
-            //if the current object is an enemy, take damage equal to the speed the other object has times a multiplier
+        Debug.Log(rb.velocity.magnitude);
             if (this.tag == "Enemy")
-                {
-                    this.GetComponent<EnemyHealth>().TakeDamage(other.GetComponent<Rigidbody>().velocity.magnitude * damageMultiplier);
-                }
-              //add the force to the object in the direction of the two objects that collided & equal to the knockback force that has been set
-                this.rb.AddForce(direction * knockbackForce, ForceMode.Impulse);
-        }
+            {
 
-        float assignKnockbackforce(GameObject other)
-        {
-            
-            if (other.tag == "Weapon" && other.gameObject.GetComponent<Weapon>().isAttacking)
-            {
-                //if the object that hits this object is a weapon and the player is trying to attack, give a constant knockback force
-                return playerKnockbackForce;
+                //if the current object is an enemy, take damage equal to the speed the other object has times a multiplier
+                float amountOfDamage = other.GetComponent<Rigidbody>().velocity.magnitude * damageMultiplier;
+                this.GetComponent<EnemyHealth>().TakeDamage(amountOfDamage);
             }
-            else //if(other.tag == "Object" || other.tag == "Enemy")
-            {
-                //if it is another object or an enemy, give a force equal to the velocity of the other game object times a multiplier
-                return other.gameObject.GetComponent<Rigidbody>().velocity.magnitude * forceMultiplier;
-            }
+            ApplyKnockBack(other.gameObject.GetComponent<Rigidbody>().velocity.magnitude * forceMultiplier, other.gameObject);
         }
-        /*++Vector3 direction = this.transform.position - other.transform.position;
-        ++direction.Normalize();
+    }
+    /*float assignKnockbackforce(GameObject other)
+    {
 
         if (other.tag == "Weapon" && other.gameObject.GetComponent<Weapon>().isAttacking)
         {
-            ++knockbackForce = playerKnockbackForce;
-            if(this.tag == "Enemy")
-            {
-                --EnemyHit(this.gameObject);
-            }
+            //if the object that hits this object is a weapon and the player is trying to attack, give a constant knockback force
+            return playerKnockbackForce;
         }
-
-        ??if (rb.velocity.magnitude > velocityTreshold)
+        else //if(other.tag == "Object" || other.tag == "Enemy")
         {
-            
-           if (other.tag == "Enemy")
-            {
-              
-                ++knockbackForce = enemyKnockbackForce;
-                ++ other.GetComponent<EnemyHealth>().TakeDamage(rb.velocity.magnitude * damageMultiplier);
-                --EnemyHit(other.gameObject);
-            }
-            else
-            {
-                
-                ++knockbackForce = 0;
-            }
-
+            //if it is another object or an enemy, give a force equal to the velocity of the other game object times a multiplier
             
         }
-        ++this.rb.AddForce(direction * knockbackForce, ForceMode.Impulse);*/
-    }
-  
-    public void EnemyHit(GameObject Enemy)
+    }*/
+    void ApplyKnockBack(float force, GameObject other)
     {
-        Enemy.GetComponent<NavMeshAgent>().enabled = false;
-        Enemy.gameObject.GetComponent<Rigidbody>().isKinematic = false;
-        Enemy.gameObject.GetComponent<Rigidbody>().useGravity = true;
-        controllerClass.enemyState = EnemyBaseClass.EnemyState.Fall;
-        StartCoroutine(getBackUp(getUpTime, Enemy));
-    }
-    IEnumerator getBackUp(float time, GameObject Enemy)
-    {
-        Debug.Log("Started coroutine");
-        yield return new WaitForSeconds(time);
-        Enemy.GetComponent<NavMeshAgent>().enabled = true;
-        Enemy.GetComponent<Rigidbody>().isKinematic = true;
-        Enemy.GetComponent<Rigidbody>().useGravity = false;
-        controllerClass.enemyState = EnemyBaseClass.EnemyState.Move;
+        //create a vector between the current object and the object it hits, give it a length of 1.
+        Vector3 direction = this.transform.position - other.transform.position;
+        direction.Normalize();
+     
+        //add the force to the object in the direction of the two objects that collided & equal to the knockback force that has been set
+        this.rb.AddForce(direction * force, ForceMode.Impulse);
     }
 }

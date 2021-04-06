@@ -7,9 +7,6 @@ public class Weapon : MonoBehaviour
     [HideInInspector] public bool isAttacking;
     [SerializeField]private MeshCollider myCollider;
 
-    private List<Collider> colliders = new List<Collider>();
-    public List<Collider> GetColliders() { return colliders; }
-
 
     bool IsAttacking
     {
@@ -28,7 +25,6 @@ public class Weapon : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!colliders.Contains(other) && other.gameObject.tag == "Enemy") { colliders.Add(other); }//Adds colliders to a list of colliders
 
 
         if (IsAttacking)
@@ -41,23 +37,9 @@ public class Weapon : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.tag == "Enemy")
-        {
-            Debug.Log("Exit " + other);
-            colliders.Remove(other);
-        }
-    }
+
     public void StartAttack()
     {
-        foreach(Collider col in colliders)
-        {
-            if (col.gameObject.tag == "Enemy")
-            {
-                col.GetComponent<EnemyHealth>().TakeDamage(1f);
-            }
-        }
         IsAttacking = true;
         myCollider.enabled = true;
     }

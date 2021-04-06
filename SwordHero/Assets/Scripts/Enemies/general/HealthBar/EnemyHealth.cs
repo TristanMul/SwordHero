@@ -41,6 +41,8 @@ public class EnemyHealth : MonoBehaviour
 
     // Enemy is dead.
     private void EnemyDeath(){
+        GameManager.instance.TimeSlow(.5f, .5f);
+
         controllerClass.enemyState = EnemyBaseClass.EnemyState.Death;
 
         // Play death effect.
@@ -51,6 +53,8 @@ public class EnemyHealth : MonoBehaviour
         progressBar.Remove(this.gameObject);
         progressBar.UpdateProgressBar();
         this.gameObject.SetActive(false);
+
+
     }
 
     // Enemy flashes white when hit.

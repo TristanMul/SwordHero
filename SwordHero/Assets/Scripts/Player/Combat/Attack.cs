@@ -88,7 +88,7 @@ public class Attack : MonoBehaviour
     /// </summary>
     void StartAttack()
     {
-        if (animator != null) { animator.SetBool("Attack", true); }
+        if (animator != null) { animator.Play("Swordhit"); }
         if (weapon != null) { weapon.StartAttack(); }
         if (attackIsCharged)
         {

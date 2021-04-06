@@ -46,20 +46,7 @@ public class PhysicsDamage : MonoBehaviour
             ApplyKnockBack(other.gameObject.GetComponent<Rigidbody>().velocity.magnitude * forceMultiplier, other.gameObject);
         }
     }
-    /*float assignKnockbackforce(GameObject other)
-    {
 
-        if (other.tag == "Weapon" && other.gameObject.GetComponent<Weapon>().isAttacking)
-        {
-            //if the object that hits this object is a weapon and the player is trying to attack, give a constant knockback force
-            return playerKnockbackForce;
-        }
-        else //if(other.tag == "Object" || other.tag == "Enemy")
-        {
-            //if it is another object or an enemy, give a force equal to the velocity of the other game object times a multiplier
-            
-        }
-    }*/
     void ApplyKnockBack(float force, GameObject other)
     {
         //create a vector between the current object and the object it hits, give it a length of 1.

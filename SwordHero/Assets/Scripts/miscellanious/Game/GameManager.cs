@@ -115,15 +115,22 @@ public class GameManager : MonoBehaviour
 
 
     /// <summary>
-    /// 
+    /// Slows time -Lennart
     /// </summary>
     /// <param name="duration">The realtime duration of the time slow</param>
     /// <param name="magnitude">The timescale applied</param>
     /// <returns></returns>
-    public IEnumerator SlowTime(float duration, float magnitude)
+    IEnumerator SlowTime(float duration, float magnitude)
     {
         Time.timeScale = magnitude;
+        Time.fixedDeltaTime = magnitude * 0.02f;
         yield return new WaitForSecondsRealtime(duration);
         Time.timeScale = 1f;
+        Time.fixedDeltaTime = 0.02f;
+    }
+
+    public void TimeSlow(float duration, float magnitude)
+    {
+        StartCoroutine(SlowTime(duration, magnitude));
     }
 }

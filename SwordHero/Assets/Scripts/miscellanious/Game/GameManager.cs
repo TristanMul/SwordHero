@@ -123,8 +123,10 @@ public class GameManager : MonoBehaviour
     IEnumerator SlowTime(float duration, float magnitude)
     {
         Time.timeScale = magnitude;
+        Time.fixedDeltaTime = magnitude * 0.02f;
         yield return new WaitForSecondsRealtime(duration);
         Time.timeScale = 1f;
+        Time.fixedDeltaTime = 0.02f;
     }
 
     public void TimeSlow(float duration, float magnitude)

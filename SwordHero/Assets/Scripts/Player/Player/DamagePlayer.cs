@@ -5,17 +5,18 @@ using UnityEngine;
 public class DamagePlayer : MonoBehaviour
 {
     private PlayerHealth player;
+    public float damageToGive;
 
     private void Start()
     {
-        player = GameObject.Find("Archer").GetComponent<PlayerHealth>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Player")
         {
-            player.TakeDamage(10f);
+            player.TakeDamage(damageToGive);
         }
     }
 }

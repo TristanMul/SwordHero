@@ -10,8 +10,10 @@ public class EnemyHealth : MonoBehaviour
     public Material ownMaterial;
     public Material whiteFlash;
     public GameObject deathParticles;
+    [SerializeField] private UpdateCoins coinUpdater;
     private FillProgressBar progressBar;
     private bool isDead = false;
+    [SerializeField] private int numberOfCoins;
 
     #region Events
     public event Action StartRagdoll;
@@ -19,6 +21,7 @@ public class EnemyHealth : MonoBehaviour
     #endregion
     private void Start()
     {
+        coinUpdater = gameObject.GetComponent<UpdateCoins>();
         progressBar = GameManager.instance.progressBar;
     }
     // Enemy took a hit.
@@ -44,7 +47,9 @@ public class EnemyHealth : MonoBehaviour
 
         // Play death effect.
         GameObject newDeathAnimation =  Instantiate(deathParticles, transform.position, deathParticles.transform.rotation);
-        newDeathAnimation.GetComponent<DeathAnimation>().Setup(5);
+        newDeathAnimation.GetComponent<DeathAnimation>().Setup(numberOfCoins);
+        PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + numberOfCoins);
+        //coinUpdater.UpdateCoinAmount();
         progressBar.Remove(this.gameObject);
         progressBar.UpdateProgressBar();
         this.gameObject.SetActive(false);

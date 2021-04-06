@@ -15,6 +15,7 @@ TagManager:
   - Weapon
   - Projectile
   - EnemyWeapon
+  - Object
   layers:
   - Default
   - TransparentFX

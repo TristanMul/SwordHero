@@ -30,6 +30,7 @@ public class Ricochet : MonoBehaviour
     {
         if (_animator.GetCurrentAnimatorStateInfo(0).IsName("Swordhit") &&  _object != null)
         {
+            GameManager.instance.TimeSlow(.5f, .5f);
             _object.GetComponent<Rigidbody>().velocity = -_object.GetComponent<Rigidbody>().velocity * 1.5f;
             _object.gameObject.layer = 14;
             _object.GetComponent<Collider>().isTrigger = true;

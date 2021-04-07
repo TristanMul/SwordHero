@@ -24,6 +24,7 @@ public class CameraManager : MonoBehaviour
     {
         FollowTarget = GameManager.instance._player.transform;
         playerMovement = FollowTarget.GetComponent<PlayerMovement>();
+        TargetOffset = NormalOffset;
     }
 
     public void SetTarget(Transform aTransform)

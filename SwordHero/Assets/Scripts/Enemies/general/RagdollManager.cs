@@ -5,13 +5,15 @@ using UnityEngine.AI;
 
 public class RagdollManager : MonoBehaviour
 {
-    CapsuleCollider[] ragdollColliders;
+    List<Collider> ragdollColliders;
     PhysicsDamage physicsDamage;
     Animator animator;
     NavMeshAgent agent;
     Rigidbody rb;
     EnemyHealth health;
-
+    EnemyBaseClass controllerclass;
+    GameObject hitTarget;
+    [SerializeField] float maxRotation;
     [Header("fall variables")]
     #region variablesForFalling
     [SerializeField] float startRotationSpeed;
@@ -19,10 +21,13 @@ public class RagdollManager : MonoBehaviour
     [SerializeField] float rotationAcceleration;
     bool fallRotationStarted;
 
-    public bool FallRotationStarted { get { return fallRotationStarted; }
-        set { 
+    public bool FallRotationStarted
+    {
+        get { return fallRotationStarted; }
+        set
+        {
             fallRotationStarted = value;
-            
+
         }
     }
 
@@ -31,20 +36,31 @@ public class RagdollManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ragdollColliders = GetComponentsInChildren<CapsuleCollider>();
+        ragdollColliders = GetRagdollColliders();
         physicsDamage = GetComponent<PhysicsDamage>();
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         health = GetComponent<EnemyHealth>();
-
+        controllerclass = GetComponent<EnemyBaseClass>();
 
         health.StartRagdoll += SetupRagdoll;
         health.StopRagdoll += DisableRagdoll;
         DisableRagdoll();
     }
 
-
+    List<Collider> GetRagdollColliders()
+    {
+        List<Collider> bones = new List<Collider>();
+        List<Collider> myColliders = new List<Collider>();
+        bones.AddRange(GetComponentsInChildren<Collider>());
+        myColliders.AddRange(GetComponents<Collider>());
+        for (int i = 0; i < myColliders.Count; i++)
+        {
+            bones.Remove(myColliders[i]);
+        }
+        return bones;
+    }
     void SetupRagdoll()
     {
         if (!fallRotationStarted)
@@ -74,7 +90,7 @@ public class RagdollManager : MonoBehaviour
     /// <param name="value">Wether to enable or disable the colliders</param>
     void ChangeRagdollColliders(bool value)
     {
-        foreach (CapsuleCollider col in ragdollColliders)
+        foreach (Collider col in ragdollColliders)
         {
             col.enabled = value;
         }
@@ -86,26 +102,38 @@ public class RagdollManager : MonoBehaviour
         float fallDelay;
         currentRotationSpeed = startRotationSpeed;
         Quaternion startRotation = transform.rotation;//saves the rotation at the beginning
+        //transform.Rotate(transform.up,)
         while (distanceRotated < 90f)
         {
-            transform.Rotate(new Vector3(-currentRotationSpeed * Time.deltaTime, 0f, 0f));
+            transform.Rotate(new Vector3(-currentRotationSpeed * Time.deltaTime, transform.rotation.y, transform.rotation.z));
+           // transform.Rotate(Vector3.right, -currentRotationSpeed * Time.deltaTime);
             distanceRotated += currentRotationSpeed * Time.deltaTime;
             currentRotationSpeed += Time.deltaTime * rotationAcceleration;//Speeds up the falling
+       
             yield return null;
         }
         yield return new WaitForSeconds(timeToStandUp);
         animator.enabled = true;
-        transform.rotation = startRotation;
+        //transform.rotation = startRotation;
+        transform.Rotate(new Vector3(currentRotationSpeed, 0, 0));
         animator.Play("StandUp");
         DisableRagdoll();
         fallDelay = animator.GetCurrentAnimatorStateInfo(0).length;
         Invoke("CharacterIsStanding", fallDelay);
+        yield return new WaitForSeconds(fallDelay);
+        controllerclass.enemyState = EnemyBaseClass.EnemyState.Move;
+        GetComponent<FollowPlayer>().enabled = true;
     }
 
     private void CharacterIsStanding()
     {
         fallRotationStarted = false;//Enables the ability to fall down
         Debug.Log("Standing");
+    }
+
+    public void ReceiveDirection(GameObject target)
+    {
+        hitTarget = target;
     }
 
 }

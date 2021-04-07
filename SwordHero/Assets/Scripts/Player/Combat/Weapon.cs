@@ -4,42 +4,49 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    TrailRenderer trail;
-    public bool isAttacking;
+    [HideInInspector] public bool isAttacking;
+    [SerializeField]private MeshCollider myCollider;
+
+
     bool IsAttacking
     {
         get { return isAttacking; }
-        set{isAttacking = value;}
+        set { isAttacking = value; }
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        trail = GetComponentInChildren<TrailRenderer>();
         StopAttack();
+        myCollider = GetComponent<MeshCollider>();
+        myCollider.enabled = false;
     }
 
 
     private void OnTriggerEnter(Collider other)
     {
+
+
         if (IsAttacking)
         {
-            if (other.gameObject.tag == "Enemy") {
+            if (other.gameObject.tag == "Enemy")
+            {
+                Debug.Log("attack");
                 other.GetComponent<EnemyHealth>().TakeDamage(1f);
             }
         }
     }
 
+
     public void StartAttack()
     {
         IsAttacking = true;
-        trail.enabled = true;
+        myCollider.enabled = true;
     }
 
     public void StopAttack()
     {
         IsAttacking = false;
-        trail.enabled = false;
-
+        myCollider.enabled = false;
     }
 }

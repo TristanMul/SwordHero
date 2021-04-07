@@ -71,6 +71,7 @@ public class Attack : MonoBehaviour
                         attackIsCharged = true;
                         particles.ChargingParticlesActive = false;
                         particles.PlayIsCharged();
+                        particles.WhileChargedActive = true;
                     }
                 }
                 else { waitToChargeTimer += Time.deltaTime; }
@@ -88,7 +89,7 @@ public class Attack : MonoBehaviour
     /// </summary>
     void StartAttack()
     {
-        if (animator != null) { animator.SetBool("Attack", true); }
+        if (animator != null) { animator.Play("Swordhit"); }
         if (weapon != null) { weapon.StartAttack(); }
         if (attackIsCharged)
         {

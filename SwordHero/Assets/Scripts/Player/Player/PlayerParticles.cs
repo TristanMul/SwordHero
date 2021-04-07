@@ -81,5 +81,6 @@ public class PlayerParticles : MonoBehaviour
 
     void OnAttack() {
         attackSwipe.Play();
+        WhileChargedActive = false;
     }
 }

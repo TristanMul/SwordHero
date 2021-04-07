@@ -28,6 +28,10 @@ public class PhysicsDamage : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.name == "testBlock")
+        {
+            Debug.Log(other.gameObject.GetComponent<Rigidbody>().velocity.magnitude);
+        }
         if(other.tag == "Weapon")
         {
             ApplyKnockBack(playerKnockbackForce, other.gameObject);
@@ -51,6 +55,7 @@ public class PhysicsDamage : MonoBehaviour
     {
         //create a vector between the current object and the object it hits, give it a length of 1.
         Vector3 direction = this.transform.position - other.transform.position;
+        direction.y = 0;
         direction.Normalize();
      
         //add the force to the object in the direction of the two objects that collided & equal to the knockback force that has been set

@@ -127,9 +127,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocityTreshold: 5.5
-  damageMultiplier: 1.5
+  damageMultiplier: 0.05
   forceMultiplier: 0.1
-  playerKnockbackForce: 500
+  playerKnockbackForce: 250
   getUpTime: 0.5
 --- !u!65 &2026538727
 BoxCollider:

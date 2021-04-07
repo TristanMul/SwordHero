@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class RagdollManager : MonoBehaviour
 {
-    CapsuleCollider[] ragdollColliders;
+    List<Collider> ragdollColliders;
     PhysicsDamage physicsDamage;
     Animator animator;
     NavMeshAgent agent;
@@ -32,7 +32,7 @@ public class RagdollManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ragdollColliders = GetComponentsInChildren<CapsuleCollider>();
+        ragdollColliders = GetRagdollColliders();
         physicsDamage = GetComponent<PhysicsDamage>();
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
@@ -45,7 +45,14 @@ public class RagdollManager : MonoBehaviour
         DisableRagdoll();
     }
 
-
+    List<Collider> GetRagdollColliders()
+    {
+        List<Collider> bones = new List<Collider>();
+        bones.AddRange(GetComponentsInChildren<Collider>());
+        bones.Remove(GetComponent<Collider>());
+        bones.Remove(GetComponent<Collider>());
+        return bones;
+    }
     void SetupRagdoll()
     {
         if (!fallRotationStarted)
@@ -75,7 +82,7 @@ public class RagdollManager : MonoBehaviour
     /// <param name="value">Wether to enable or disable the colliders</param>
     void ChangeRagdollColliders(bool value)
     {
-        foreach (CapsuleCollider col in ragdollColliders)
+        foreach (Collider col in ragdollColliders)
         {
             col.enabled = value;
         }

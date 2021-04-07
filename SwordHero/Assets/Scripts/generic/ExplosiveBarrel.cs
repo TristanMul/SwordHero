@@ -8,9 +8,22 @@ public class ExplosiveBarrel : MonoBehaviour
     [SerializeField] private float radius;
     [SerializeField] private float upForce;
     [SerializeField] private float explosionDamage;
+    [SerializeField] private float explodeThreshhold;
+    private float oldVelocity;
 
-    private void Update() {
-        if(Input.GetKeyDown(KeyCode.A)) Detonate();
+    private void Start()
+    {
+        oldVelocity = GetComponent<Rigidbody>().velocity.sqrMagnitude;
+        //explodeThreshhold *= explodeThreshhold;
+    }
+
+    private void FixedUpdate()
+    {
+        if (GetComponent<Rigidbody>().velocity.sqrMagnitude - oldVelocity > explodeThreshhold)
+        {
+            Detonate();
+            Destroy(gameObject);
+        }
     }
     
     /// <summary>

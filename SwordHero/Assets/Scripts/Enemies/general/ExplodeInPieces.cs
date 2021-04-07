@@ -31,7 +31,6 @@ public class ExplodeInPieces : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(parts.Length);
         if (Input.GetKeyDown(KeyCode.LeftControl))
         {
             SetupForDestroy();

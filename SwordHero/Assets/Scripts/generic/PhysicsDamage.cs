@@ -38,7 +38,7 @@ public class PhysicsDamage : MonoBehaviour
 
             //assign a value to knockbackforce
             knockbackForce = assignKnockbackforce(other.gameObject);
-            Debug.Log(knockbackForce);
+            //Debug.Log(knockbackForce);
             //if the current object is an enemy, take damage equal to the speed the other object has times a multiplier
             if (this.tag == "Enemy")
                 {

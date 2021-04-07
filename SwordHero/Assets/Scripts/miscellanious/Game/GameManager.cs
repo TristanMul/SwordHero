@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     bool gameOver = false;
     GameObject[] enemies;
     Scene currScene;
+    Transform finishPortal, coinFountain;
 
     void Awake()
     {
@@ -35,6 +36,8 @@ public class GameManager : MonoBehaviour
         currScene = SceneManager.GetActiveScene();
         sceneName = currScene.name;
         progressBar = GameObject.Find("ProgressBar").GetComponent<FillProgressBar>();
+        coinFountain = GameObject.Find("CoinFountain").GetComponent<Transform>();
+        finishPortal = GameObject.Find("FinishPortal").GetComponent<Transform>();
 
         gameOverUI.SetActive(false);
 
@@ -48,6 +51,8 @@ public class GameManager : MonoBehaviour
         }
 
         _player = GameObject.FindGameObjectWithTag("Player");
+        coinFountain.gameObject.SetActive(false);
+        finishPortal.gameObject.SetActive(false);
     }
 
     private void Update()
@@ -69,8 +74,6 @@ public class GameManager : MonoBehaviour
             {
                 SceneManager.LoadScene(currScene.name);
             }
-            //StartCoroutine(ReloadSameScene());
-            
         }
 
         if (gameReset)
@@ -85,6 +88,13 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))//test for slowtime
         {
             StartCoroutine(SlowTime(1f, .5f));
+        }
+
+        //when all enemies are killed
+        if(progressBar.allEnemies.Count <= 0)
+        {
+            finishPortal.gameObject.SetActive(true);
+            coinFountain.gameObject.SetActive(true);
         }
     }
 

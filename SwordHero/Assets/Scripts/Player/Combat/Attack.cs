@@ -71,6 +71,7 @@ public class Attack : MonoBehaviour
                         attackIsCharged = true;
                         particles.ChargingParticlesActive = false;
                         particles.PlayIsCharged();
+                        particles.WhileChargedActive = true;
                     }
                 }
                 else { waitToChargeTimer += Time.deltaTime; }

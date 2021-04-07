@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class FillProgressBar : MonoBehaviour
 {
     [SerializeField] private Image fillImage;
-    List<GameObject> allEnemies = new List<GameObject>();
+    [HideInInspector] public List<GameObject> allEnemies = new List<GameObject>();
     [SerializeField] private Text enemiesKilled;
     int maxEnemies;
     int currentEnemies;

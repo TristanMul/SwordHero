@@ -25,7 +25,12 @@ public class ParticleToPlayer : MonoBehaviour
             system.Play();
         }
     }
-    void Update()
+    void FixedUpdate()
+    {
+        SetPositionToPlayer();
+    }
+
+    void SetPositionToPlayer()
     {
         timeToStart -= Time.deltaTime;
         if (timeToStart < 0)
@@ -45,7 +50,7 @@ public class ParticleToPlayer : MonoBehaviour
             }
             system.SetParticles(particles, count);
         }
-        if(timeToStart >= -2 && timeToStart < -0.1)
+        if (timeToStart >= -0.8 && timeToStart < -0.2)
         {
             Destroy(this.gameObject);
         }

@@ -25,7 +25,7 @@ public class ExplosiveBarrel : MonoBehaviour
     /// Makes a list of objects within radius and adds force to objects with PhysicsDamageComponent.
     /// </summary>
     public void Detonate(){
-        GameManager.instance.TimeSlow(.5f, .5f);
+        GameManager.instance.TimeSlow(1f, .5f);
 
         Collider[] potentialTargets = Physics.OverlapSphere(transform.position, radius);
         foreach (Collider target in potentialTargets)

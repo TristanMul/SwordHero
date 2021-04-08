@@ -45,7 +45,6 @@ public class RagdollManager : MonoBehaviour
         controllerclass = GetComponent<EnemyBaseClass>();
 
         health.StartRagdoll += SetupRagdoll;
-        health.StopRagdoll += DisableRagdoll;
         DisableRagdoll();
     }
 

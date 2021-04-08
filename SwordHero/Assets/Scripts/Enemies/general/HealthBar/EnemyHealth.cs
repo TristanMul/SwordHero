@@ -16,7 +16,7 @@ public class EnemyHealth : MonoBehaviour
 
     #region Events
     public event Action StartRagdoll;
-    public event Action StopRagdoll;
+    public event Action OnEnemyDeath;
     #endregion
     private void Start()
     {
@@ -40,6 +40,7 @@ public class EnemyHealth : MonoBehaviour
 
     // Enemy is dead.
     private void EnemyDeath(){
+        OnEnemyDeath?.Invoke();
         GameManager.instance.TimeSlow(.5f, .5f);
 
         controllerClass.enemyState = EnemyBaseClass.EnemyState.Death;
@@ -53,6 +54,8 @@ public class EnemyHealth : MonoBehaviour
 
 
     }
+
+
 
     // Enemy flashes white when hit.
     IEnumerator WhiteFlash(){

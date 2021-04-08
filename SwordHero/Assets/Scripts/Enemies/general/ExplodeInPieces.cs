@@ -9,14 +9,18 @@ public class ExplodeInPieces : MonoBehaviour
     Transform parentObject;
     Transform oldParent;
     List<GameObject> childObjects;
+    EnemyHealth health;
     // Start is called before the first frame update
     void Start()
     {
+        health = GetComponentInParent<EnemyHealth>();
+        health.OnEnemyDeath += SetupDestruction;
         oldParent = transform.parent;
         parts = GetComponentsInChildren<Transform>();
         childObjects = new List<GameObject>();
         randomForce = new Vector3(Random.Range(1, 10), Random.Range(1, 10), Random.Range(1, 10));
         parentObject = transform.parent.GetComponent<Transform>();
+        
 
         foreach(Transform child in parts)
         {
@@ -28,14 +32,14 @@ public class ExplodeInPieces : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.LeftControl))
-        {
-            SetupForDestroy();
-            AddForces(parts);
-        }
+    void SetupDestruction() {
+        StartCoroutine(FallApart());
+    }
+
+    IEnumerator FallApart() {
+        yield return new WaitForSeconds(1f);
+        SetupForDestroy();
+        AddForces();
     }
 
     void SetupForDestroy()
@@ -44,7 +48,7 @@ public class ExplodeInPieces : MonoBehaviour
         oldParent.gameObject.SetActive(false);
     }
 
-    void AddForces(Transform[] obj)
+    void AddForces()
     {
         foreach (GameObject rb in childObjects)
         {

@@ -33,7 +33,9 @@ public class ExplodeInPieces : MonoBehaviour
     }
 
     void SetupDestruction() {
-        StartCoroutine(FallApart());
+        //StartCoroutine(FallApart());
+        SetupForDestroy();
+        AddForces();
     }
 
     IEnumerator FallApart() {

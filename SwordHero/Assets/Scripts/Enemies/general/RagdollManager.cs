@@ -105,23 +105,26 @@ public class RagdollManager : MonoBehaviour
         while (distanceRotated < 90f)
         {
             transform.Rotate(new Vector3(-currentRotationSpeed * Time.deltaTime, transform.rotation.y, transform.rotation.z));
-           // transform.Rotate(Vector3.right, -currentRotationSpeed * Time.deltaTime);
+            // transform.Rotate(Vector3.right, -currentRotationSpeed * Time.deltaTime);
             distanceRotated += currentRotationSpeed * Time.deltaTime;
             currentRotationSpeed += Time.deltaTime * rotationAcceleration;//Speeds up the falling
-       
+
             yield return null;
         }
         yield return new WaitForSeconds(timeToStandUp);
-        animator.enabled = true;
-        //transform.rotation = startRotation;
-        transform.Rotate(new Vector3(currentRotationSpeed, 0, 0));
-        animator.Play("StandUp");
-        DisableRagdoll();
-        fallDelay = animator.GetCurrentAnimatorStateInfo(0).length;
-        Invoke("CharacterIsStanding", fallDelay);
-        yield return new WaitForSeconds(fallDelay);
-        controllerclass.enemyState = EnemyBaseClass.EnemyState.Move;
-        GetComponent<FollowPlayer>().enabled = true;
+        if (health.controllerClass.enemyState != EnemyBaseClass.EnemyState.Death)
+        {
+            animator.enabled = true;
+            //transform.rotation = startRotation;
+            transform.Rotate(new Vector3(currentRotationSpeed, 0, 0));
+            animator.Play("StandUp");
+            DisableRagdoll();
+            fallDelay = animator.GetCurrentAnimatorStateInfo(0).length;
+            Invoke("CharacterIsStanding", fallDelay);
+            yield return new WaitForSeconds(fallDelay);
+            controllerclass.enemyState = EnemyBaseClass.EnemyState.Move;
+            GetComponent<FollowPlayer>().enabled = true;
+        }
     }
 
     private void CharacterIsStanding()

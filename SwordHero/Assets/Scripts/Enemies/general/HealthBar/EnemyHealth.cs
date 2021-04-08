@@ -41,7 +41,7 @@ public class EnemyHealth : MonoBehaviour
     // Enemy is dead.
     private void EnemyDeath(){
         OnEnemyDeath?.Invoke();
-        GameManager.instance.TimeSlow(.5f, .5f);
+        //GameManager.instance.TimeSlow(.5f, .5f);
 
         controllerClass.enemyState = EnemyBaseClass.EnemyState.Death;
 
@@ -50,7 +50,7 @@ public class EnemyHealth : MonoBehaviour
         //coinUpdater.UpdateCoinAmount();
         // progressBar.Remove(this.gameObject);
         // progressBar.UpdateProgressBar();
-        this.gameObject.SetActive(false);
+        //this.gameObject.SetActive(false);
 
 
     }

@@ -9,14 +9,16 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8252408802030663003}
+  - component: {fileID: 8252408802030663001}
+  - component: {fileID: 3574492862109677811}
   - component: {fileID: 8252408802030663002}
   - component: {fileID: 8252408802030662981}
-  - component: {fileID: 8252408802030662980}
   - component: {fileID: 8252408802030663000}
-  - component: {fileID: 8252408802030663001}
+  - component: {fileID: 7083171324330086823}
+  - component: {fileID: 2124624162}
   m_Layer: 0
   m_Name: ExplosiveBarrel
-  m_TagString: Untagged
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35,6 +37,41 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8252408802030663001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8252408802030662983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00055dfab22f7384d8c293cc3d6be0b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  power: 200
+  radius: 10
+  upForce: -2
+  explosionDamage: 3
+  hardFallVelocity: 10
+  explosionVisual: {fileID: 180702, guid: 021e68bc3cc58b84f964c6e10e77f8d8, type: 3}
+--- !u!114 &3574492862109677811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8252408802030662983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bbd3f0f94bf8524bbf94e7ad10ecd07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocityTreshold: 5.5
+  damageMultiplier: 0.05
+  forceMultiplier: 0.1
+  playerKnockbackForce: 500
+  getUpTime: 0.5
 --- !u!33 &8252408802030663002
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -84,20 +121,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &8252408802030662980
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8252408802030662983}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &8252408802030663000
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -106,29 +129,38 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8252408802030662983}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 20
+  m_Drag: 0.2
+  m_AngularDrag: 0.35
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!114 &8252408802030663001
-MonoBehaviour:
+  m_CollisionDetection: 2
+--- !u!65 &7083171324330086823
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8252408802030662983}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00055dfab22f7384d8c293cc3d6be0b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  power: 200
-  radius: 10
-  upForce: -2
-  explosionDamage: 3
-  explodeThreshhold: 150
-  explosionVisual: {fileID: 180702, guid: 021e68bc3cc58b84f964c6e10e77f8d8, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 1.1, y: 2.1, z: 1.1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!64 &2124624162
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8252408802030662983}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}

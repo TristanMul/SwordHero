@@ -593,7 +593,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2033664481, guid: 57ca38068ca11944eb0d8e0d6e112faa, type: 3}
       propertyPath: playerKnockbackForce
-      value: 250
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 3674022107374775159, guid: 57ca38068ca11944eb0d8e0d6e112faa,
         type: 3}
@@ -744,6 +744,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ConnectedAnchor.z
       value: -0.00000010058284
+      objectReference: {fileID: 0}
+    - target: {fileID: 5871199494760709456, guid: 57ca38068ca11944eb0d8e0d6e112faa,
+        type: 3}
+      propertyPath: maxHealth
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5871199494760709456, guid: 57ca38068ca11944eb0d8e0d6e112faa,
+        type: 3}
+      propertyPath: currentHealth
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5871199494863840584, guid: 57ca38068ca11944eb0d8e0d6e112faa,
         type: 3}
@@ -2106,40 +2116,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7083171324330086823, guid: 0238565c8c83e9847ae82a647d8b2c2d,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 1.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7083171324330086823, guid: 0238565c8c83e9847ae82a647d8b2c2d,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 2.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7083171324330086823, guid: 0238565c8c83e9847ae82a647d8b2c2d,
-        type: 3}
-      propertyPath: m_Size.z
-      value: 1.1
-      objectReference: {fileID: 0}
     - target: {fileID: 8252408802030662983, guid: 0238565c8c83e9847ae82a647d8b2c2d,
         type: 3}
       propertyPath: m_Name
       value: ExplosiveBarrel
       objectReference: {fileID: 0}
-    - target: {fileID: 8252408802030663000, guid: 0238565c8c83e9847ae82a647d8b2c2d,
-        type: 3}
-      propertyPath: m_Drag
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8252408802030663000, guid: 0238565c8c83e9847ae82a647d8b2c2d,
-        type: 3}
-      propertyPath: m_Mass
-      value: 20
-      objectReference: {fileID: 0}
     - target: {fileID: 8252408802030663001, guid: 0238565c8c83e9847ae82a647d8b2c2d,
         type: 3}
-      propertyPath: hardFallVelocity
-      value: 10
+      propertyPath: explodeThreshhold
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 8252408802030663003, guid: 0238565c8c83e9847ae82a647d8b2c2d,
         type: 3}
@@ -2149,17 +2134,17 @@ PrefabInstance:
     - target: {fileID: 8252408802030663003, guid: 0238565c8c83e9847ae82a647d8b2c2d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9
+      value: 9.871149
       objectReference: {fileID: 0}
     - target: {fileID: 8252408802030663003, guid: 0238565c8c83e9847ae82a647d8b2c2d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 17.8
+      value: 26.36
       objectReference: {fileID: 0}
     - target: {fileID: 8252408802030663003, guid: 0238565c8c83e9847ae82a647d8b2c2d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -315.68
+      value: -298.92087
       objectReference: {fileID: 0}
     - target: {fileID: 8252408802030663003, guid: 0238565c8c83e9847ae82a647d8b2c2d,
         type: 3}
@@ -3999,7 +3984,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2033664481, guid: 57ca38068ca11944eb0d8e0d6e112faa, type: 3}
       propertyPath: playerKnockbackForce
-      value: 250
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 3674022107374775159, guid: 57ca38068ca11944eb0d8e0d6e112faa,
         type: 3}
@@ -4165,6 +4150,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ConnectedAnchor.z
       value: 0.00000010430813
+      objectReference: {fileID: 0}
+    - target: {fileID: 5871199494760709456, guid: 57ca38068ca11944eb0d8e0d6e112faa,
+        type: 3}
+      propertyPath: maxHealth
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5871199494760709456, guid: 57ca38068ca11944eb0d8e0d6e112faa,
+        type: 3}
+      propertyPath: currentHealth
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5871199494863840584, guid: 57ca38068ca11944eb0d8e0d6e112faa,
         type: 3}
@@ -5229,7 +5224,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2033664481, guid: 57ca38068ca11944eb0d8e0d6e112faa, type: 3}
       propertyPath: playerKnockbackForce
-      value: 250
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 3674022107374775159, guid: 57ca38068ca11944eb0d8e0d6e112faa,
         type: 3}
@@ -5380,6 +5375,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ConnectedAnchor.z
       value: -0.000000078231096
+      objectReference: {fileID: 0}
+    - target: {fileID: 5871199494760709456, guid: 57ca38068ca11944eb0d8e0d6e112faa,
+        type: 3}
+      propertyPath: maxHealth
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5871199494760709456, guid: 57ca38068ca11944eb0d8e0d6e112faa,
+        type: 3}
+      propertyPath: currentHealth
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5871199494863840584, guid: 57ca38068ca11944eb0d8e0d6e112faa,
         type: 3}
@@ -9018,7 +9023,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2033664481, guid: 57ca38068ca11944eb0d8e0d6e112faa, type: 3}
       propertyPath: playerKnockbackForce
-      value: 250
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 3674022107374775159, guid: 57ca38068ca11944eb0d8e0d6e112faa,
         type: 3}
@@ -9169,6 +9174,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ConnectedAnchor.z
       value: -0.000000078231096
+      objectReference: {fileID: 0}
+    - target: {fileID: 5871199494760709456, guid: 57ca38068ca11944eb0d8e0d6e112faa,
+        type: 3}
+      propertyPath: maxHealth
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5871199494760709456, guid: 57ca38068ca11944eb0d8e0d6e112faa,
+        type: 3}
+      propertyPath: currentHealth
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5871199494863840584, guid: 57ca38068ca11944eb0d8e0d6e112faa,
         type: 3}
@@ -9409,6 +9424,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ConnectedAnchor.z
       value: -0.000000078231096
+      objectReference: {fileID: 0}
+    - target: {fileID: 5871199494760709456, guid: 57ca38068ca11944eb0d8e0d6e112faa,
+        type: 3}
+      propertyPath: maxHealth
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5871199494760709456, guid: 57ca38068ca11944eb0d8e0d6e112faa,
+        type: 3}
+      propertyPath: currentHealth
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5871199494863840584, guid: 57ca38068ca11944eb0d8e0d6e112faa,
         type: 3}
@@ -11313,7 +11338,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2033664481, guid: 57ca38068ca11944eb0d8e0d6e112faa, type: 3}
       propertyPath: playerKnockbackForce
-      value: 250
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 3674022107374775159, guid: 57ca38068ca11944eb0d8e0d6e112faa,
         type: 3}
@@ -11464,6 +11489,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ConnectedAnchor.z
       value: -0.00000010058284
+      objectReference: {fileID: 0}
+    - target: {fileID: 5871199494760709456, guid: 57ca38068ca11944eb0d8e0d6e112faa,
+        type: 3}
+      propertyPath: maxHealth
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5871199494760709456, guid: 57ca38068ca11944eb0d8e0d6e112faa,
+        type: 3}
+      propertyPath: currentHealth
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5871199494863840584, guid: 57ca38068ca11944eb0d8e0d6e112faa,
         type: 3}
@@ -12259,26 +12294,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1108374950591354227, guid: c51c906783df52145a9d20b5f5893726,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1108374951126432858, guid: c51c906783df52145a9d20b5f5893726,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4399803693152857453, guid: c51c906783df52145a9d20b5f5893726,
-        type: 3}
-      propertyPath: playerKnockbackForce
-      value: 250
-      objectReference: {fileID: 0}
-    - target: {fileID: 4399803693152857463, guid: c51c906783df52145a9d20b5f5893726,
-        type: 3}
-      propertyPath: m_Mass
-      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c51c906783df52145a9d20b5f5893726, type: 3}

@@ -9,7 +9,6 @@ public class EnemyHealth : MonoBehaviour
     public EnemyBaseClass controllerClass;  // The controller class of this enemy object.
     public Material ownMaterial;
     public Material whiteFlash;
-    public GameObject deathParticles;
     [SerializeField] private UpdateCoins coinUpdater;
     private FillProgressBar progressBar;
     private bool isDead = false;
@@ -46,12 +45,10 @@ public class EnemyHealth : MonoBehaviour
         controllerClass.enemyState = EnemyBaseClass.EnemyState.Death;
 
         // Play death effect.
-        GameObject newDeathAnimation =  Instantiate(deathParticles, transform.position, deathParticles.transform.rotation);
-        newDeathAnimation.GetComponent<DeathAnimation>().Setup(numberOfCoins);
-        PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + numberOfCoins);
+        // PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + numberOfCoins);
         //coinUpdater.UpdateCoinAmount();
-        progressBar.Remove(this.gameObject);
-        progressBar.UpdateProgressBar();
+        // progressBar.Remove(this.gameObject);
+        // progressBar.UpdateProgressBar();
         this.gameObject.SetActive(false);
 
 

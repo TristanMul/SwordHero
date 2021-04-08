@@ -11,11 +11,12 @@ public class moveFireBall : MonoBehaviour
     private void Awake()
     {
         thisRigidbody = gameObject.GetComponent<Rigidbody>();
+        thisRigidbody.velocity = transform.forward * MovementSpeed;
     }
 
     void FixedUpdate()
     {
-        thisRigidbody.AddForce(thisRigidbody.transform.forward * MovementSpeed, ForceMode.Impulse);
+        
         destructionTimer -= Time.deltaTime;
         if(destructionTimer <= 0)
         {

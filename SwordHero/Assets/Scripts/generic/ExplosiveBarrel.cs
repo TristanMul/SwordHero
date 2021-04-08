@@ -4,26 +4,20 @@ using UnityEngine;
 
 public class ExplosiveBarrel : MonoBehaviour
 {
+    Rigidbody rb;
+
     [SerializeField] private float power;
     [SerializeField] private float radius;
     [SerializeField] private float upForce;
     [SerializeField] private float explosionDamage;
-    [SerializeField] private float explodeThreshhold;
-    private float oldVelocity;
+    [SerializeField] private float hardFallVelocity;
+    
+    private bool isExplodable;
 
     private void Start()
     {
-        oldVelocity = GetComponent<Rigidbody>().velocity.sqrMagnitude;
-        //explodeThreshhold *= explodeThreshhold;
-    }
-
-    private void FixedUpdate()
-    {
-        if (GetComponent<Rigidbody>().velocity.sqrMagnitude - oldVelocity > explodeThreshhold)
-        {
-            Detonate();
-            Destroy(gameObject);
-        }
+        rb = GetComponent<Rigidbody>();
+        isExplodable = false;
     }
     
     /// <summary>
@@ -31,17 +25,38 @@ public class ExplosiveBarrel : MonoBehaviour
     /// </summary>
     public void Detonate(){
         GameManager.instance.TimeSlow(.5f, .5f);
+
         Collider[] potentialTargets = Physics.OverlapSphere(transform.position, radius);
         foreach (Collider target in potentialTargets)
         {
             if(target.GetComponent<Rigidbody>() && target.GetComponent<PhysicsDamage>()){
-                // Have enemies act like a ragdoll.
                 if(target.CompareTag("Enemy")){
                     target.GetComponent<EnemyHealth>().TakeDamage(explosionDamage);
                 }
                 
                 target.GetComponent<Rigidbody>().AddExplosionForce(power, transform.position, radius, upForce, ForceMode.Impulse);
             }
+        }
+
+        gameObject.SetActive(false);
+    }
+
+    private void OnCollisionEnter(Collision other) {
+        bool onHitGround = other.gameObject.tag == "Walkable";
+        bool onHardFall = other.relativeVelocity.magnitude >= hardFallVelocity;
+
+        if(onHitGround && onHardFall){
+            Detonate();
+        }
+
+        if(isExplodable) Detonate();
+    }
+    
+    private void OnTriggerEnter(Collider other) {
+        bool onPlayerAttack = other.gameObject.tag == "Weapon";
+
+        if(onPlayerAttack){
+            isExplodable = true;
         }
     }
 }

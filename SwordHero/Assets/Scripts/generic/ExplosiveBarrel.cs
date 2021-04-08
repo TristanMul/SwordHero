@@ -11,6 +11,7 @@ public class ExplosiveBarrel : MonoBehaviour
     [SerializeField] private float upForce;
     [SerializeField] private float explosionDamage;
     [SerializeField] private float hardFallVelocity;
+    [SerializeField] private GameObject explosionVisual;
     
     private bool isExplodable;
 
@@ -36,6 +37,11 @@ public class ExplosiveBarrel : MonoBehaviour
                 
                 target.GetComponent<Rigidbody>().AddExplosionForce(power, transform.position, radius, upForce, ForceMode.Impulse);
             }
+        }
+
+        if(explosionVisual != null)
+        {
+            Instantiate(explosionVisual, transform.position, explosionVisual.transform.rotation);
         }
 
         gameObject.SetActive(false);

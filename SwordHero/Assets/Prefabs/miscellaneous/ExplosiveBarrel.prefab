@@ -54,6 +54,7 @@ MonoBehaviour:
   upForce: -2
   explosionDamage: 3
   hardFallVelocity: 10
+  explosionVisual: {fileID: 180702, guid: 021e68bc3cc58b84f964c6e10e77f8d8, type: 3}
 --- !u!114 &3574492862109677811
 MonoBehaviour:
   m_ObjectHideFlags: 0

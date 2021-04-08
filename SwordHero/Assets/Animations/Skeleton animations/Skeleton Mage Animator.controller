@@ -52,7 +52,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 1827226128182048838, guid: 18a848a04ab022349934e038d669dfec,
+  m_Motion: {fileID: 1827226128182048838, guid: bf939e1c06e749f4e8be56b78b69e35e,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -107,7 +107,8 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: d5a1b4321ee1ec543b2e17872d52a4a5, type: 2}
+  m_Motion: {fileID: 1827226128182048838, guid: 4838f6e92c3a9154bb3389a0cfd99e94,
+    type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -231,7 +232,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Skeleton Animator
+  m_Name: Skeleton Mage Animator
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: Idle
@@ -529,7 +530,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 1827226128182048838, guid: 505a34ab6caae404a82b2a7b3c0056bf,
+  m_Motion: {fileID: 1827226128182048838, guid: 9e30824a394ceae4fb07df1012cbced2,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -588,7 +589,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 1827226128182048838, guid: 647255cade36de44094ec8ad48e5f39f,
+  m_Motion: {fileID: 1827226128182048838, guid: aa396bda66bfb5042b215d043c178a74,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -664,7 +665,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 1827226128182048838, guid: ca481a514c887fb4eb49963d001a3c6a,
+  m_Motion: {fileID: 1827226128182048838, guid: 5b6594e6467d9104fbf568ee8477d91a,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 

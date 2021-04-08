@@ -130,4 +130,5 @@ MonoBehaviour:
   radius: 10
   upForce: -2
   explosionDamage: 3
-  explodeThreshhold: 100
+  explodeThreshhold: 150
+  explosionVisual: {fileID: 180702, guid: 021e68bc3cc58b84f964c6e10e77f8d8, type: 3}

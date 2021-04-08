@@ -10,6 +10,7 @@ public class ExplosiveBarrel : MonoBehaviour
     [SerializeField] private float explosionDamage;
     [SerializeField] private float explodeThreshhold;
     private float oldVelocity;
+    [SerializeField] private GameObject explosionVisual;
 
     private void Start()
     {
@@ -42,6 +43,10 @@ public class ExplosiveBarrel : MonoBehaviour
                 
                 target.GetComponent<Rigidbody>().AddExplosionForce(power, transform.position, radius, upForce, ForceMode.Impulse);
             }
+        }
+        if(explosionVisual != null)
+        {
+            Instantiate(explosionVisual, transform.position, explosionVisual.transform.rotation);
         }
     }
 }

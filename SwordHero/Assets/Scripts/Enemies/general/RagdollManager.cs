@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-
+[RequireComponent(typeof(EnemyHealth))]
 public class RagdollManager : MonoBehaviour
 {
     List<Collider> ragdollColliders;

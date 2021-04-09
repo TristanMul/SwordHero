@@ -48,7 +48,7 @@ public class EnemyHealth : MonoBehaviour
         // Play death effect.
         // PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + numberOfCoins);
         //coinUpdater.UpdateCoinAmount();
-        // progressBar.Remove(this.gameObject);
+        progressBar.Remove(this.gameObject);
         // progressBar.UpdateProgressBar();
         //this.gameObject.SetActive(false);
 

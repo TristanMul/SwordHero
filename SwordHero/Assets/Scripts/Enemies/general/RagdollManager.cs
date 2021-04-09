@@ -51,12 +51,12 @@ public class RagdollManager : MonoBehaviour
     List<Collider> GetRagdollColliders()
     {
         List<Collider> bones = new List<Collider>();
-        List<Collider> myColliders = new List<Collider>();
-        bones.AddRange(GetComponentsInChildren<Collider>());
-        myColliders.AddRange(GetComponents<Collider>());
-        for (int i = 0; i < myColliders.Count; i++)
+        foreach (Transform child in transform)
         {
-            bones.Remove(myColliders[i]);
+            if (child.gameObject.CompareTag("Bone"))
+            {
+                bones.Add(child.GetComponent<Collider>());
+            }
         }
         return bones;
     }

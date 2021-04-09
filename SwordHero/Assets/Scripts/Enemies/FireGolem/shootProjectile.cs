@@ -20,7 +20,7 @@ public class shootProjectile : EnemyAttack
     {
         controllerClass = GetComponent<EnemyBaseClass>();
         player = GameManager.instance._player;
-       // animationTimer = ;
+        // animationTimer = ;
         setTimer = Random.Range(minRandomTime, maxRandomTime);
         decreaseCooldown = cooldownTimer;
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -29,37 +29,25 @@ public class shootProjectile : EnemyAttack
     // Update is called once per frame
     void Update()
     {
-        checkIfInRange();
+        checkIfHasCast();
         CooldownTimer();
     }
-    void checkIfInRange()
+    void checkIfHasCast()
     {
-        if(controllerClass.enemyState != EnemyBaseClass.EnemyState.Fall)
-        {
-            float distance = Vector3.Distance(transform.position, player.transform.position);
-            if (distance <= controllerClass.AttackRange && !hasCastSpell)
+            if (!hasCastSpell)
             {
                 controllerClass.enemyState = EnemyBaseClass.EnemyState.Attack;
                 Attack();
             }
-            else if (distance <= controllerClass.AttackRange)
-            {
-                controllerClass.enemyState = EnemyBaseClass.EnemyState.Idle;
-                navMeshAgent.speed = 0;
-            }
             else
             {
-                controllerClass.enemyState = EnemyBaseClass.EnemyState.Move;
-                navMeshAgent.speed = controllerClass.Speed;
-                animationTimer = 0;
+                controllerClass.enemyState = EnemyBaseClass.EnemyState.Idle;
             }
-        }
-        
-
     }
     void Attack()
     {
-        if(!hasCastSpell){
+        if (!hasCastSpell && controllerClass.enemyState != EnemyBaseClass.EnemyState.Fall)
+        {
             animationTimer += Time.deltaTime;
             if (animationTimer >= npcAnimator.GetCurrentAnimatorStateInfo(0).length)
             {
@@ -71,12 +59,12 @@ public class shootProjectile : EnemyAttack
                 animationTimer = 0;
             }
         }
-        
+
     }
     void CooldownTimer()
     {
         decreaseCooldown -= Time.deltaTime;
-        if(decreaseCooldown <= 0 && hasCastSpell)
+        if (decreaseCooldown <= 0 && hasCastSpell)
         {
             decreaseCooldown = cooldownTimer;
             hasCastSpell = false;

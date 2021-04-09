@@ -106,7 +106,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3633985988061692825}
   serializedVersion: 2
-  m_Mass: 30
+  m_Mass: 20
   m_Drag: 0.1
   m_AngularDrag: 0.8
   m_UseGravity: 1
@@ -129,7 +129,7 @@ MonoBehaviour:
   velocityTreshold: 5.5
   damageMultiplier: 0.05
   forceMultiplier: 0.1
-  playerKnockbackForce: 250
+  playerKnockbackForce: 1000
   getUpTime: 0.5
 --- !u!65 &2026538727
 BoxCollider:

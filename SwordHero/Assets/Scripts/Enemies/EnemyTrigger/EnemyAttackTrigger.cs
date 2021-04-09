@@ -31,6 +31,7 @@ public class EnemyAttackTrigger : MonoBehaviour
     private void PlayerIsInRange(){
         parentEnemy.GetComponent<EnemyBaseClass>().enemyState = EnemyBaseClass.EnemyState.Attack;
         parentEnemy.GetComponent<EnemyAttack>().enabled = true;
+        parentEnemy.GetComponent<FollowPlayer>().navMeshAgent.SetDestination(parentEnemy.transform.position);
         parentEnemy.GetComponent<FollowPlayer>().enabled = false;
     }
 

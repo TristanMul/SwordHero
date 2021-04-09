@@ -31,7 +31,6 @@ public class Weapon : MonoBehaviour
         {
             if (other.gameObject.tag == "Enemy")
             {
-                Debug.Log("attack");
                 other.GetComponent<EnemyHealth>().TakeDamage(1f);
             }
         }

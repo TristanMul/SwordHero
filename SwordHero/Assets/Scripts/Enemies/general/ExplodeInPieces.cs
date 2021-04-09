@@ -65,15 +65,21 @@ public class ExplodeInPieces : MonoBehaviour
     {
         float duration = 0.1f;
         float elapsedTime = 0.0f;
-
+        Rigidbody body = rb.GetComponent<Rigidbody>();
         while (elapsedTime < duration)
         {
             elapsedTime += Time.deltaTime;
-            rb.GetComponent<Rigidbody>().AddExplosionForce(2, transform.position, 2, 1, ForceMode.Impulse);
+            if (rb != null)
+            {
+                body.AddExplosionForce(2, transform.position, 2, 1, ForceMode.Impulse);
+            }
             yield return null;
         }
     }
 
+    /// <summary>
+    /// To invoke after a certain amount of time
+    /// </summary>
     void DestroyGameObject() {
         Destroy(gameObject);
     }

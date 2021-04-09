@@ -4,35 +4,30 @@ using UnityEngine;
 
 public class ParticleToPlayer : MonoBehaviour
 {
-    public Transform Target;
     public float timeToStart;
 
+    private Transform Target;
     private ParticleSystem system;
-    private static ParticleSystem.Particle[] particles = new ParticleSystem.Particle[1000];
     int count;
+    bool systemIsActive;
+    private static ParticleSystem.Particle[] particles = new ParticleSystem.Particle[1000];
+    
 
     void Start()
     {
-        if (system == null)
-            system = GetComponent<ParticleSystem>();
 
-        if (system == null)
-        {
-            this.enabled = false;
-        }
-        else
-        {
-            system.Play();
-        }
+        Target = GameManager.instance._player.transform;
+        GameManager.onAllenemiesDefeated += ActivateParticleSystem; 
+        systemIsActive = false;
+        
     }
+
     void FixedUpdate()
     {
-        SetPositionToPlayer();
-    }
+        if(systemIsActive){
+            timeToStart -= Time.deltaTime;
+        }
 
-    void SetPositionToPlayer()
-    {
-        timeToStart -= Time.deltaTime;
         if (timeToStart < 0)
         {
             count = system.GetParticles(particles);
@@ -50,9 +45,21 @@ public class ParticleToPlayer : MonoBehaviour
             }
             system.SetParticles(particles, count);
         }
-        if (timeToStart >= -0.8 && timeToStart < -0.2)
+
+        if(timeToStart >= -2 && timeToStart < -0.1)
         {
-            Destroy(this.gameObject);
+            this.gameObject.SetActive(false);
         }
+    }
+
+    private void ActivateParticleSystem(){
+        transform.GetChild(0).gameObject.SetActive(true);
+        system = transform.GetChild(0).GetComponent<ParticleSystem>();
+        system.Play();
+        systemIsActive = true;
+    }
+
+    private void OnDisable() {
+        GameManager.onAllenemiesDefeated -= ActivateParticleSystem;
     }
 }

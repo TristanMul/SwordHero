@@ -3944,25 +3944,6 @@ Transform:
   m_Father: {fileID: 260152457}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 195.1, z: 0}
---- !u!1 &825986080 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1237125635158752452, guid: 25ea55bfdc6181b4cb43f673add8845e,
-    type: 3}
-  m_PrefabInstance: {fileID: 6735715}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &825986082
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 825986080}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8b81a84ae6c5b54daf4b2175eeda5b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  amountOfCoins: {fileID: 0}
 --- !u!1001 &830451616
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7049,7 +7030,7 @@ PrefabInstance:
     - target: {fileID: 4774167464787972634, guid: e84f92efb656a794482724d43644b4f6,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -288.03
+      value: -273.92
       objectReference: {fileID: 0}
     - target: {fileID: 4774167464787972634, guid: e84f92efb656a794482724d43644b4f6,
         type: 3}

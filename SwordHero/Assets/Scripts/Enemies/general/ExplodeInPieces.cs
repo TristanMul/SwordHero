@@ -10,6 +10,7 @@ public class ExplodeInPieces : MonoBehaviour
     Transform oldParent;
     List<GameObject> childObjects;
     EnemyHealth health;
+    private float removeTime = 8f;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +37,7 @@ public class ExplodeInPieces : MonoBehaviour
         //StartCoroutine(FallApart());
         SetupForDestroy();
         AddForces();
+        Invoke("DestroyGameObject", removeTime);
     }
 
     IEnumerator FallApart() {
@@ -71,4 +73,9 @@ public class ExplodeInPieces : MonoBehaviour
             yield return null;
         }
     }
+
+    void DestroyGameObject() {
+        Destroy(gameObject);
+    }
+
 }

@@ -67,7 +67,6 @@ public class RagdollManager : MonoBehaviour
             animator.enabled = false;
             agent.enabled = false;
             ChangeRagdollColliders(true);
-            rb.isKinematic = false;
 
 
             StartCoroutine(FallRotation());
@@ -79,7 +78,6 @@ public class RagdollManager : MonoBehaviour
         animator.enabled = true;
         agent.enabled = true;
         ChangeRagdollColliders(false);
-        rb.isKinematic = true;
     }
 
 

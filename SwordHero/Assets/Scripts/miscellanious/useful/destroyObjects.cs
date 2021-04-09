@@ -7,6 +7,10 @@ public class destroyObjects : MonoBehaviour
     // Start is called before the first frame update
     private void OnTriggerEnter(Collider other)
     {
-        other.gameObject.SetActive(false);
+        if(other.gameObject.tag == "Enemy") 
+        {
+            other.gameObject.GetComponent<EnemyHealth>().TakeDamage(Mathf.Infinity);
+        }
+        else { Destroy(other.gameObject); }
     }
 }

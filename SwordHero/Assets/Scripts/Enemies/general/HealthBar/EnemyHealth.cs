@@ -13,6 +13,7 @@ public class EnemyHealth : MonoBehaviour
     private FillProgressBar progressBar;
     private bool isDead = false;
     [SerializeField] private int numberOfCoins;
+    [SerializeField] private float minimalHealthMult;
 
     #region Events
     public event Action StartRagdoll;
@@ -32,7 +33,7 @@ public class EnemyHealth : MonoBehaviour
         controllerClass.HealthBar.UpdateHealthBar(controllerClass.CurrenHealth, controllerClass.MaxHealth);
 
         // Enemy is dead.
-        if(controllerClass.CurrenHealth <= 0 && !isDead){
+        if(controllerClass.CurrenHealth <= controllerClass.MaxHealth * minimalHealthMult && !isDead){
             EnemyDeath();
             isDead = true;
         }
@@ -46,7 +47,7 @@ public class EnemyHealth : MonoBehaviour
         controllerClass.enemyState = EnemyBaseClass.EnemyState.Death;
 
         // Play death effect.
-        // PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + numberOfCoins);
+        GameManager.instance.AddCoins(5);
         //coinUpdater.UpdateCoinAmount();
         progressBar.Remove(this.gameObject);
         // progressBar.UpdateProgressBar();

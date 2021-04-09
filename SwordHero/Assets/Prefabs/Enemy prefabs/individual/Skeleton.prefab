@@ -1431,6 +1431,7 @@ MonoBehaviour:
   whiteFlash: {fileID: 2100000, guid: 9dfded9c423fc5d4d966490f7522aadf, type: 2}
   coinUpdater: {fileID: 0}
   numberOfCoins: 0
+  minimalHealthMult: 0.05
 --- !u!54 &7551938292804068153
 Rigidbody:
   m_ObjectHideFlags: 0

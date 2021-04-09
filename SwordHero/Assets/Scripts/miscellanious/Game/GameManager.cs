@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
 
     public static event Action onAllenemiesDefeated;
 
+    public event Action updateCoins;
     void Awake()
     {
         finishLine = GameObject.FindWithTag("Finish");
@@ -141,5 +142,13 @@ public class GameManager : MonoBehaviour
     public void TimeSlow(float duration, float magnitude)
     {
         StartCoroutine(SlowTime(duration, magnitude));
+    }
+
+    public void AddCoins(int amount) {
+        int currentCoins = PlayerPrefs.GetInt("Coins");
+        currentCoins += amount;
+        PlayerPrefs.SetInt("Coins", currentCoins);
+        Debug.Log(currentCoins);
+        updateCoins?.Invoke();
     }
 }

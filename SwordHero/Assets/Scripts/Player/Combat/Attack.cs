@@ -13,6 +13,8 @@ public class Attack : MonoBehaviour
 
     bool attackIsCharged;
     float chargeTimer;
+    float oldChargeTimer;
+    [HideInInspector] public float ChargeTimer { get { return oldChargeTimer; } }
     [SerializeField] float chargeTime;
     [SerializeField] float waitToChargeTime = .2f;
     float waitToChargeTimer;
@@ -91,6 +93,7 @@ public class Attack : MonoBehaviour
     {
         if (animator != null) { animator.Play("Swordhit"); }
         if (weapon != null) { weapon.StartAttack(); }
+        oldChargeTimer = chargeTimer;
         if (attackIsCharged)
         {
             attackIsCharged = false;

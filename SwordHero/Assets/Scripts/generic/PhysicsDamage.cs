@@ -14,6 +14,7 @@ public class PhysicsDamage : MonoBehaviour
     [SerializeField] private float playerKnockbackForce = 100;
     [SerializeField] private float getUpTime = 0.5f;
     private float knockbackForce;
+    private float chargePercentage;
 
 
     private void Start()
@@ -31,7 +32,7 @@ public class PhysicsDamage : MonoBehaviour
     {
         if(other.tag == "Weapon")
         {
-            ApplyKnockBack(playerKnockbackForce, other.gameObject);
+            ApplyKnockBack(playerKnockbackForce * getChargeTime(), other.gameObject);
         }
 
         // make sure only objects with a specific tag collide with this object & checks if the velocity threshold has been reached.
@@ -68,5 +69,12 @@ public class PhysicsDamage : MonoBehaviour
         }
         
         return this.transform.position - other.transform.position;
+    }
+    float getChargeTime()
+    {
+        chargePercentage = GameObject.FindGameObjectWithTag("Player").GetComponent<Attack>().ChargeTimer;
+        chargePercentage = Mathf.Clamp(chargePercentage, 0f, 1f);
+        Debug.Log("Charge: " + chargePercentage);
+        return chargePercentage;
     }
 }

@@ -29,27 +29,32 @@ public class shootProjectile : EnemyAttack
     // Update is called once per frame
     void Update()
     {
-        Attack();
+        checkIfInRange();
         CooldownTimer();
     }
     void checkIfInRange()
     {
-        float distance = Vector3.Distance(transform.position, player.transform.position);
-        if (distance <= controllerClass.AttackRange && !hasCastSpell)
+        if(controllerClass.enemyState != EnemyBaseClass.EnemyState.Fall)
         {
-            Attack();
+            float distance = Vector3.Distance(transform.position, player.transform.position);
+            if (distance <= controllerClass.AttackRange && !hasCastSpell)
+            {
+                controllerClass.enemyState = EnemyBaseClass.EnemyState.Attack;
+                Attack();
+            }
+            else if (distance <= controllerClass.AttackRange)
+            {
+                controllerClass.enemyState = EnemyBaseClass.EnemyState.Idle;
+                navMeshAgent.speed = 0;
+            }
+            else
+            {
+                controllerClass.enemyState = EnemyBaseClass.EnemyState.Move;
+                navMeshAgent.speed = controllerClass.Speed;
+                animationTimer = 0;
+            }
         }
-        else if( distance <= controllerClass.AttackRange)
-        {
-            controllerClass.enemyState = EnemyBaseClass.EnemyState.Idle;
-            navMeshAgent.speed = 0;  
-        }
-        else
-        {
-            controllerClass.enemyState = EnemyBaseClass.EnemyState.Move;
-            navMeshAgent.speed = controllerClass.Speed;
-            animationTimer = 0;
-        }
+        
 
     }
     void Attack()

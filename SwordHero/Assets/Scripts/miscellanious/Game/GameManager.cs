@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -30,6 +31,7 @@ public class GameManager : MonoBehaviour
     Scene currScene;
     Transform finishPortal, coinFountain;
 
+    public event Action updateCoins;
     void Awake()
     {
         finishLine = GameObject.FindWithTag("Finish");
@@ -142,5 +144,13 @@ public class GameManager : MonoBehaviour
     public void TimeSlow(float duration, float magnitude)
     {
         StartCoroutine(SlowTime(duration, magnitude));
+    }
+
+    public void AddCoins(int amount) {
+        int currentCoins = PlayerPrefs.GetInt("Coins");
+        currentCoins += amount;
+        PlayerPrefs.SetInt("Coins", currentCoins);
+        Debug.Log(currentCoins);
+        updateCoins?.Invoke();
     }
 }

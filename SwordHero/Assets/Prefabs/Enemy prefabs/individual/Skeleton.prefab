@@ -1429,10 +1429,9 @@ MonoBehaviour:
   controllerClass: {fileID: 5871199494760709456}
   ownMaterial: {fileID: 2100000, guid: 21a7c8ae65846dc47a0dca2010d8345a, type: 2}
   whiteFlash: {fileID: 2100000, guid: 9dfded9c423fc5d4d966490f7522aadf, type: 2}
-  deathParticles: {fileID: 6369984750543833569, guid: 3b3d25ef49a4d784aba925bacd707983,
-    type: 3}
   coinUpdater: {fileID: 0}
   numberOfCoins: 0
+  minimalHealthMult: 0.05
 --- !u!54 &7551938292804068153
 Rigidbody:
   m_ObjectHideFlags: 0
